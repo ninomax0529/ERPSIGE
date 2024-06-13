@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.produccion.lote.LoteDeProduccionController">
+   <children>
+      <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="56.0" prefWidth="494.0" spacing="10.0">
+               <children>
+                  <JFXButton fx:id="btnNuevo" onAction="#btnNuevoActionEvent" prefHeight="30.0" prefWidth="70.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Nuevo">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEditar" onAction="#btnEditarActionEvent" prefHeight="30.0" prefWidth="60.0" styleClass="btn-update" stylesheets="@../../../style/style.css" text="Editar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <VBox VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <TableView fx:id="tbLoteDeProduccion" onMouseClicked="#tbLoteDeProduccionMouseClicked" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="tbcFechaProduccion" maxWidth="286.0" prefWidth="155.0" text="Fecha" />
+                      <TableColumn fx:id="tbcLote" maxWidth="150.0" text="Lote" />
+                        <TableColumn fx:id="tbcProduto" maxWidth="291.0" minWidth="20.0" prefWidth="289.0" text="Producto" />
+                        <TableColumn fx:id="tbccodProducto" maxWidth="200.0" prefWidth="155.0" text="Codigo Producto" />
+                        <TableColumn fx:id="tbcProduccion" maxWidth="286.0" prefWidth="239.0" text="Produccion" />
+                        <TableColumn fx:id="tbcUnidad" maxWidth="286.0" prefWidth="239.0" text="Unidad" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-02-22T14:09:04 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RptServicioMenAnual" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a34e2794-b9d4-4e0f-a2ea-46be71f98e6b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="130"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="865"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<queryString language="SQL">
+		<![CDATA[
+SELECT * from (
+SELECT 
+
+(select  logo from unidad_de_negocio where codigo=2 )  as  logo ,
+
+c.codigo, c.nombre,
+
+ifnull(sm.cant_frecuencia,0) as ser_mensual,
+ifnull(sam.cant_activo_m,0) as ser_activo_m,
+ifnull(sm.cant_frecuencia,0)-ifnull(sam.cant_activo_m,0) as susp_m,
+
+ifnull(sm.cant_gps_m,0) as cant_gps_m,
+ifnull(sam.cant_gps_activo_m,0) as cant_gps_activo_m,
+ifnull(sm.cant_gps_m,0)-ifnull(sam.cant_gps_activo_m,0) as gps_susp_m,
+
+ifnull(sa.cant_frecuencia,0) as ser_anual,
+ifnull(saa.cant_activo_a,0) as ser_activo_a,
+ifnull(sa.cant_frecuencia,0)-ifnull(saa.cant_activo_a,0) as susp_a,
+
+ifnull(sa.cant_gps_a,0) as cant_gps_a,
+
+ifnull(saa.cant_gps_activo_a,0) cant_gps_activo_a,
+ifnull(sa.cant_gps_a,0)-ifnull(saa.cant_gps_activo_a,0) as gps_susp_a
+
+
+
+ from cliente c left JOIN  
+
+/*  cantida de servicio mensual  */
+
+(
+
+ SELECT 
+ 
+ ct.cliente,
+
+ count(dct.codigo)  as cant_frecuencia,sum(dct.cantidad) as cant_gps_m
+
+from contrato_de_servicio ct
+INNER JOIN detalle_contrato_de_servicio dct 
+ on ct.codigo=dct.contrato_de_servicio
+INNER JOIN articulo art on art.codigo=dct.equipo
+
+ and  ct.anulado=false
+
+ where 
+
+ art.tipo_articulo=3  and dct.frecuencia_de_pago=2   and  tipo_de_servicio=1    
+
+ -- and dct.habilitado=true
+
+ GROUP BY  ct.cliente   ) as sm on  sm.cliente=c.codigo
+
+
+/*  cantida de servicio activo mensual  */
+
+left JOIN  
+(
+
+ SELECT 
+ 
+ ct.cliente,
+
+count(dct.codigo) as cant_activo_m,sum(dct.cantidad) as cant_gps_activo_m
+
+from contrato_de_servicio ct
+INNER JOIN detalle_contrato_de_servicio dct 
+ on ct.codigo=dct.contrato_de_servicio
+INNER JOIN articulo art on art.codigo=dct.equipo
+
+ and  ct.anulado=false
+
+ where 
+
+ art.tipo_articulo=3  and  dct.frecuencia_de_pago=2
+
+ and dct.habilitado=true  and  tipo_de_servicio=1 
+
+ GROUP BY  ct.cliente  ) as sam on  sam.cliente=c.codigo
+
+left JOIN  
+
+/*  cantida de servicio anual  */
+
+(
+
+ SELECT 
+ 
+ ct.cliente,
+
+count(dct.codigo) as cant_frecuencia,sum(dct.cantidad) as cant_gps_a
+
+from contrato_de_servicio ct
+INNER JOIN detalle_contrato_de_servicio dct 
+ on ct.codigo=dct.contrato_de_servicio
+INNER JOIN articulo art on art.codigo=dct.equipo
+
+ and  ct.anulado=false
+
+ where 
+
+ art.tipo_articulo=3  and  dct.frecuencia_de_pago=1 and  tipo_de_servicio=1 
+ -- and dct.habilitado=true
+
+ GROUP BY  ct.cliente   ) as sa on  sa.cliente=c.codigo
+
+
+
+/*  cantida de servicio activo anual  */
+
+left JOIN  
+(
+
+ SELECT 
+ 
+ ct.cliente,
+
+count(dct.codigo) as cant_activo_a,sum(dct.cantidad) as cant_gps_activo_a
+
+from contrato_de_servicio ct
+INNER JOIN detalle_contrato_de_servicio dct 
+ on ct.codigo=dct.contrato_de_servicio
+INNER JOIN articulo art on art.codigo=dct.equipo
+
+ and  ct.anulado=false
+
+ where 
+
+ art.tipo_articulo=3  and dct.frecuencia_de_pago=1   and  tipo_de_servicio=1 
+
+ and dct.habilitado=true
+
+ GROUP BY  ct.cliente  )  as saa on  saa.cliente=c.codigo  where  (ifnull(sm.cant_frecuencia,0)+ifnull(sa.cant_frecuencia,0))>0  ) as r    order by  nombre asc]]>
+	</queryString>
+	<field name="logo" class="java.io.InputStream"/>
+	<field name="codigo" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="ser_mensual" class="java.lang.Long"/>
+	<field name="ser_activo_m" class="java.lang.Long"/>
+	<field name="susp_m" class="java.lang.Long"/>
+	<field name="cant_gps_m" class="java.lang.Integer"/>
+	<field name="cant_gps_activo_m" class="java.lang.Integer"/>
+	<field name="gps_susp_m" class="java.lang.Integer"/>
+	<field name="ser_anual" class="java.lang.Long"/>
+	<field name="ser_activo_a" class="java.lang.Long"/>
+	<field name="susp_a" class="java.lang.Long"/>
+	<field name="cant_gps_a" class="java.lang.Integer"/>
+	<field name="cant_gps_activo_a" class="java.lang.Integer"/>
+	<field name="gps_susp_a" class="java.lang.Integer"/>
+	<variable name="ser_mensual1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{ser_mensual}]]></variableExpression>
+	</variable>
+	<variable name="ser_activo_m1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{ser_activo_m}]]></variableExpression>
+	</variable>
+	<variable name="susp_m1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{susp_m}]]></variableExpression>
+	</variable>
+	<variable name="cant_gps_m1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{cant_gps_m}]]></variableExpression>
+	</variable>
+	<variable name="cant_gps_activo_m1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{cant_gps_activo_m}]]></variableExpression>
+	</variable>
+	<variable name="gps_susp_m1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{gps_susp_m}]]></variableExpression>
+	</variable>
+	<variable name="ser_anual1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{ser_anual}]]></variableExpression>
+	</variable>
+	<variable name="ser_activo_a1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{ser_activo_a}]]></variableExpression>
+	</variable>
+	<variable name="susp_a1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{susp_a}]]></variableExpression>
+	</variable>
+	<variable name="cant_gps_a1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{cant_gps_a}]]></variableExpression>
+	</variable>
+	<variable name="cant_gps_activo_a1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{cant_gps_activo_a}]]></variableExpression>
+	</variable>
+	<variable name="gps_susp_a1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{gps_susp_a}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="10" splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="167" splitType="Stretch">
+			<staticText>
+				<reportElement x="241" y="114" width="271" height="18" uuid="27e40f7b-a357-4659-9bc8-27351aed605b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ MENSUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="519" y="114" width="270" height="18" uuid="19d0a9da-1dc3-437d-bd76-64a6a8b50196">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ ANUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="242" height="18" uuid="0d8d8dc1-16c7-472b-927c-a2d2f4d30da0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO DE SERVICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="134" width="242" height="33" uuid="76dbd93b-1d64-4de7-89c1-ba95ca18df4a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="148" width="45" height="19" uuid="a6e16206-05ca-4f33-a078-43335d5d71eb">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="148" width="45" height="19" uuid="9b84ec40-b845-4ef9-8c15-f1d447c8084f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTIVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="148" width="45" height="19" uuid="56c91b4e-da59-4226-a661-5a13a98d8fc6">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="148" width="45" height="19" uuid="c866002a-9854-4109-9f65-4a4a51281abc">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="148" width="45" height="19" uuid="2e9aac70-200e-4f77-a0af-6cc166f35469">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTIVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="148" width="45" height="19" uuid="b4c435ad-8d02-444e-98c8-2e48579a7bd7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="242" y="134" width="135" height="14" backcolor="#D5F0EE" uuid="b9c188a6-d25d-455e-bc54-8e7b9e55d685">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="377" y="134" width="135" height="14" backcolor="#A2E8B3" uuid="3d745459-4938-431a-ab48-265aa1ce5cd1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ GPS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="519" y="148" width="45" height="19" uuid="89259ba5-f5df-41cb-b18b-1e3f74707e5c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="564" y="148" width="45" height="19" uuid="9061bcb3-1f3b-4fbb-9876-e62eee66d27e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTIVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="609" y="148" width="45" height="19" uuid="538c6154-c032-4186-a994-0273108f7860">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="654" y="134" width="135" height="14" backcolor="#A2E8B3" uuid="50c16ef0-608d-47a9-91ff-db7b52735518">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ GPS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="655" y="148" width="45" height="19" uuid="b2e1f7d7-731b-461b-9d67-dfc844a87f77">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="148" width="45" height="19" uuid="e30d0a46-97c7-4e1d-b0a0-92ebb72a877a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTIVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="744" y="148" width="45" height="19" uuid="0f81d291-18e2-4717-b929-c89efa4084e3">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="519" y="134" width="135" height="14" backcolor="#D5F0EE" uuid="364b3d55-806f-4167-91b0-111cbc7cffba">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICIO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="511" y="114" width="8" height="53" backcolor="#D5EDDC" uuid="b463b2f5-6298-4d85-9dd8-d6f6576fc596">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<image scaleImage="FillFrame">
+				<reportElement x="8" y="6" width="305" height="104" uuid="620f4307-c63f-4b09-8dbd-75455fd79b33"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="350" y="8" width="420" height="62" uuid="302ed392-0b16-45d3-ba57-d32d1dd0a0b7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte  de Servicios   y  Gps por Cliente ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-2" y="1" width="802" height="1" uuid="be370404-b3dd-46b7-9dc2-887ca492ca1f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="640" y="70" width="129" height="16" uuid="17ebb882-0db3-4771-8611-545821af8b4c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="600" y="70" width="39" height="16" uuid="b2c034b1-3964-4466-9193-0d54f2d0fc2e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Fecha  :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="242" y="0" width="45" height="19" uuid="730361ba-67bb-4ef6-a0d8-9a6e399a7bfb">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ser_mensual}>0  ? $F{ser_mensual} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="242" height="19" uuid="e3389466-8af9-4a56-adc0-0377f694d15f"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="0" width="45" height="19" uuid="d525fa46-362e-4323-92df-442bb79bb8e9"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ser_activo_m} >0  ?  $F{ser_activo_m}  : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="0" width="45" height="19" uuid="36932689-24f2-426c-9b3a-34f7dbfe909d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{susp_m} >0 ?  $F{susp_m}  : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="0" width="45" height="19" uuid="f890b0dd-0bad-4366-a497-def44bfdf5d6"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cant_gps_m}>0 ?  $F{cant_gps_m} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="45" height="19" uuid="9bbfdea2-ac0a-4caf-8ec0-1caee3f79191"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cant_gps_activo_m} >0 ? $F{cant_gps_activo_m} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="0" width="45" height="19" uuid="4f1088ba-ad46-4cc5-964a-3b40114e540c"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gps_susp_m}>0 ? $F{gps_susp_m} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="519" y="0" width="45" height="19" uuid="e39ef2c3-2ffb-4fd0-9fdf-0dbd610fb84a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ser_anual}>0 ? $F{ser_anual} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="564" y="0" width="45" height="19" uuid="e811f819-9411-4f58-b3e2-f909bb83de55">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ser_activo_a}>0 ? $F{ser_activo_a} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="609" y="0" width="45" height="19" uuid="9296e904-6cb2-4e31-9c3c-ad4b3e6e47f3"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{susp_a}>0 ? $F{susp_a} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="654" y="0" width="45" height="19" uuid="ceb536fb-422e-43f8-959f-0969506f8026"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cant_gps_a}>0 ? $F{cant_gps_a} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="699" y="0" width="45" height="19" uuid="14c7758f-b5cf-4d30-98b1-3f911e450452"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cant_gps_activo_a}>0 ? $F{cant_gps_activo_a} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="744" y="0" width="45" height="19" uuid="e76b9514-06be-4970-a1b1-40855c8cd814"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gps_susp_a}>0 ? $F{gps_susp_a} : ""]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="511" y="0" width="8" height="19" backcolor="#D5EDDC" uuid="98ce911f-d14e-4753-86c8-f5875bfd71e2"/>
+				<graphicElement>
+					<pen lineWidth="0.15"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22">
+			<staticText>
+				<reportElement x="1" y="1" width="129" height="16" uuid="97b08ec0-21df-4cad-8840-fc52fa5c1495"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Fecha y Hora de Impresion :]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy h:mm a">
+				<reportElement x="130" y="1" width="129" height="16" uuid="62975722-37f1-4fad-aa22-c751758a2627">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="578" y="1" width="100" height="16" uuid="583438ae-859c-4923-b97f-708940c6a858"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="676" y="1" width="69" height="16" uuid="4bd72934-2744-4c25-8eda-0634c1a7d5fc"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="21" width="802" height="1" uuid="6ea0c2d7-1469-421a-b465-ee88cb445327"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="242" y="0" width="45" height="19" uuid="98485503-4739-432f-a806-2b591e5388dc"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ser_mensual1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="0" width="45" height="19" uuid="1e167993-b102-4ea3-9720-778870dadf14"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ser_activo_m1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="0" width="45" height="19" uuid="601db8b7-0f73-4196-9605-5b22cbdd9060"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{susp_m1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="0" width="45" height="19" uuid="9935ea52-9b84-4450-a727-6d981f4338ef"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cant_gps_m1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="45" height="19" uuid="5c60bd83-b4ca-4f5a-a672-a65dbd30bd93"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cant_gps_activo_m1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="0" width="45" height="19" uuid="f28044d9-75cd-48aa-83eb-e30895433bff"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{gps_susp_m1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="519" y="1" width="45" height="19" uuid="217ca28d-0276-415e-b1ef-4356a30c37d3"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ser_anual1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="564" y="1" width="45" height="19" uuid="07f5907b-a876-4040-b7fe-35f38d4b45ec"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ser_activo_a1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="609" y="1" width="45" height="19" uuid="369674c4-32be-4c56-aa57-6d5796ecb6b9"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{susp_a1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="654" y="1" width="45" height="19" uuid="e1ef88ef-f60e-428a-a430-0a501de8e0bf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cant_gps_a1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="699" y="1" width="45" height="19" uuid="de373e7e-b6c3-4b5e-a817-c0bdb0f370b5"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cant_gps_activo_a1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="744" y="1" width="45" height="19" uuid="8deb0f02-baff-4d0b-9d19-ba28c5b6ba7d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{gps_susp_a1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="242" height="19" backcolor="#A2E8B3" uuid="82bc4365-76ae-4f46-8589-f27b8422bcb5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL   :  ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="511" y="0" width="8" height="19" backcolor="#A2E8B3" uuid="fc3e6f5f-3be1-4c26-a0e5-03d466492cb6"/>
+				<graphicElement>
+					<pen lineWidth="0.15"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</summary>
+</jasperReport>

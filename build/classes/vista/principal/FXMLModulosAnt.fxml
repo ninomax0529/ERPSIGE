@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" prefHeight="741.0" prefWidth="1046.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.principal.FXMLModulosController">
+   <top>
+      <VBox prefHeight="51.0" prefWidth="618.0" stylesheets="@../../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane opacity="0.81" prefHeight="28.0" prefWidth="904.0" styleClass="head-background" stylesheets="@../../style/style.css" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="605.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="272.0" text="Sistema  Integrado de Gestion Empresarial" textAlignment="RIGHT" textFill="WHITE" AnchorPane.leftAnchor="615.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="2.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton fx:id="btnConfiguracion" alignment="TOP_LEFT" layoutX="5.0" layoutY="8.0" onAction="#btnConfiguracionAcionEvent" opacity="0.97" prefHeight="32.0" prefWidth="99.0" style="-fx-border-radius: 60px;" text="Config" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnInventario" alignment="TOP_LEFT" layoutX="102.0" layoutY="8.0" onAction="#btnInventarioActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="123.0" style="-fx-border-radius: 60px;" text=" Inventario" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCxc" alignment="TOP_LEFT" layoutX="488.0" layoutY="8.0" onAction="#btnCxcActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="77.0" style="-fx-border-radius: 60px;" text="CxC" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCajaChica" alignment="TOP_LEFT" layoutX="209.0" layoutY="8.0" onAction="#btnCajaChicaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="118.0" style="-fx-border-radius: 60px;" text="Caja Chica" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPuntoVenta" alignment="TOP_LEFT" layoutX="333.0" layoutY="7.0" onAction="#btnPuntoVentaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="152.0" style="-fx-border-radius: 60px;" text="Punto de Venta" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </AnchorPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" styleClass="fondo_sistema" stylesheets="@../../css/style.css" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane styleClass="head-background" stylesheets="@../../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="69.0" text="Version: " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="1.0.1" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

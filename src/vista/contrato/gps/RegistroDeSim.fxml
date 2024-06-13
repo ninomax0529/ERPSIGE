@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="221.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contrato.gps.RegistroDeSimController">
+  <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Registro  de  Sim" textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="251.0" prefWidth="456.0">
+         <children>
+            <HBox layoutX="11.0" layoutY="45.0" prefHeight="34.0" prefWidth="495.0" spacing="10.0" AnchorPane.topAnchor="60.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="70.0" text="Disponible" />
+                  <JFXRadioButton fx:id="rbDisponibleSi" onAction="#rbDisponibleSiActionEvent" prefHeight="29.0" prefWidth="52.0" text="Si" />
+                  <JFXRadioButton fx:id="rbDisponibleNo" onAction="#rbDisponibleNoActionEvent" prefHeight="34.0" prefWidth="77.0" text="No" />
+                  <Label alignment="BOTTOM_RIGHT" prefHeight="25.0" prefWidth="57.0" text="Emprasa  " />
+                  <JFXComboBox fx:id="cbEmpresa" onAction="#cbEmpresaActionEvent" prefHeight="25.0" prefWidth="186.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="12.0" layoutY="11.0" spacing="10.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="30.0" prefWidth="61.0" text="Numero" />
+                  <JFXTextField fx:id="txtNumero" alignment="CENTER" prefHeight="25.0" prefWidth="139.0" />
+                  <Label prefHeight="30.0" prefWidth="109.0" text="Fecha de Compra" />
+                  <JFXDatePicker fx:id="dpFechaCompra" prefHeight="25.0" prefWidth="156.0" />
+               </children>
+            </HBox>
+            <JFXCheckBox fx:id="chDuplicado" layoutX="14.0" layoutY="107.0" onAction="#chDuplicadoActionEvent" prefHeight="18.0" prefWidth="109.0" text=" Duplicado" />
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>

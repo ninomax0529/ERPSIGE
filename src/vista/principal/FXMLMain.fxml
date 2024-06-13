@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.principal.FXMLMainController">
+   <bottom>
+      <Pane prefHeight="22.0" prefWidth="639.0" style="-fx-background-color: #3BB839;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="2.0" />
+         </BorderPane.margin>
+         <children>
+            <Label layoutX="-1.0" layoutY="3.0" text="     Desarrollado por  El  Ing.Maximiliano Almonte Rodriguez        Contacto : 809-280-7944 " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </bottom>
+   <left>
+      <VBox prefHeight="311.0" prefWidth="169.0" spacing="10.0" style="-fx-background-color: #292F36;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" onMouseClicked="#menuPrincipalMouseClick" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #292F36; -fx-border-color: #FFFFFF;" stylesheets="@../../css/mai.css" text="Menú" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <JFXButton fx:id="btnCliente" alignment="TOP_LEFT" onAction="#btnRegistrarCliente" opacity="0.97" prefHeight="32.0" prefWidth="146.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Cliente" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnArticulo" alignment="TOP_LEFT" onAction="#btnRegistrarArticulo" opacity="0.97" prefHeight="32.0" prefWidth="149.0" stylesheets="@../../css/mai.css" text=" Articulo" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect></FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnPrestamo" alignment="TOP_LEFT" onAction="#btnRegistrarPrestamo" opacity="0.97" prefHeight="32.0" prefWidth="146.0" stylesheets="@../../css/mai.css" text=" Empeño" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="tbcReciboDePago" alignment="TOP_LEFT" layoutX="20.0" layoutY="171.0" onAction="#btnReciboDePago" opacity="0.97" prefHeight="32.0" prefWidth="146.0" stylesheets="@../../css/mai.css" text="Recibo de Pago" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnCategoria" alignment="TOP_LEFT" onAction="#btnRegistrarCategoria" opacity="0.97" prefHeight="32.0" prefWidth="146.0" stylesheets="@../../css/mai.css" text=" Categoria" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <VBox prefHeight="51.0" prefWidth="618.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Registro">
+                  <items>
+                    <MenuItem fx:id="imArticulo" mnemonicParsing="false" onAction="#imArticuloEventAction" text="Articulo" />
+                        <MenuItem fx:id="imCategoria" mnemonicParsing="false" onAction="#imCategoriaEventAction" text="Categoria" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Consulta">
+                  <items>
+                    <MenuItem fx:id="imConsultaPrestamo" mnemonicParsing="false" onAction="#consultaEstadoPrestamo" text="Empeño" />
+                        <MenuItem fx:id="itCliente" mnemonicParsing="false" onAction="#consultaClienteEvent" text="Cliente" />
+                        <MenuItem fx:id="itConsultaArticulo" mnemonicParsing="false" onAction="#actionEventConsultaArticulo" text="Articulo" />
+                        <MenuItem fx:id="itConsultaPago" mnemonicParsing="false" onAction="#actionEventConsultaPago" text="Pago" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reportes">
+                  <items>
+                    <MenuItem fx:id="itRptCliente" mnemonicParsing="false" onAction="#reporteClienteEvent" text="Clientes" />
+                        <MenuItem fx:id="itRptPrestamo" mnemonicParsing="false" onAction="#reportePrestamoEvent" text="Empeño" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Pane style="-fx-background-color: #3BB839;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="607.0" styleClass="status-bar" stylesheets="@../../css/style.css" text="Compra ventas Juaquín" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Pane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" style="-fx-background-color: #ffffff;" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <ImageView fx:id="img1" fitHeight="269.0" fitWidth="300.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../imagen/compraventa.jpg" />
+               </image></ImageView>
+            <ImageView fx:id="img2" fitHeight="269.0" fitWidth="300.0" layoutX="76.0" layoutY="11.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../imagen/compraventa.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img3" fitHeight="269.0" fitWidth="300.0" layoutX="76.0" layoutY="331.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../imagen/compraventa.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

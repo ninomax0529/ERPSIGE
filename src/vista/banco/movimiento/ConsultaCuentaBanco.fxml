@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.banco.movimiento.ConsultaCuentaBancoController">
+   <children>
+      <VBox layoutX="21.0" layoutY="43.0" prefHeight="355.0" prefWidth="533.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <TableView fx:id="tbCuentaBanco" layoutX="15.0" layoutY="127.0" onMouseClicked="#cuentaBancoMouseClicked" prefWidth="700.0" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="tbcNombreBanco" minWidth="150.0" prefWidth="200.0" text="Banco" />
+                  <TableColumn fx:id="tbcTipoCuenta" prefWidth="185.0" text="Tipo Cuenta" />
+                  <TableColumn fx:id="tbcNumeroCuenta" maxWidth="500.0" minWidth="150.0" prefWidth="120.0" text="No.Cuenta" />
+                  <TableColumn fx:id="tbcCuentaContable" maxWidth="600.0" minWidth="106.0" prefWidth="120.0" text="Cuenta Contable" />
+                  <TableColumn fx:id="tbcMoneda" maxWidth="600.0" minWidth="150.0" prefWidth="188.0" text="Moneda" />
+               </columns>
+            </TableView>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <Pane prefHeight="40.0" prefWidth="900.0" styleClass="head-background" stylesheets="@../../../style/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="40.0" prefWidth="844.0" text="Consulta  cuenta  banco" textFill="#eee7e7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

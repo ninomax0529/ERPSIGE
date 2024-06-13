@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contabilidad.reporte.estadoFinaciero.FXMLEstadoDeResultadoController">
+   <children>
+      <VBox alignment="TOP_CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="429.0" styleClass="head-background" stylesheets="@../../../../style/style.css" text="Estado de Resultados" textAlignment="CENTER" textFill="#ebe4e4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="35.0" prefWidth="300.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="81.0" text="Fecha  Inicio">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFechaInicio" />
+                  <JFXButton fx:id="btnAceptar" onAction="#btnAceptarActionEvent" prefHeight="25.0" prefWidth="115.0" styleClass="btn-search" stylesheets="@../../../../css/style.css" text="Aceptar" />
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="55.0" prefHeight="35.0" prefWidth="300.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="83.0" text="Fecha  Final">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFechaFinal" />
+                  <JFXButton fx:id="btnSalir" onAction="#btnSalirActionEvent" prefHeight="25.0" prefWidth="115.0" styleClass="btn-remove" stylesheets="@../../../../css/style.css" text="Salir" />
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </HBox>
+            <JFXProgressBar fx:id="pgBar" prefHeight="15.0" prefWidth="429.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </VBox.margin>
+            </JFXProgressBar>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

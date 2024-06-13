@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.compra.proceso.FXMLAnularOrdenDeCompraController">
+   <children>
+      <VBox layoutY="40.0" prefHeight="580.0" prefWidth="900.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="80.0" text="Fecha Inicio" />
+                  <JFXDatePicker fx:id="dpFechaInicio" prefHeight="25.0" prefWidth="140.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="79.0" text="Fecha Final" />
+                  <JFXDatePicker fx:id="dpFechaFinal" prefHeight="25.0" prefWidth="114.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+                  <JFXButton fx:id="btnBuscar" onAction="#btnBuscarActionEvent" prefHeight="25.0" prefWidth="87.0" styleClass="btn-search" stylesheets="@../../../css/style.css" text="Buscar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <HBox spacing="6.0">
+                     <children>
+                        <JFXButton fx:id="btnAnular" onAction="#btnAnularActionEvent" prefHeight="25.0" prefWidth="87.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Anular" />
+                        <JFXButton fx:id="btnVerDocumento" onAction="#btnVerDocumento1ActionEvent" prefHeight="25.0" prefWidth="103.0" styleClass="btn-update" stylesheets="@../../../css/style.css" text="Ver Documento">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </JFXButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </HBox>
+            <VBox prefHeight="309.0" prefWidth="896.0">
+               <children>
+                  <TableView fx:id="tbOrdenCompraAutorizada" onMouseClicked="#tbOrdenCompraAutorizadaMouseClicked" prefHeight="242.0" prefWidth="896.0">
+                     <columns>
+                        <TableColumn fx:id="tbcOrdenAutorizadaNoOrden" prefWidth="175.0" text="No.Orden" />
+                        <TableColumn fx:id="tbcOrdenAutorizadaFecha" prefWidth="127.0" text="Fecha" />
+                        <TableColumn fx:id="tbcOrdenAutorizadaSuplidor" prefWidth="121.0" text="Suplidor" />
+                        <TableColumn fx:id="tbcOrdenAutorizadaSubTotal" prefWidth="149.0" text="Sub Total" />
+                        <TableColumn fx:id="tbcOrdenAutorizadaDescuento" prefWidth="149.0" text="Descuento" />
+                        <TableColumn fx:id="tbcOrdenAutorizadaImpuesto" prefWidth="149.0" text="Impuesto" />
+                        <TableColumn fx:id="tbcOrdenAutorizadaTotal" prefWidth="149.0" text="Total" />
+                     </columns>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </TableView>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="900.0">
+                     <children>
+                        <Label alignment="BOTTOM_RIGHT" prefHeight="25.0" prefWidth="71.0" text="Comentario">
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </Label>
+                        <JFXTextField fx:id="txtConcepto" alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="477.0" />
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="111.0" text="Cantidad de Orden">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txtCantidadOrdenAutorizada" alignment="CENTER" prefHeight="25.0" prefWidth="73.0" />
+                        <Label alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="49.0" text="Total">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txtTotalOrdenAutorizada" alignment="CENTER" layoutX="142.0" layoutY="10.0" prefHeight="25.0" prefWidth="87.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="213.0" prefWidth="896.0" spacing="5.0">
+               <children>
+                  <TableView fx:id="tbDetalleOrdenAutorizada" prefHeight="171.0" prefWidth="886.0">
+                     <columns>
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaCodigoArticulo" prefWidth="122.06341552734375" text="Codigo Articulo" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaDescripcionArticulo" prefWidth="156.3262939453125" text="Articulo" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaPrecio" prefWidth="73.94927978515625" text="Precio" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaCantidad" prefWidth="93.7044677734375" text="Cantidad" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaUnidad" prefWidth="95.21173095703125" text="Unidad" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaSubTotal" prefWidth="96.8441162109375" text="Sub Total" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaDescuento" prefWidth="75.750732421875" text="Descuento" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaImpuesto" prefWidth="82.99072265625" text="Impuesto" />
+                        <TableColumn fx:id="tbcDetalleOrdenAutorizadaTotal" prefWidth="92.00006103515625" text="Total" />
+                     </columns>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TableView>
+                  <HBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="119.0" text="Cantidad  de Articulo">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txtCantidadArticulo1" alignment="CENTER" prefHeight="25.0" prefWidth="72.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets right="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </VBox>
+      <Pane prefHeight="40.0" prefWidth="900.0" styleClass="TitledPane" stylesheets="@../../css/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="40.0" prefWidth="900.0" stylesheets="@../../../css/style.css" text="Anular  Orden de  Compra " textFill="#141313">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="btn-new" />
+                  <String fx:value="titulo" />
+               </styleClass>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

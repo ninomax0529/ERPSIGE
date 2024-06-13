@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="611.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.venta.pedido.PedidosDespachadoController">
+  <children>
+      <HBox prefHeight="31.0" prefWidth="1028.0" spacing="10.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="82.0" text="Fecha Desde">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+            <JFXDatePicker fx:id="dpFechaDesde" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="82.0" text="Fecha Hasta" />
+            <JFXDatePicker fx:id="dpFecgaHasta" layoutX="92.0" layoutY="10.0" />
+            <JFXButton fx:id="btnBuscar" onAction="#btnBuscarActionEvent" prefHeight="32.0" prefWidth="95.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Buscar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnReimprimir" layoutX="526.0" layoutY="10.0" onAction="#btnReimprimirActionEvent" prefHeight="32.0" prefWidth="97.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Reimprimir" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnAnular" layoutX="605.0" layoutY="10.0" onAction="#btnAnularActionEvent" prefHeight="32.0" prefWidth="93.0" styleClass="btn-remove" stylesheets="@../../../style/style.css" text="Anular" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <TableView fx:id="tbPedidoDespachado" onMouseClicked="#tbFacturaMouseCliked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="tbcNumPedidoDespachado" prefWidth="75.0" text="Numero  Pedido" />
+          <TableColumn fx:id="tbcFechaPedidoDespachado" prefWidth="75.0" text="Fecha" />
+            <TableColumn fx:id="tbcHoraPedidoDespachado" prefWidth="75.0" text="Hora" />
+            <TableColumn fx:id="tbcClientePedidoDespachado" prefWidth="75.0" text="Cliente" />
+            <TableColumn fx:id="tbcNumCallePedidoDespachado" prefWidth="75.0" text="Numero de Calle" />
+            <TableColumn fx:id="tbcNumCasaPedidoDespachado" prefWidth="75.0" text="Numero de Casa" />
+            <TableColumn fx:id="tbcTotalPedidoDespachado" prefWidth="75.0" text="Total" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <children>
+            <Label prefHeight="17.0" prefWidth="270.0" styleClass="title-text" stylesheets="@../../../style/style.css" text="Detalle  Pedido" underline="true">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+            <TableView fx:id="tbDetallePedidoDespachado" prefHeight="306.0" prefWidth="548.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="tbcCodigoArticulo" prefWidth="75.0" text="Codigo Articulo" />
+                <TableColumn fx:id="tbcArticulo" prefWidth="75.0" text="Articulo" />
+                  <TableColumn fx:id="tbcUnidad" prefWidth="75.0" text="Unidad" />
+                  <TableColumn fx:id="tbcCantidad" prefWidth="75.0" text="Cantidad" />
+                  <TableColumn fx:id="tbcPrecioUnitario" prefWidth="75.0" text="Precio" />
+                  <TableColumn fx:id="tbcSubTotal" prefWidth="75.0" text="Sub Total" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+  </children>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</VBox>

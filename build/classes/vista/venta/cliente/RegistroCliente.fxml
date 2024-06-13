@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="514.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.venta.cliente.RegistroClienteController">
+  <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="199.0" text="Registro  de  Cliente" textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Cerrar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <TabPane stylesheets="@../../../style/tabPane.css" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab closable="false" text="    Datos   Cliente      ">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="470.0" prefWidth="885.0" spacing="5.0">
+                     <children>
+                        <AnchorPane prefHeight="339.0" prefWidth="860.0">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" layoutX="500.0" layoutY="57.0" text="Apellidos" />
+                              <JFXTextField fx:id="txtNombre" layoutX="103.0" layoutY="44.0" prefHeight="25.0" prefWidth="379.0" AnchorPane.leftAnchor="98.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" layoutX="7.0" layoutY="59.0" text="Nombre" />
+                              <JFXTextField fx:id="txtApellido" layoutX="573.0" layoutY="44.0" prefHeight="25.0" prefWidth="253.0" AnchorPane.leftAnchor="568.0" />
+                              <Label alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="89.0" text="Rnc/Cedula" />
+                              <JFXTextField fx:id="txtRnc" alignment="CENTER" layoutX="104.0" layoutY="76.0" prefHeight="25.0" prefWidth="276.0" />
+                              <Label layoutX="11.0" layoutY="124.0" prefHeight="17.0" prefWidth="58.0" text="Direccion" />
+                              <JFXTextField fx:id="txtdireccion" layoutX="75.0" layoutY="112.0" prefHeight="25.0" prefWidth="463.0" />
+                              <JFXTextField fx:id="txtTelefono" alignment="CENTER" layoutX="73.0" layoutY="146.0" prefHeight="25.0" prefWidth="129.0" />
+                              <Label layoutX="7.0" layoutY="158.0" prefHeight="17.0" prefWidth="58.0" text="Telefono" />
+                              <Label layoutX="216.0" layoutY="162.0" prefHeight="17.0" prefWidth="44.0" text="Celular" />
+                              <JFXTextField fx:id="txtCelular" alignment="CENTER" layoutX="260.0" layoutY="149.0" prefHeight="25.0" prefWidth="150.0" />
+                              <Label layoutX="705.0" layoutY="167.0" prefHeight="17.0" prefWidth="41.0" text="Estado" />
+                              <JFXComboBox fx:id="cbEstado" layoutX="753.0" layoutY="157.0" prefHeight="25.0" prefWidth="77.0" />
+                              <JFXDatePicker fx:id="dpFecha" layoutX="137.0" layoutY="13.0" prefHeight="25.0" prefWidth="146.0" />
+                              <Label layoutX="8.0" layoutY="21.0" prefHeight="17.0" prefWidth="127.0" text="Fecaha  de Cumpleaño" />
+                              <Label layoutX="282.0" layoutY="21.0" prefHeight="17.0" prefWidth="81.0" text="Tipo Cliente" />
+                              <JFXComboBox fx:id="cbTipoCliente" layoutX="357.0" layoutY="9.0" prefHeight="25.0" prefWidth="109.0" />
+                              <Label layoutX="431.0" layoutY="163.0" prefHeight="17.0" prefWidth="107.0" text="Correo electronico  " />
+                              <JFXTextField fx:id="txtCorreoElectronico" alignment="CENTER" layoutX="550.0" layoutY="154.0" prefHeight="25.0" prefWidth="148.0" />
+                              <Label layoutX="5.0" layoutY="209.0" prefHeight="17.0" prefWidth="123.0" text="Persona Responsable" />
+                              <JFXTextField fx:id="txtPersonaResponsable" alignment="CENTER" layoutX="141.0" layoutY="198.0" prefHeight="25.0" prefWidth="299.0" />
+                              <JFXTextField fx:id="txtTelefonoPersona" alignment="CENTER" layoutX="721.0" layoutY="205.0" prefHeight="25.0" prefWidth="111.0" />
+                              <Label layoutX="666.0" layoutY="215.0" prefHeight="17.0" prefWidth="58.0" text="Telefono" />
+                              <Label alignment="BOTTOM_LEFT" layoutX="450.0" layoutY="211.0" text="Cedula/Pasaporte" />
+                              <JFXTextField fx:id="txtCedulaOPasarporte" alignment="CENTER" layoutX="552.0" layoutY="201.0" prefHeight="25.0" prefWidth="108.0" />
+                              <Separator layoutX="1.0" layoutY="197.0" prefHeight="6.0" prefWidth="840.0" />
+                              <Label layoutX="416.0" layoutY="90.0" prefHeight="17.0" prefWidth="138.0" text="Tipo de Facturacion" />
+                              <JFXComboBox fx:id="cbTipoComprobante" layoutX="575.0" layoutY="80.0" prefHeight="25.0" prefWidth="246.0" />
+                              <JFXComboBox fx:id="cbCiudad" layoutX="598.0" layoutY="113.0" prefHeight="25.0" prefWidth="230.0" />
+                              <Label layoutX="549.0" layoutY="122.0" prefHeight="17.0" prefWidth="82.0" text="Ciudad" />
+                              <JFXButton fx:id="btnBuscarVendedor" layoutX="767.0" layoutY="7.0" onAction="#btnBuscarVendedorActionEvent" prefHeight="29.0" prefWidth="56.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Buscar" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label alignment="BOTTOM_LEFT" layoutX="491.0" layoutY="22.0" text="Vendedor" />
+                              <JFXTextField fx:id="txtVendedor" editable="false" layoutX="554.0" layoutY="8.0" prefHeight="25.0" prefWidth="209.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <VBox prefHeight="271.0" prefWidth="860.0">
+                           <children>
+                              <Separator prefWidth="200.0" />
+                              <Label prefHeight="17.0" prefWidth="863.0" styleClass="table-view" stylesheets="@../../../style/table-view.css" text="Observacion">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="txtObservacion" prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="    Direccion  Detallada     ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="168.0" layoutY="7.0" prefHeight="446.0" prefWidth="870.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox prefHeight="231.0" prefWidth="860.0" spacing="5.0">
+                                 <children>
+                                    <HBox prefHeight="29.0" prefWidth="860.0" spacing="5.0">
+                                       <children>
+                                          <Label alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="55.0" text="Region" />
+                                          <JFXComboBox fx:id="cbRegion" prefHeight="25.0" prefWidth="184.0" />
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="62.0" text="Ciudad" />
+                                          <JFXTextField fx:id="txtCiudad" prefHeight="25.0" prefWidth="232.0" />
+                                          <Label alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="77.0" text="Municipio" />
+                                          <JFXTextField fx:id="txtMunicipio" layoutX="87.0" layoutY="10.0" prefHeight="25.0" prefWidth="283.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="29.0" prefWidth="860.0">
+                                       <children>
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="64.0" text="Sector" />
+                                          <JFXTextField fx:id="txtSector" prefHeight="25.0" prefWidth="248.0" />
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="95.0" text="Urbanizacion" />
+                                          <JFXTextField fx:id="txtUrbaBarrioOResidencia" prefHeight="25.0" prefWidth="204.0" />
+                                          <Label alignment="BASELINE_LEFT" layoutX="222.0" layoutY="10.0" prefHeight="29.0" prefWidth="55.0" text="Bario" />
+                                          <JFXTextField fx:id="txtNoKilometro" layoutX="299.0" layoutY="10.0" prefHeight="25.0" prefWidth="282.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="39.0" prefHeight="29.0" prefWidth="860.0">
+                                       <children>
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="77.0" text="Residencial" />
+                                          <JFXTextField fx:id="txtUrbaBarrioOResidencia" prefHeight="25.0" prefWidth="275.0" />
+                                          <Label alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="30.0" text="Calle" />
+                                          <JFXTextField fx:id="txtCalle" layoutX="87.0" layoutY="10.0" prefHeight="25.0" prefWidth="175.0" />
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="52.0" text="Avenida" />
+                                          <JFXTextField fx:id="txtAvenida" prefHeight="25.0" prefWidth="240.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="29.0" prefWidth="860.0" spacing="5.0">
+                                       <children>
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="70.0" text="No.Cassa" />
+                                          <JFXTextField fx:id="txtNumCasa" alignment="CENTER" prefHeight="25.0" prefWidth="55.0" />
+                                          <Label alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="99.0" text="Num.Edificio" />
+                                          <JFXTextField fx:id="txtNumEdificio" alignment="CENTER" layoutX="87.0" layoutY="10.0" prefHeight="25.0" prefWidth="61.0" />
+                                          <Label alignment="BASELINE_LEFT" layoutX="222.0" layoutY="10.0" prefHeight="29.0" prefWidth="111.0" text="Num.Apartamento" />
+                                          <JFXTextField fx:id="txtNumApartamento" alignment="CENTER" layoutX="299.0" layoutY="10.0" prefHeight="25.0" prefWidth="82.0" />
+                                          <Label alignment="BASELINE_LEFT" layoutX="318.0" layoutY="10.0" prefHeight="29.0" prefWidth="82.0" text="Num.Suite" />
+                                          <JFXTextField fx:id="txtNumSuite" alignment="CENTER" layoutX="430.0" layoutY="10.0" prefHeight="25.0" prefWidth="51.0" />
+                                          <Label alignment="BASELINE_LEFT" layoutX="519.0" layoutY="10.0" prefHeight="29.0" prefWidth="71.0" text="Num.Local" />
+                                          <JFXTextField fx:id="txtNumLocal" alignment="CENTER" layoutX="631.0" layoutY="10.0" prefHeight="25.0" prefWidth="58.0" />
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="52.0" text="Letra" />
+                                          <JFXTextField fx:id="txtLetra" alignment="CENTER" prefHeight="25.0" prefWidth="70.0" />
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="35.0" text="Piso" />
+                                          <JFXTextField fx:id="txtPiso" alignment="CENTER" prefHeight="25.0" prefWidth="58.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="126.0" prefHeight="29.0" prefWidth="860.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="BASELINE_LEFT" layoutX="256.0" layoutY="10.0" prefHeight="29.0" prefWidth="80.0" text="Referencia" />
+                                          <JFXTextField fx:id="txtReferencia" layoutX="378.0" layoutY="10.0" prefHeight="25.0" prefWidth="643.0" />
+                                          <Label alignment="BASELINE_LEFT" prefHeight="29.0" prefWidth="32.0" text="Km" />
+                                          <JFXTextField fx:id="txtkilometro" prefHeight="25.0" prefWidth="66.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="10.0" style="-fx-border-color: #000000;" stylesheets="@../../../style/style.css">
+                                       <children>
+                                          <Label prefHeight="29.0" prefWidth="327.0" text=" Direccion  del Cliente igual a la direccion de la Factura" />
+                                          <JFXRadioButton fx:id="rbSi" prefHeight="29.0" prefWidth="52.0" text="Si" />
+                                          <JFXRadioButton fx:id="rbNo" prefHeight="29.0" prefWidth="52.0" text="No" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="181.0" prefWidth="860.0" spacing="5.0">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="629.0" spacing="10.0">
+                                       <children>
+                                          <JFXButton fx:id="btnagregar1" onAction="#btnagregarActionEvent" prefHeight="25.0" prefWidth="80.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="Agregar">
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <JFXButton fx:id="btnEliminar1" layoutX="10.0" layoutY="10.0" onAction="#btnEliminarActionEvent" prefHeight="25.0" prefWidth="88.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <TableView fx:id="tbDireccionCliente" prefHeight="236.0" prefWidth="850.0">
+                                       <columns>
+                                          <TableColumn fx:id="tbcRegion" maxWidth="233.0" minWidth="200.0" prefWidth="200.0" text="Region" />
+                                          <TableColumn fx:id="tbcCiudad" minWidth="150.0" prefWidth="193.0" text="Ciudad" />
+                                          <TableColumn fx:id="tbcMunicipio" minWidth="150.0" prefWidth="-1.0" text="Municipio" />
+                                          <TableColumn fx:id="tbcSector" maxWidth="250.0" minWidth="150.0" prefWidth="-1.0" text="Sector" />
+                                          <TableColumn fx:id="tbcDireccion" maxWidth="300.0" minWidth="150.0" prefWidth="250.0" text="Direccion" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab closable="false" text="      Credito   Cliente       ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" layoutX="36.0" layoutY="14.0" prefHeight="273.0" prefWidth="649.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox prefHeight="32.0" prefWidth="649.0" spacing="10.0">
+                                 <children>
+                                    <Label prefHeight="32.0" prefWidth="91.0" text="Tipo  Garantia" />
+                                    <JFXComboBox fx:id="cbTipoGarantia" prefHeight="25.0" prefWidth="182.0" />
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="32.0" prefWidth="76.0" text="Tipo Credito" />
+                                    <JFXComboBox fx:id="cbTipoCredito" layoutX="108.0" layoutY="10.0" prefHeight="25.0" prefWidth="149.0" />
+                                    <Label prefHeight="28.0" prefWidth="78.0" text="Dias Credito" />
+                                    <JFXTextField fx:id="txtDiasCresito" alignment="CENTER" prefHeight="25.0" prefWidth="68.0" />
+                                    <JFXCheckBox fx:id="chBloquiarCredito" prefHeight="32.0" prefWidth="130.0" text="Bloquiar Credito " />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="32.0" prefWidth="629.0">
+                                 <children>
+                                    <Label prefHeight="32.0" prefWidth="64.0" text="Garantia" />
+                                    <JFXTextField fx:id="txtGarantia" prefHeight="25.0" prefWidth="772.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="629.0" spacing="10.0">
+                                 <children>
+                                    <Label prefHeight="25.0" prefWidth="53.0" text="Monto" />
+                                    <JFXTextField fx:id="txtMonto" alignment="CENTER" prefHeight="25.0" prefWidth="81.0" />
+                                    <JFXButton fx:id="btnagregar" onAction="#btnagregarActionEvent" prefHeight="25.0" prefWidth="80.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="Agregar">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="btnEliminar" layoutX="10.0" layoutY="10.0" onAction="#btnEliminarActionEvent" prefHeight="25.0" prefWidth="88.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <TableView fx:id="tbCreditoCliente" prefHeight="236.0" prefWidth="850.0">
+                                <columns>
+                                  <TableColumn fx:id="tbcTipoGarantia" maxWidth="233.0" prefWidth="172.0" text="Tipo  Garantia" />
+                                  <TableColumn fx:id="tbcGarantia" prefWidth="471.0" text="Garantia" />
+                                    <TableColumn fx:id="tbcMonto" prefWidth="99.0" text="Monto" />
+                                    <TableColumn fx:id="tbcHabilitado" maxWidth="250.0" minWidth="60.0" prefWidth="105.0" text="Habilido" />
+                                </columns>
+                              </TableView>
+                              <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_RIGHT" prefHeight="31.0" prefWidth="101.0" text="Monto  Credito" />
+                                    <JFXTextField fx:id="txtMontoCredito" alignment="BOTTOM_CENTER" prefHeight="25.0" prefWidth="93.0">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <Label alignment="BOTTOM_RIGHT" prefHeight="32.0" prefWidth="104.0" text="Monto Por Pagar" />
+                                    <JFXTextField fx:id="txtMontoPendiente" alignment="BOTTOM_CENTER" editable="false" prefHeight="25.0" prefWidth="93.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <Label alignment="BOTTOM_RIGHT" prefHeight="34.0" prefWidth="116.0" text="Monto  Disponible" />
+                                    <JFXTextField fx:id="txtMontoDisponible" alignment="BOTTOM_CENTER" editable="false" prefHeight="25.0" prefWidth="104.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" right="5.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </TabPane>
+  </children>
+</VBox>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="181.0" prefWidth="494.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contabilidad.reporte.estadoFinaciero.FXMLBalanceGeneralController">
+   <children>
+      <VBox alignment="TOP_CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="495.0" styleClass="head-background" stylesheets="@../../../../style/style.css" text="Balance  General  o  Estado  de  Situación" textAlignment="CENTER" textFill="#ebe4e4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="29.0" prefWidth="429.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="49.0" text="Fecha">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFechaInicio" prefHeight="25.0" prefWidth="135.0" />
+                  <JFXButton fx:id="btnAceptar" onAction="#btnAceptarActionEvent" prefHeight="25.0" prefWidth="80.0" styleClass="btn-search" stylesheets="@../../../../css/style.css" text="Aceptar" />
+                  <JFXButton fx:id="btnSalir" onAction="#btnSalirActionEvent" prefHeight="25.0" prefWidth="82.0" styleClass="btn-remove" stylesheets="@../../../../css/style.css" text="Salir" />
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

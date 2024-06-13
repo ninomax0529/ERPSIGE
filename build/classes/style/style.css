@@ -1,0 +1,161 @@
+.head-background
+{
+    -fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0);
+}
+
+.body {
+    -fx-background-color: #f9f9f9;
+}
+.note {
+    -fx-background-color: #E2FBE1;
+    -fx-alignment: CENTER;
+}
+.note > .label {
+    -fx-text-fill: #3BB839;
+}
+.title-text {
+    -fx-text-fill: #555;
+    -fx-font-family: 'segoe ui';
+    -fx-font-size: 16pt;
+}
+.new-user-title {
+    -fx-text-fill: #555;
+    -fx-font-family: 'segoe ui';
+    -fx-font-size: 16pt;
+}
+.status-bar {
+    -fx-padding: .25em .75em;
+}
+.status-bar > .label {
+    -fx-text-fill: #f9f9f9;
+}
+.status-bar-disconnected {
+    -fx-background-color: #d53400;
+}
+.status-bar-connected {
+    -fx-background-color: #5CB85C;
+}
+/************** BUTTONS *************/
+.btn {
+    -fx-border-radius: 2px;
+    -fx-padding: .5em 1em;
+    -fx-font-size: 13pt;
+}
+.btn-size {
+
+    -fx-border-radius: 2px;
+    -fx-font-size: 13px;
+}
+
+.btn:focused {
+    -fx-outline: none;
+}
+.btn-new {
+    -fx-background-color: #5CB85C;
+    -fx-text-fill: #f9f9f9;
+    -fx-border-radius: 2px;
+    -fx-font-size: 13px;
+}
+.btn-new:hover {
+    -fx-background-color: #459C45;
+}
+.btn-update {
+    -fx-background-color: #5BC0DE;
+    -fx-text-fill: #f9f9f9;
+}
+.btn-update:hover {
+    -fx-background-color: #4AA2BD;
+    -fx-outline: none;
+}
+.btn-remove {
+    -fx-background-color: #d53400;
+    -fx-text-fill: #f9f9f9;
+    -fx-border-radius: 2px;
+    -fx-font-size: 13px;
+    -fx-pref-columns: 30;
+}
+
+.teclado {
+    -fx-background-color: #d53400;
+    -fx-text-fill: #f9f9f9;
+    -fx-border-radius: 2px;
+    -fx-font-size: 16px;
+    -fx-pref-columns: 30;
+}
+
+
+.existencia {
+    -fx-background-color: #3BB839;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 2px;
+    -fx-font-size: 20px;
+    -fx-pref-columns: 30;
+}
+.btn-remove:hover {
+    -fx-background-color: #BA3D13;
+    -fx-outline: none;
+}
+.btn-search {
+    -fx-background-color: #428BCA;
+    -fx-text-fill: #f9f9f9;
+    -fx-border-radius: 2px;
+    -fx-font-size: 13px;
+}
+.btn-search:hover {
+    -fx-background-color: #3879B2;
+    -fx-outline: none;
+}
+.txt-search {
+    -fx-padding: .5em .5em;
+}
+.table-cell {
+
+    -fx-alignment: CENTER;
+}
+
+.accordion{
+
+    -fx-background-color:  #292F36;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-font-size: 10pt;
+}
+
+.TitledPane {
+    -fx-background-color: #5BC0DE;
+    -fx-border-radius: 2px;
+}
+
+.date-picker > .text-field {
+    -fx-background-color:
+        linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),
+        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+    -fx-background-insets: 1 0 1 1;
+    -fx-background-radius: 2 0 0 2;
+}
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color:
+        -fx-control-inner-background,
+        -fx-faint-focus-color,
+        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+}
+
+
+.root {
+    -fx-effect: dropshadow( gaussian, rgba(0, 255, 255, 0.4), 10, 0.5, 0.0, 0.0 );
+    -fx-padding: 10; 
+    -fx-background-radius: 5;
+}
+
+.redondear{
+    border-radius: 20px;
+}
+
+
+#main {
+    -fx-background-color: transparent;  
+}

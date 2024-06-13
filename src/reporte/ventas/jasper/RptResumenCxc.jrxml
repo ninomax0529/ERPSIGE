@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RptResumenCxcAlCorte" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8e47285-deb8-4e42-b057-0e5ba4d65b4b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="202"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="793"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="776"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="215"/>
+	<parameter name="fecha_desde" class="java.util.Date"/>
+	<parameter name="fecha_hasta" class="java.util.Date"/>
+	<parameter name="url" class="java.lang.String"/>
+	<parameter name="sqlParam" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+
+codigo,r.nombre,
+sum(r.total) as total,ROUND(sum(r.abono),2) as pagado,ROUND(sum(r.pendiente),2) as pendiente
+
+ from (
+
+ SELECT 
+c.nombre,c.codigo,f.ncf,f.fecha,f.total,f.numero,
+       DATEDIFF(NOW(),f.fecha_vencimiento) as dias_vencimiento,
+
+  f.total-( SELECT IFNULL(sum(total),0) from recibo_ingreso ri INNER JOIN detalle_recibo_ingreso dri 
+on ri.codigo=dri.recibo  where ri.anulado=false and  factura=f.codigo
+  and   ri.fecha>=$P{fecha_desde}  and  ri.fecha<= $P{fecha_hasta} 
+  ) as pendiente,
+( SELECT IFNULL(sum(total),0) from recibo_ingreso ri INNER JOIN detalle_recibo_ingreso dri 
+on ri.codigo=dri.recibo  where ri.anulado=false and  factura=f.codigo
+  and  ri.fecha>=$P{fecha_desde}  and  ri.fecha<=$P{fecha_hasta} 
+ ) as abono
+
+ from cliente c 
+ 
+  INNER  JOIN  factura f  on  c.codigo=f.cliente 
+  where  f.anulada=false  and  f.fecha<= $P{fecha_hasta} 
+  $P!{sqlParam} 
+)  as  r  where r.pendiente>0  GROUP BY codigo  order by   nombre]]>
+	</queryString>
+	<field name="codigo" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="total" class="java.lang.Double"/>
+	<field name="pagado" class="java.lang.Double"/>
+	<field name="pendiente" class="java.lang.Double"/>
+	<variable name="total1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<variable name="pagado1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pagado}]]></variableExpression>
+	</variable>
+	<variable name="pendiente1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pendiente}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="2" splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="121" splitType="Stretch">
+			<staticText>
+				<reportElement x="280" y="6" width="263" height="42" uuid="9a2ee14d-18c4-4b5e-a6c9-65f913f04f21">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen Cuentas Por Cobrar]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="350" y="55" width="63" height="14" uuid="9987a57f-ecd3-493a-9e01-939fddf39333"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_desde}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="294" y="55" width="51" height="14" uuid="1cb97b4f-e7ac-419d-8695-a1b36d36094c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desde :  ]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="6" y="5" width="266" height="104" uuid="28a8fc5c-a96e-4f82-9d65-8302cceec19b"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{url}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="-14" y="0" width="555" height="1" uuid="3354f7d1-0677-4ea8-a4ea-9b94e59948cd"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="413" y="55" width="51" height="14" uuid="4b55050c-6723-4ca2-907b-ad71603d2eb9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hasta :  ]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="469" y="55" width="63" height="14" uuid="918c4967-82f5-4c8b-842b-eae2c3e8db43"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_desde}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="3" y="0" width="537" height="19" backcolor="#BEF7C5" uuid="694e52cf-cec7-4840-bce0-7c880fe59527"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="19" uuid="2a6f5bdc-6cbc-46fc-93fc-4e0c320ea2e7"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="228" height="19" uuid="8ed290e6-74a8-4974-969c-73d70f09bcf8"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="0" width="70" height="19" uuid="f932accc-ef50-4d73-8fa0-e01187a33dd6"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="0" width="100" height="19" uuid="ae320d74-6fe3-46d5-aec6-880429c51486"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pagado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="0" width="82" height="19" uuid="1e43bb70-11e1-4f0b-b9a0-00a99af78b74">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pendiente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="60" height="20" uuid="654d923b-057b-445f-aa57-64e9a224bc08"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="0" width="228" height="20" uuid="33ec93ee-b1fb-49ff-8447-5c59361a1ea9"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="288" y="0" width="70" height="20" uuid="220a201e-75ba-4c26-8f52-4b6d0bc56cb3"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="358" y="0" width="100" height="20" uuid="873658d1-9750-42e4-ab59-4ff39af66bd6"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pagado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="458" y="0" width="82" height="20" uuid="3e63ef84-f9ca-4432-9fcc-39bc9aeca66a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pendiente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="17" width="129" height="16" uuid="c510c466-d9b2-4792-b0a6-5e9ea99fa4d0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Fecha y Hora de Impresion :]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy h:mm a">
+				<reportElement x="140" y="17" width="129" height="16" uuid="f6439f47-2219-42fc-a7f2-d8a87364fc5d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="17" width="100" height="16" uuid="5f98f235-af0e-4fed-a7f4-82ca6076ab37"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="472" y="17" width="69" height="16" uuid="021b333b-0af9-4891-971c-741b81edc0b1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="36" width="555" height="1" uuid="063ad147-7f6e-4fe2-8cf3-7b6a7ad627f2"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="17" width="555" height="1" uuid="2552df04-1cf0-4de9-82dd-ea19478cdd0f"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="#,##0.00#">
+				<reportElement x="288" y="0" width="70" height="19" uuid="547c8436-c422-4096-9d9f-1f07ee42ca47"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="358" y="0" width="100" height="19" uuid="bb71fdd5-117e-42af-8b1c-0c2364b70e70"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pagado1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="458" y="0" width="82" height="19" uuid="6fc7f611-c1bc-48fc-9a39-fa0a5f46cf08"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pendiente1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="0" width="287" height="19" uuid="b1dde5dd-f2c2-4398-a45e-8d4ee8d9be8d"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totales : ]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

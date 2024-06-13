@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="431.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.gestionDeFlota.RegistroDeFlotaController">
+   <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="324.0" text="Registro  de  Flota   " textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <TabPane fx:id="tabPane" stylesheets="@../../style/tabPane.css">
+         <tabs>
+            <Tab closable="false" text="Flota     ">
+               <content>
+                  <VBox prefHeight="450.0" prefWidth="765.0" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="26.0" prefWidth="796.0" spacing="5.0">
+                           <children>
+                              <Label prefHeight="39.0" prefWidth="48.0" text="Fecha " />
+                              <JFXDatePicker fx:id="dpFecha" prefHeight="25.0" prefWidth="130.0" />
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="63.0" text="Nombre" />
+                              <JFXTextField fx:id="txtDescripcion" alignment="CENTER" prefHeight="25.0" prefWidth="380.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox spacing="5.0">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="44.0" text="Marca" />
+                              <JFXTextField fx:id="txtMarca" prefHeight="25.0" prefWidth="128.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="58.0" text="Modelo" />
+                              <JFXTextField fx:id="txtModelo" alignment="CENTER" prefHeight="25.0" prefWidth="147.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="30.0" text="Imei" />
+                              <JFXTextField fx:id="txtImei" alignment="CENTER" prefHeight="25.0" prefWidth="191.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="34.0" text="Sim" />
+                              <JFXTextField fx:id="txtSim" prefHeight="25.0" prefWidth="86.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                              <JFXButton fx:id="btnBuscarSim" onAction="#btnBuscarSimActionEvent" prefHeight="29.0" prefWidth="58.0" styleClass="btn-search" stylesheets="@../../style/style.css" text="Buscar">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="830.0" spacing="10.0">
+                           <children>
+                              <JFXRadioButton fx:id="rbNueva" prefHeight="31.0" prefWidth="66.0" text="Nueva" />
+                              <JFXRadioButton fx:id="rbUsada" prefHeight="25.0" prefWidth="86.0" text="Usada" />
+                              <JFXCheckBox fx:id="chTieneGarantia" onAction="#chTieneGarantiaActionEvent" prefHeight="25.0" prefWidth="110.0" text="Tiene Garantia">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXCheckBox>
+                              <JFXTextField fx:id="txtTiempoDeGarantia" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="60.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="43.0" text="Meses" />
+                              <Label alignment="BOTTOM_CENTER" prefHeight="39.0" prefWidth="48.0" text="Desde" />
+                              <JFXDatePicker fx:id="dpFechaDesde" prefHeight="25.0" prefWidth="130.0" />
+                              <Label alignment="BOTTOM_CENTER" layoutX="435.0" layoutY="10.0" prefHeight="39.0" prefWidth="48.0" text="Hasta" />
+                              <JFXDatePicker fx:id="dpFechaHasta" layoutX="493.0" layoutY="10.0" prefHeight="25.0" prefWidth="130.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="44.0" text="Precio" />
+                              <JFXTextField fx:id="txtPrecio" prefHeight="25.0" prefWidth="98.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="120.0" text="Empresa Telefonica" />
+                              <JFXTextField fx:id="txtTelefonica" alignment="CENTER" prefHeight="25.0" prefWidth="191.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXTextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <AnchorPane prefHeight="298.0" prefWidth="806.0">
+                           <children>
+                              <HBox layoutX="25.0" layoutY="70.0" prefHeight="264.0" prefWidth="806.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefHeight="224.0" prefWidth="786.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="32.0" prefWidth="783.0" text="Nota">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea fx:id="txtObservacion" prefHeight="200.0" prefWidth="786.0" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>

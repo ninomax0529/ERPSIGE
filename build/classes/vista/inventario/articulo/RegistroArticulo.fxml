@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="559.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inventario.articulo.RegistroArticuloController">
+  <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Registro  de  Articulo" textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Cerrar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="521.0" prefWidth="740.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="137.0" text="Descripcion" AnchorPane.leftAnchor="15.0" />
+            <JFXTextField fx:id="txtNombre" layoutX="108.0" layoutY="89.0" onKeyReleased="#nombreArticuloKeyRealessed" prefHeight="25.0" prefWidth="346.0" AnchorPane.leftAnchor="108.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="103.0" text="Nombre" AnchorPane.leftAnchor="15.0" />
+            <JFXTextField fx:id="txtDescripcion" layoutX="107.0" layoutY="124.0" prefHeight="25.0" prefWidth="594.0" AnchorPane.leftAnchor="107.0" />
+            <Label layoutX="16.0" layoutY="173.0" prefHeight="17.0" prefWidth="95.0" text="Unidad  Entrada" />
+            <JFXComboBox fx:id="cbUnidadEntrada" layoutX="113.0" layoutY="164.0" prefHeight="25.0" prefWidth="169.0" />
+            <JFXDatePicker fx:id="dpFecha" layoutX="240.0" layoutY="9.0" prefHeight="25.0" prefWidth="177.0" />
+            <Label layoutX="177.0" layoutY="19.0" text="Fecaha" />
+            <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="16.0" prefHeight="25.0" prefWidth="53.0" text="Codigo" AnchorPane.leftAnchor="15.0" />
+            <JFXTextField fx:id="txtCodigo" alignment="BOTTOM_LEFT" editable="false" layoutX="88.0" layoutY="10.0" prefHeight="25.0" prefWidth="70.0" />
+            <JFXCheckBox fx:id="chInventariable" alignment="BOTTOM_LEFT" layoutX="16.0" layoutY="251.0" prefHeight="25.0" prefWidth="107.0" selected="true" text="Inventariable" />
+            <JFXCheckBox fx:id="chExcentoItbis" alignment="BOTTOM_LEFT" layoutX="140.0" layoutY="249.0" prefHeight="28.0" prefWidth="116.0" text="Excento de Itbis" />
+            <JFXCheckBox fx:id="chActivo" alignment="BOTTOM_LEFT" layoutX="285.0" layoutY="252.0" prefHeight="25.0" prefWidth="69.0" selected="true" text="Activo" />
+            <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="58.0" prefHeight="25.0" prefWidth="55.0" text="Categoria" AnchorPane.leftAnchor="15.0" />
+            <JFXComboBox fx:id="cbCategoria" layoutX="105.0" layoutY="55.0" onAction="#cbCategoriaActionEvent" prefHeight="25.0" prefWidth="224.0" />
+            <Label alignment="BOTTOM_LEFT" layoutX="344.0" layoutY="58.0" prefHeight="25.0" prefWidth="85.0" text="Sub Categoria" />
+            <JFXComboBox fx:id="cbSubCategoria" layoutX="435.0" layoutY="53.0" prefHeight="25.0" prefWidth="255.0" />
+            <JFXButton fx:id="btnFoto" layoutX="557.0" layoutY="458.0" onAction="#btnFotoActionEvent" prefHeight="29.0" prefWidth="157.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Subir Imagen" AnchorPane.leftAnchor="557.0" AnchorPane.rightAnchor="26.0" />
+            <AnchorPane layoutX="537.0" layoutY="312.0" prefHeight="139.0" prefWidth="243.0" stylesheets="@../../../css/estilo.css" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="537.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="312.0">
+               <children>
+                  <ImageView fx:id="imgFoto" fitHeight="102.0" fitWidth="177.0" layoutX="34.0" layoutY="20.19610290527345" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="23.407794189453114" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="20.19610290527345">
+                     <image>
+                        <Image url="@../../../imagen/img_venta.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <styleClass>
+                  <String fx:value="table-row-cell" />
+                  <String fx:value="titledPane" />
+               </styleClass>
+            </AnchorPane>
+            <Separator layoutY="295.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label layoutX="15.0" layoutY="351.0" text="Uno Sin Itbis" AnchorPane.leftAnchor="15.0" />
+            <JFXTextField fx:id="txtPrecioVenta1" alignment="CENTER" layoutX="92.0" layoutY="341.0" prefHeight="25.0" prefWidth="55.0" AnchorPane.leftAnchor="92.0" />
+            <Label layoutX="11.0" layoutY="387.0" text=" Dos Sin Itbis" AnchorPane.leftAnchor="11.0" />
+            <JFXTextField fx:id="txtPrecioVenta2" alignment="CENTER" layoutX="91.0" layoutY="376.0" prefHeight="25.0" prefWidth="55.0" AnchorPane.leftAnchor="91.0" />
+            <Label layoutX="15.0" layoutY="417.0" text="Tres Sin Itbis" AnchorPane.leftAnchor="15.0" />
+            <JFXTextField fx:id="txtPrecioVenta3" alignment="CENTER" layoutX="91.0" layoutY="406.0" prefHeight="25.0" prefWidth="60.0" AnchorPane.leftAnchor="91.0" />
+            <Label layoutX="15.0" layoutY="214.0" prefHeight="17.0" prefWidth="85.0" text="Costo Articulo" AnchorPane.leftAnchor="15.0" />
+            <JFXTextField fx:id="txtPrecioCompra" alignment="CENTER" layoutX="115.0" layoutY="203.0" prefHeight="25.0" prefWidth="107.0" />
+            <JFXTextField fx:id="txtPorcientoUtilidad1" alignment="CENTER" layoutX="324.0" layoutY="345.0" prefHeight="25.0" prefWidth="40.0" />
+            <Label layoutX="264.0" layoutY="357.0" prefHeight="17.0" prefWidth="62.0" text="\% Utilidad" AnchorPane.leftAnchor="264.0" />
+            <JFXButton fx:id="btnCalcularPv" layoutX="23.0" layoutY="458.0" onAction="#btnCalcularPvActionEvent" prefHeight="29.0" prefWidth="224.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Calcular  Precio de Venta" AnchorPane.leftAnchor="23.0" />
+            <Label alignment="TOP_LEFT" layoutX="18.0" layoutY="312.0" prefHeight="25.0" prefWidth="422.0" text="Precio de Venta  Por Unidad  de Salida" textAlignment="RIGHT" underline="true" AnchorPane.leftAnchor="18.0">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <JFXTextField fx:id="txtPorcientoUtilidad2" alignment="CENTER" layoutX="324.0" layoutY="381.0" prefHeight="25.0" prefWidth="40.0" />
+            <Label layoutX="263.0" layoutY="392.0" prefHeight="17.0" prefWidth="62.0" text="\% Utilidad" />
+            <JFXTextField fx:id="txtPorcientoUtilidad3" alignment="CENTER" layoutX="322.0" layoutY="410.0" prefHeight="25.0" prefWidth="40.0" />
+            <Label layoutX="260.0" layoutY="421.0" prefHeight="17.0" prefWidth="62.0" text="\% Utilidad" />
+            <JFXTextField fx:id="txtMargenUtilidad1" alignment="CENTER" layoutX="473.0" layoutY="347.0" prefHeight="25.0" prefWidth="60.0" />
+            <Label layoutX="371.0" layoutY="358.0" prefHeight="17.0" prefWidth="95.0" text="Margen   Utilidad" />
+            <JFXTextField fx:id="txtMargenUtilidad2" alignment="CENTER" layoutX="471.0" layoutY="383.0" prefHeight="25.0" prefWidth="60.0" />
+            <Label layoutX="369.0" layoutY="394.0" prefHeight="17.0" prefWidth="95.0" text="Margen   Utilidad" />
+            <JFXTextField fx:id="txtMargenUtilidad3" alignment="CENTER" layoutX="471.0" layoutY="412.0" prefHeight="25.0" prefWidth="60.0" />
+            <Label layoutX="369.0" layoutY="423.0" prefHeight="17.0" prefWidth="95.0" text="Margen   Utilidad" />
+            <Label alignment="BOTTOM_LEFT" layoutX="454.0" layoutY="208.0" prefHeight="25.0" prefWidth="95.0" text="Codigo de Barra" />
+            <JFXTextField fx:id="txtcodigoBarra" alignment="CENTER" layoutX="550.0" layoutY="202.0" prefHeight="25.0" prefWidth="157.0" />
+            <Label layoutX="290.0" layoutY="174.0" prefHeight="17.0" prefWidth="85.0" text="Unidad  Salida" />
+            <JFXComboBox fx:id="cbUnidadSalida" layoutX="380.0" layoutY="164.0" prefHeight="25.0" prefWidth="169.0" />
+            <Label layoutX="463.0" layoutY="102.0" prefHeight="17.0" prefWidth="44.0" text="Marca" />
+            <JFXTextField fx:id="txtMarca" alignment="CENTER" layoutX="504.0" layoutY="91.0" prefHeight="25.0" prefWidth="196.0" />
+            <JFXCheckBox fx:id="chParaVenta" alignment="BOTTOM_LEFT" layoutX="370.0" layoutY="252.0" prefHeight="25.0" prefWidth="95.0" selected="true" text="Para la Venta" />
+            <JFXCheckBox fx:id="chParaConsumo" alignment="BOTTOM_LEFT" layoutX="490.0" layoutY="251.0" prefHeight="25.0" prefWidth="130.0" text="Para  Consumo" />
+            <Label layoutX="558.0" layoutY="175.0" prefHeight="17.0" prefWidth="53.0" text="Unidad" />
+            <JFXTextField fx:id="txtCantidad" alignment="CENTER" layoutX="615.0" layoutY="163.0" prefHeight="25.0" prefWidth="85.0" />
+            <JFXTextField fx:id="txtPreciioCompraUnidatrio" alignment="CENTER" layoutX="328.0" layoutY="202.0" prefHeight="25.0" prefWidth="116.0" />
+            <Label layoutX="228.0" layoutY="215.0" prefHeight="17.0" prefWidth="95.0" text="Costo  Unitario" />
+            <Label fx:id="lbRutaImg" layoutX="204.0" layoutY="462.0" prefHeight="25.0" prefWidth="0.0" />
+            <Separator layoutX="558.0" layoutY="315.0" orientation="VERTICAL" prefHeight="139.0" prefWidth="3.0" />
+            <Separator layoutX="563.0" layoutY="450.0" prefHeight="3.0" prefWidth="205.0" />
+            <Separator layoutX="561.0" layoutY="315.0" prefHeight="3.0" prefWidth="196.0" />
+            <Separator layoutX="763.0" layoutY="317.0" orientation="VERTICAL" prefHeight="133.0" prefWidth="6.0" />
+            <JFXTextField fx:id="txtPrecioVenta1Itbis" alignment="CENTER" layoutX="202.0" layoutY="341.0" prefHeight="25.0" prefWidth="55.0" />
+            <Label layoutX="153.0" layoutY="353.0" prefHeight="17.0" prefWidth="44.0" text="Con tbis" />
+            <Label layoutX="155.0" layoutY="390.0" prefHeight="17.0" prefWidth="44.0" text="Con tbis" />
+            <JFXTextField fx:id="txtPrecioVenta2Itbis" alignment="CENTER" layoutX="204.0" layoutY="377.0" prefHeight="25.0" prefWidth="55.0" />
+            <JFXTextField fx:id="txtPrecioVenta3Itbis" alignment="CENTER" layoutX="203.0" layoutY="408.0" prefHeight="25.0" prefWidth="55.0" />
+            <Label layoutX="154.0" layoutY="421.0" prefHeight="17.0" prefWidth="44.0" text="Con tbis" />
+            <JFXCheckBox fx:id="chsePuedeDetallar" alignment="BOTTOM_LEFT" layoutX="610.0" layoutY="252.0" prefHeight="25.0" prefWidth="130.0" text="Se Puede  detallar" />
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>

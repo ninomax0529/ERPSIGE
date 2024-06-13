@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="187.0" prefWidth="474.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.venta.facturacion.ReporteUtilidadBrutaController">
+    <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../../style/style.css" VBox.vgrow="ALWAYS">
+         <children>
+                  <Label layoutX="240.0" layoutY="3.0" prefHeight="36.0" prefWidth="231.0" text="Reporte Utilidad Bruta" textFill="WHITE" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+                  </Label>
+         </children>
+      </AnchorPane>
+            <HBox alignment="TOP_CENTER" prefHeight="36.0" prefWidth="509.0" spacing="10.0">
+                <children>
+                    <Label alignment="CENTER" prefHeight="26.0" prefWidth="110.0" text="Fecha  Inicio">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+            <JFXDatePicker fx:id="dpFechaInicio" prefHeight="28.0" prefWidth="165.0" />
+            <Label alignment="CENTER" layoutX="56.0" layoutY="10.0" prefHeight="26.0" prefWidth="110.0" text="Fecha Final">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXDatePicker fx:id="dpFechaFinal" layoutX="176.0" layoutY="10.0" prefHeight="28.0" prefWidth="165.0" />
+                </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+         </VBox.margin>
+            </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="20.0" layoutY="62.0" prefHeight="46.0" prefWidth="529.0" spacing="10.0">
+         <children>
+                    <JFXButton fx:id="btnSalir" onAction="#btnSalirActionEvent" prefHeight="29.0" prefWidth="89.0" styleClass="btn-remove" stylesheets="@../../../style/style.css" text="Salir">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></JFXButton>
+                    <JFXButton fx:id="btnAceptar" onAction="#btnAceptarActionEvent" prefHeight="29.0" prefWidth="89.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Aceptar">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></JFXButton>
+         </children>
+      </HBox>
+    </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+</VBox>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="528.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.caja.CerrarCajaController">
+  <children>
+      <AnchorPane stylesheets="@../../style/style.css">
+         <children>
+            <JFXButton fx:id="btnGuardar" layoutX="6.0" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" styleClass="btn-new" stylesheets="@../../style/style.css" text="Guardar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnImprimir" layoutX="83.0" layoutY="5.0" onAction="#btnImprimirActionEvent" prefHeight="25.0" prefWidth="70.0" styleClass="btn-search" stylesheets="@../../style/style.css" text="Imprimir" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefWidth="637.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox layoutX="16.0" layoutY="203.0" prefHeight="298.0" prefWidth="637.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+               <children>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="62.0" text="Filtrar">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txtFiltro" alignment="CENTER" prefHeight="25.0" prefWidth="639.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <HBox alignment="BOTTOM_RIGHT" spacing="20.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tbCierreCajaChica" onMouseClicked="#tbCierreCajaChicaMouseClicked" prefWidth="637.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="tbcNumero" prefWidth="75.0" text="Numero" />
+                        <TableColumn fx:id="tbcCaja" prefWidth="75.0" text="Caja" />
+                        <TableColumn fx:id="tbcCajero" prefWidth="75.0" text="Cajero" />
+                      <TableColumn fx:id="tbcFecha" prefWidth="75.0" text="Fecha" />
+                        <TableColumn fx:id="tbcSaldoInicial" prefWidth="75.0" text="Saldo Inicial" />
+                        <TableColumn fx:id="tbcTurno" prefWidth="75.0" text="Turno" />
+                        <TableColumn fx:id="tbcEstado" prefWidth="75.0" text="Estado" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="70.0" text="Cantidad" />
+                        <JFXTextField alignment="CENTER" prefHeight="25.0" prefWidth="87.0">
+                           <HBox.margin>
+                              <Insets bottom="5.0" right="5.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets right="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <Label alignment="BOTTOM_LEFT" layoutX="9.0" layoutY="1.0" prefHeight="37.0" prefWidth="166.0" stylesheets="@../../style/style.css" text="Fecha y Hora Apertura">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtFechaapertura" alignment="BOTTOM_CENTER" editable="false" layoutX="181.0" layoutY="1.0" prefHeight="37.0" prefWidth="145.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="11.0" layoutY="43.0" prefHeight="37.0" prefWidth="137.0" stylesheets="@../../style/style.css" text="Numero Apertura">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtNumeroApertura" alignment="BOTTOM_CENTER" editable="false" layoutX="182.0" layoutY="43.0" prefHeight="37.0" prefWidth="145.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="345.0" layoutY="51.0" prefHeight="37.0" prefWidth="104.0" stylesheets="@../../style/style.css" text="Saldo Inicial">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtSaldoInicial" alignment="BOTTOM_CENTER" editable="false" layoutX="492.0" layoutY="43.0" prefHeight="37.0" prefWidth="166.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="12.0" layoutY="86.0" prefHeight="37.0" prefWidth="129.0" stylesheets="@../../style/style.css" text="Total Ingresos">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtTotalIngreso" alignment="BOTTOM_CENTER" editable="false" layoutX="183.0" layoutY="86.0" prefHeight="37.0" prefWidth="145.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="349.0" layoutY="94.0" prefHeight="37.0" prefWidth="104.0" stylesheets="@../../style/style.css" text="Total Egresos">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtTotalegreso" alignment="BOTTOM_CENTER" editable="false" layoutX="493.0" layoutY="87.0" prefHeight="37.0" prefWidth="166.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="11.0" layoutY="127.0" prefHeight="37.0" prefWidth="137.0" stylesheets="@../../style/style.css" text="Saldo Final">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtSaldoFinal" alignment="BOTTOM_CENTER" editable="false" layoutX="183.0" layoutY="127.0" prefHeight="37.0" prefWidth="145.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="345.0" layoutY="10.0" prefHeight="37.0" prefWidth="145.0" stylesheets="@../../style/style.css" text="Fecha y Hora Cierre">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtFechaCierre" alignment="BOTTOM_CENTER" editable="false" layoutX="494.0" layoutY="6.0" prefHeight="37.0" prefWidth="166.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="BOTTOM_LEFT" layoutX="348.0" layoutY="135.0" prefHeight="37.0" prefWidth="137.0" stylesheets="@../../style/style.css" text="Ingresos  Neto">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtIngresosNetos" alignment="BOTTOM_CENTER" editable="false" layoutX="491.0" layoutY="127.0" prefHeight="37.0" prefWidth="166.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <JFXTextField fx:id="txtSaldoFinal1" alignment="BOTTOM_CENTER" editable="false" prefHeight="37.0" prefWidth="145.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+  </children>
+</VBox>

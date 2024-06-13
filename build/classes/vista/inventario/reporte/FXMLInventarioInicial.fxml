@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="170.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inventario.reporte.FXMLInventarioInicialController">
+   <children>
+      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="38.0" prefWidth="429.0" styleClass="head-background" stylesheets="@../../../style/style.css" text="Inventario Inicial   " textAlignment="CENTER" textFill="#ebe4e4" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <VBox alignment="TOP_CENTER" prefHeight="120.0" prefWidth="429.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <HBox prefHeight="35.0" prefWidth="300.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="61.0" text="Fecha">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFecha" prefHeight="25.0" prefWidth="134.0" />
+                  <JFXButton fx:id="btnAceptar" onAction="#btnAceptarActionEvent" prefHeight="25.0" prefWidth="92.0" styleClass="btn-search" stylesheets="@../../../css/style.css" text="Aceptar" />
+                  <JFXButton fx:id="btnSalir" onAction="#btnSalirActionEvent" prefHeight="25.0" prefWidth="85.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Salir" />
+               </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <JFXProgressBar fx:id="pgBar" prefHeight="15.0" prefWidth="429.0" AnchorPane.topAnchor="150.0" />
+   </children>
+</AnchorPane>

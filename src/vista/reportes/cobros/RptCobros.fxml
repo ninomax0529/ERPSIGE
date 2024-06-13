@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="491.0" prefWidth="955.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.reportes.cobros.RptCobrosController">
+   <children>
+      <VBox prefWidth="890.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="11.0" prefWidth="776.0" spacing="10.0">
+               <children>
+                  <VBox prefHeight="102.0" prefWidth="285.0" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="18.0" prefWidth="283.0">
+                           <children>
+                              <JFXCheckBox fx:id="chPorDias" ellipsisString="0" onAction="#chPorDiasActionEvent" prefHeight="18.0" prefWidth="156.0" text="Agrupado Por Dias " textAlignment="JUSTIFY" underline="true">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </JFXCheckBox>
+                              <JFXCheckBox fx:id="chDetallado" ellipsisString="0" layoutX="10.0" layoutY="10.0" onAction="#chDetalladoActionEvent" prefHeight="18.0" prefWidth="120.0" text="Detallado  " textAlignment="JUSTIFY" underline="true">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </JFXCheckBox>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="vbRptPorDias" disable="true" spacing="10.0">
+                           <children>
+                              <JFXCheckBox fx:id="chPagoFactura" onAction="#chPagoFacturaActionEvent" prefHeight="18.0" prefWidth="150.0" text="Pago Factura" />
+                              <JFXCheckBox fx:id="chAvanceCliente" onAction="#chAvanceClienteActionEvent" prefHeight="18.0" prefWidth="150.0" text="Avance de Cliente" />
+                              <JFXCheckBox fx:id="chTodos" onAction="#chTodosActionEvent" prefHeight="18.0" prefWidth="150.0" text="Todos" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="89.0" prefWidth="242.0" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="30.0" prefWidth="242.0">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="102.0" text="Fecha  desde" />
+                              <JFXDatePicker fx:id="dpFechaInicio" prefHeight="25.0" prefWidth="140.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXDatePicker>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="98.0" text="Fecha hasta " />
+                              <JFXDatePicker fx:id="dpFechaFinal" prefHeight="25.0" prefWidth="144.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXDatePicker>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <JFXButton fx:id="btnVerReporte" onAction="#btnVerReporteActionEvent" prefHeight="29.0" prefWidth="94.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Ver  Reporte" />
+                        <JFXButton fx:id="btnXLS" disable="true" layoutX="10.0" layoutY="10.0" onAction="#actionEventbtnXLS" prefHeight="29.0" prefWidth="94.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Exportar XLS" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

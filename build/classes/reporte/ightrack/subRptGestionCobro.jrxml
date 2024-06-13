@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2022-09-01T15:16:16 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subRptGestionCobro" pageWidth="750" pageHeight="555" orientation="Landscape" columnWidth="750" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="5df3767d-85c9-4e99-8aa0-5061581a1be7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="367"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="628"/>
+	<parameter name="cliente" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[ SELECT  *  from gestion_de_cobro   where 
+
+ cliente=$P{cliente}  and 
+
+
+factura  in (
+
+SELECT 
+   factura
+
+   from cliente c
+
+   INNER  JOIN factura f  on  c.codigo=f.cliente 
+
+   where  
+   f.unidad_de_negocio=2  and
+   f.anulada=false and   f.pendiente>0
+  and   c.codigo= $P{cliente} 
+)]]>
+	</queryString>
+	<field name="nota" class="java.lang.String"/>
+	<field name="fecha_cobro" class="java.sql.Timestamp"/>
+	<group name="nota">
+		<groupExpression><![CDATA[$F{nota}]]></groupExpression>
+	</group>
+	<group name="fecha_cobro">
+		<groupExpression><![CDATA[$F{fecha_cobro}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="2">
+			<line>
+				<reportElement x="0" y="1" width="750" height="1" uuid="b795766a-198c-4ffc-8476-f8a126dd78e9"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="0" width="518" height="14" isPrintWhenDetailOverflows="true" uuid="f1f60d41-3d5f-47c0-b251-cdd1acbcdc26">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box leftPadding="10"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Nota : "+$F{nota}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a">
+				<reportElement x="627" y="0" width="123" height="14" uuid="18c2d6b2-5529-46bf-9909-a11e50155d0d"/>
+				<box leftPadding="10" rightPadding="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_cobro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="542" y="0" width="85" height="14" uuid="0635a2c0-4588-49f9-9075-d01fce5209bb">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Cobro :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

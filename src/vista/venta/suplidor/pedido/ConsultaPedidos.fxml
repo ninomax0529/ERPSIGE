@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="703.0" prefWidth="1154.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.venta.pedido.ConsultaPedidosController">
+  <children>
+      <SplitPane dividerPositions="0.5979020979020979" VBox.vgrow="ALWAYS">
+         <items>
+            <VBox prefHeight="693.0" prefWidth="700.0">
+               <children>
+                  <AnchorPane prefHeight="46.0" prefWidth="671.0" style="-fx-background-color: #0096d2;">
+                     <children>
+                        <Label alignment="CENTER" layoutY="-8.0" prefHeight="41.0" prefWidth="659.0" text="Consulta de Pedido" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="1028.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="34.0" prefWidth="82.0" text="Fecha Desde">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXDatePicker fx:id="dpFechaDesde" />
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="82.0" text="Fecha Hasta" />
+                        <JFXDatePicker fx:id="dpFecgaHasta" layoutX="92.0" layoutY="10.0" />
+                        <JFXButton fx:id="btnBuscar" onAction="#btnBuscarActionEvent" prefHeight="32.0" prefWidth="95.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Buscar" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" right="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="btnImprimir" onAction="#btnImprimirActionevent" prefHeight="32.0" prefWidth="97.0" styleClass="btn-update" stylesheets="@../../../style/style.css" text="Imprimir" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ScrollPane fx:id="scpane1" prefHeight="604.0" prefWidth="667.0" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </VBox.margin>
+                  </ScrollPane>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="693.0" prefWidth="434.0">
+               <children>
+                  <AnchorPane prefHeight="52.0" prefWidth="510.0" style="-fx-background-color: #4E4F54;">
+                     <children>
+                        <Label layoutX="7.0" layoutY="11.0" prefHeight="31.0" prefWidth="97.0" text="Pedido #" textFill="WHITE" AnchorPane.leftAnchor="7.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbPedido" alignment="CENTER" layoutX="103.0" layoutY="11.0" prefHeight="31.0" prefWidth="53.0" text="0" textFill="WHITE" AnchorPane.leftAnchor="103.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbCalle" alignment="CENTER" layoutX="245.0" layoutY="10.0" prefHeight="31.0" prefWidth="53.0" text="0" textFill="WHITE" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="149.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="168.0" layoutY="10.0" prefHeight="31.0" prefWidth="73.0" text="Calle #" textFill="WHITE" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="200.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbCasa" alignment="CENTER" layoutX="378.0" layoutY="10.0" prefHeight="31.0" prefWidth="53.0" text="0" textFill="WHITE" AnchorPane.rightAnchor="16.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="303.0" layoutY="10.0" prefHeight="31.0" prefWidth="73.0" text="Casa #" textFill="WHITE" AnchorPane.rightAnchor="80.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <ScrollPane fx:id="scpane" prefHeight="641.0" prefWidth="433.0" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </ScrollPane>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </VBox>
+         </items>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </SplitPane>
+  </children>
+</VBox>

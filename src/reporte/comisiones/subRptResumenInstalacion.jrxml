@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-06-22T17:32:43 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subRptResumenInstalacion" pageWidth="270" pageHeight="555" orientation="Landscape" columnWidth="270" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="26b8885d-ec0a-438d-84bb-1827f6830d6b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<parameter name="sqlParam" class="java.lang.String"/>
+	<parameter name="fecha_desde" class="java.util.Date"/>
+	<parameter name="fecha_hasta" class="java.util.Date"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+
+  isnt.nombre as instalador,
+ tast.nombre as servicio,
+ sum(ast.cantidad) as cantidad,
+ sum(ast.cantidad*ast.precio)  as  monto
+
+ from asistencia_tecnica ast 
+
+    INNER JOIN  instalador isnt on ast.tecnico=isnt.codigo
+
+    INNER JOIN  tipo_de_asistencia tast on tast.codigo=ast.tipo_de_asistencia
+
+    INNER JOIN  cliente c on ast.cliente=c.codigo
+    where  
+         ast.cantidad>0
+        and  anulada=false  and     date(ast.fecha_cierre)   between   $P{fecha_desde}   and   $P{fecha_hasta} 
+    
+    and ubicacion=2      $P!{sqlParam} 
+     
+     group by  tast.nombre
+      
+  ORDER BY  tast.nombre]]>
+	</queryString>
+	<field name="instalador" class="java.lang.String"/>
+	<field name="servicio" class="java.lang.String"/>
+	<field name="cantidad" class="java.math.BigDecimal"/>
+	<field name="monto" class="java.lang.Double"/>
+	<variable name="cantidad1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+	</variable>
+	<variable name="monto1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto}]]></variableExpression>
+	</variable>
+	<group name="servicio">
+		<groupExpression><![CDATA[$F{servicio}]]></groupExpression>
+	</group>
+	<group name="instalador">
+		<groupExpression><![CDATA[$F{instalador}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="269" height="22" uuid="f192b6f3-34ce-4b0f-be38-01936551463a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen  de servicios]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<rectangle>
+				<reportElement x="0" y="1" width="269" height="16" backcolor="#9DF2B3" uuid="da32e1b3-c0b2-4883-b79a-3a542efa3935">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="1" width="128" height="16" uuid="ba8f74b9-41f3-460d-999d-9fef4c1278af"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="1" width="58" height="16" uuid="eb263e55-5a40-48c3-8a09-19a2ac79f41a"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="1" width="82" height="16" uuid="d90a89e8-1021-46e5-8925-2e74719a8380">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="128" height="15" uuid="aaa495b5-84d4-4f8a-a09b-6135009c6b18"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{servicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="0" width="58" height="15" uuid="6f2b48e8-01e1-41b1-8967-bacc24e04303"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="187" y="0" width="82" height="15" uuid="d1c2f3e9-187b-45b5-bbe3-8032619b9f36"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="129" y="0" width="58" height="17" uuid="5f1548a8-69da-415e-833b-e5dac68f9881">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cantidad1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="187" y="0" width="82" height="17" uuid="e6eb30c4-0bf9-45ab-8499-3399cee4ee66"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{monto1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="270" height="1" uuid="693ee8bd-0c5b-486d-b1b5-bf7964a6ff9b"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="128" height="17" isPrintInFirstWholeBand="true" uuid="87b2216d-3ab2-4c46-9897-929e8ae0b243"/>
+				<box rightPadding="7">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

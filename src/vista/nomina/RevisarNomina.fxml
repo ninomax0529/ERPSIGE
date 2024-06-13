@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="633.0" prefWidth="1223.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.nomina.RevisarNominaController">
+   <children>
+      <VBox prefWidth="890.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="127.0" prefWidth="1209.0" spacing="10.0">
+               <children>
+                  <VBox prefHeight="107.0" prefWidth="614.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TableView fx:id="tbNomina" onMouseClicked="#tbContratoDeServicioClicked" prefHeight="196.0" prefWidth="886.0">
+                           <columns>
+                              <TableColumn fx:id="tbcNumero" maxWidth="100.0" minWidth="70.0" prefWidth="70.0" text="Numero" />
+                              <TableColumn fx:id="tbcFecha" maxWidth="100.0" minWidth="70.0" prefWidth="70.0" text="Fecha" />
+                              <TableColumn fx:id="tbcTipoNom" maxWidth="100.0" minWidth="70.0" prefWidth="70.0" text="Tipo" />
+                              <TableColumn fx:id="tbcEstado" prefWidth="116.537109375" text="Estado" />
+                              <TableColumn fx:id="tbcMes" maxWidth="100.0" minWidth="50.0" prefWidth="60.0" text="Mes" />
+                              <TableColumn fx:id="tbcAnio" maxWidth="100.0" minWidth="50.0" prefWidth="50.0" text="Año" />
+                              <TableColumn fx:id="tbcVerNomina" maxWidth="90.0" minWidth="50.0" prefWidth="50.0" text="Ver" />
+                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <TextArea fx:id="txtObservacion" prefHeight="107.0" prefWidth="449.0" promptText="OBSERVACION" />
+                  <VBox prefHeight="107.0" prefWidth="115.0" spacing="10.0">
+                     <children>
+                        <JFXButton fx:id="btnAPreparacion" layoutX="10.0" layoutY="49.0" onAction="#btnAPreparacionActionEvent" prefHeight="29.0" prefWidth="125.0" styleClass="btn-remove" stylesheets="@../../style/style.css" text="A Preparacion" />
+                        <JFXButton fx:id="btnGuardar" onAction="#btnGuardarActionEvent" prefHeight="29.0" prefWidth="125.0" styleClass="btn-new" stylesheets="@../../style/style.css" text="Revisada" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <TabPane fx:id="tabPane" stylesheets="@../../style/tabPane.css" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <tabs>
+                  <Tab closable="false" text="    Detalle       ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="10.0" layoutY="47.0" prefHeight="463.0" prefWidth="1199.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="42.0">
+                                 <children>
+                                    <TableView fx:id="tbDetalle" onMouseClicked="#tbDetalleContratoMouseClicked" prefHeight="328.0" prefWidth="766.0" stylesheets="@../../style/table-view.css" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="tbcEmpleadoDet" prefWidth="122.06341552734375" text="Empleado" />
+                                          <TableColumn fx:id="tbcSueldoDet" maxWidth="1500.0" prefWidth="120.0" text="Sueldo" />
+                                          <TableColumn fx:id="tbcComisionDet" maxWidth="1500.0" prefWidth="120.0" text="Comision" />
+                                          <TableColumn fx:id="tbcHoraExtraDet" maxWidth="2000.0" prefWidth="120.0" text="Horas Extras" />
+                                          <TableColumn fx:id="tbcTotalOtroBeneficioDet" maxWidth="3500.0" prefWidth="156.3262939453125" text="Total Otros Beneficios" />
+                                          <TableColumn fx:id="tbcOtrasRemuneracionesDet" maxWidth="2500.0" prefWidth="156.3262939453125" text="Otras Remuneraciones" />
+                                          <TableColumn fx:id="tbcTotalBruto" maxWidth="2500.0" prefWidth="156.3262939453125" text="Total Bruto" />
+                                          <TableColumn fx:id="tbcAfpDet" maxWidth="1500.0" text="AFP" />
+                                          <TableColumn fx:id="tbcSFSDet" maxWidth="1500.0" text="SFS" />
+                                          <TableColumn fx:id="tbcDepeAdicionalesDet" prefWidth="156.3262939453125" text="Dependiente Adicional" />
+                                          <TableColumn fx:id="tbcAvanceSueldoDet" maxWidth="1500.0" minWidth="80.0" text="Avance a Sueldo" />
+                                          <TableColumn fx:id="tbcTotalDescDet" maxWidth="1500.0" minWidth="80.0" text="Total Descuento" />
+                                          <TableColumn fx:id="tbcSueldoNetoDet" maxWidth="250.0" minWidth="80.0" text="Sueldo Neto" />
+                                          <TableColumn fx:id="tbcRevisado" maxWidth="250.0" minWidth="80.0" text="Revisado" />
+                                       </columns>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                                       <children>
+                                          <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="122.0" text="Cantidad  Empleado">
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXTextField fx:id="txtCantidadEmpleado" alignment="BOTTOM_CENTER" editable="false" prefHeight="25.0" prefWidth="82.0" styleClass="TitledPane" stylesheets="@../../style/style.css">
+                                             <HBox.margin>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </JFXTextField>
+                                          <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="87.0" text="Total Nomina">
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXTextField fx:id="txtMontoNomina" alignment="BOTTOM_CENTER" editable="false" prefHeight="30.0" prefWidth="140.0" styleClass="TitledPane" stylesheets="@../../style/style.css">
+                                             <HBox.margin>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </JFXTextField>
+                                          <JFXButton fx:id="btnExportar" onAction="#btnExportarActionEvent" prefHeight="30.0" prefWidth="69.0" styleClass="btn-remove" stylesheets="@../../style/style.css" text="XLs" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets top="4.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <HBox alignment="CENTER_RIGHT" layoutX="5.0" layoutY="2.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0">
+                                 <children>
+                                    <Label fx:id="lbNumeroNomina" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="930.0" styleClass="tab" stylesheets="@../../style/tabPane.css" text="No.Nomina     ">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label prefHeight="27.0" prefWidth="68.0" text="Revisado">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbProcesado" alignment="CENTER" prefHeight="17.0" prefWidth="56.0" styleClass="TitledPane" stylesheets="@../../../../../../cibao%20mix/SistemaProduccionCibaoMix/src/style/style.css">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="26.0" prefWidth="29.0" text="De">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbCantEmpleado" alignment="CENTER" prefHeight="17.0" prefWidth="62.0" styleClass="TitledPane" stylesheets="@../../../../../../cibao%20mix/SistemaProduccionCibaoMix/src/style/style.css">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

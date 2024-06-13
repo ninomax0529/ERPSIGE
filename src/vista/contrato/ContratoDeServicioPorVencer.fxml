@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="633.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contrato.ContratoDeServicioPorVencerController">
+   <children>
+      <TabPane stylesheets="@../../style/tabPane.css" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <tabs>
+            <Tab closable="false" text="    Contrato que Vencen  Hoy     ">
+               <content>
+                  <VBox prefWidth="890.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="630.0" prefWidth="1166.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <TableView fx:id="tbContratoDeServicio" onMouseClicked="#tbContratoDeServicioClicked" prefHeight="416.0" stylesheets="@../../style/table-view.css" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="tbcClienteContra" minWidth="200.0" prefWidth="200.0" text="Cliente" />
+                                    <TableColumn fx:id="tbcContacto" maxWidth="3000.0" minWidth="149.0" prefWidth="149.0" text="Contacto" />
+                                    <TableColumn fx:id="tbcNumContratoContra" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="No.Contrato" />
+                                    <TableColumn fx:id="tbcDescripcion" maxWidth="1500.0" minWidth="300.0" prefWidth="500.0" text="Descripcion" />
+                                    <TableColumn fx:id="tbcFechaUltimoPago" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="Fecha  Vencimiento" />
+                                 </columns>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="526.0" spacing="10.0" style="-fx-border-color: #000000;">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="257.0" text="Cantidad  de  Contrato Venvido Hoy " textFill="#171616">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbCantidadContrato" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="34.0" prefWidth="117.0" style="-fx-border-color: #000000;" stylesheets="@../../style/style.css" textFill="#222020">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="btnExportar" onAction="#btnExportarActionEvent" prefHeight="30.0" prefWidth="83.0" styleClass="btn-new" stylesheets="@../../style/style.css" text="Exportar">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="   Contrato Por Vencer    ">
+               <content>
+                  <VBox prefWidth="890.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="630.0" prefWidth="1166.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="526.0" spacing="10.0" style="-fx-border-color: #000000;" styleClass="new-user-title" stylesheets="@../../style/style.css">
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="74.0" stylesheets="@../../style/style.css" text="  Filtrar" textFill="#1e1b1a">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="txtFiltro" prefHeight="25.0" prefWidth="733.0" />
+                                    <Label prefHeight="26.0" prefWidth="176.0" text="Cantidad  de  Contrato ">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbCantidadContrato1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="34.0" prefWidth="117.0" style="-fx-border-color: #000000;">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="btnExportarPorVencer" onAction="#btnExportarPorVencerActionEvent" prefHeight="30.0" prefWidth="83.0" styleClass="btn-search" stylesheets="@../../style/style.css" text="Exportar">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="tbContratoDeServicio1" onMouseClicked="#tbContratoDeServicioClicked" prefHeight="416.0" stylesheets="@../../style/table-view.css" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="tbcNumContratoContra1" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="No.Contrato" />
+                                    <TableColumn fx:id="tbcDescripcion1" maxWidth="1500.0" minWidth="300.0" prefWidth="500.0" text="Descripcion" />
+                                    <TableColumn fx:id="tbcClienteContra1" minWidth="200.0" prefWidth="200.0" text="Cliente" />
+                                    <TableColumn fx:id="tbcFechaUltimoPago1" maxWidth="200.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Fecha  Vencimiento" />
+                                    <TableColumn fx:id="tbcDiasParaVencer1" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Dias  Para Vencer" />
+                                    <TableColumn fx:id="tbcTipoDePlan1" maxWidth="3000.0" minWidth="149.0" prefWidth="149.0" text="Plan de Servicio" />
+                                    <TableColumn fx:id="tbcPrecioRenovacion" maxWidth="100.0" minWidth="90.0" prefWidth="100.0" text="Precio" />
+                                 </columns>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>

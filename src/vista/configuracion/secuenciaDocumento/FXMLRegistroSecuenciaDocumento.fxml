@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.configuracion.secuenciaDocumento.FXMLRegistroSecuenciaDocumentoController">
+   <children>
+      <AnchorPane prefHeight="34.0" prefWidth="627.0" styleClass="head-background" stylesheets="@../../../style/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="322.0" text="Registro  Secuencia  de Documento" textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="97.0" layoutY="-47.0" prefHeight="201.0" prefWidth="584.0" spacing="10.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <HBox prefHeight="39.0" prefWidth="629.0" spacing="5.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="20.0" prefHeight="25.0" prefWidth="154.0" text="Unidad de Negocio" />
+                  <JFXComboBox fx:id="cbUnidadDeNegocio" layoutX="54.0" layoutY="20.0" onAction="#cbUnidadDeNegocioActionEvent" prefHeight="25.0" prefWidth="476.0" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="20.0" prefHeight="39.0" prefWidth="629.0" spacing="5.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="20.0" prefHeight="25.0" prefWidth="115.0" text="Tipo  Documento" />
+                  <JFXComboBox fx:id="cbTipoDocumento" layoutX="54.0" layoutY="20.0" onAction="#cbTipoDocumentoActionEvent" prefHeight="25.0" prefWidth="519.0" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="629.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="99.0" text=" Prefijo Numero" />
+                  <TextField fx:id="txtPrefijo" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="67.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="20.0" layoutY="20.0" prefHeight="36.0" prefWidth="96.0" text="Sufijo Numero " />
+                  <TextField fx:id="txtsufijo" alignment="CENTER" layoutX="138.0" layoutY="20.0" prefHeight="25.0" prefWidth="81.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="224.0" layoutY="20.0" prefHeight="35.0" prefWidth="56.0" text="Numero" />
+                  <TextField fx:id="txtNumero" alignment="CENTER" layoutX="328.0" layoutY="20.0" prefHeight="37.0" prefWidth="176.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+</AnchorPane>

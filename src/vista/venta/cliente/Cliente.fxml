@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="632.0" prefWidth="1006.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.venta.cliente.ClienteController">
+  <children>
+      <AnchorPane styleClass="head-background" />
+      <VBox VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="45.0" text="Filtrar">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtFiltro" prefHeight="25.0" prefWidth="653.0">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></JFXTextField>
+                  <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
+                     <children>
+                        <JFXButton fx:id="btnNuevo" layoutX="10.0" layoutY="10.0" onAction="#btnNuevoActionEvent" prefHeight="30.0" prefWidth="70.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Nuevo">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnEditar" onAction="#btnEditarActionEvent" prefHeight="30.0" prefWidth="73.0" styleClass="btn-update" stylesheets="@../../../style/style.css" text="Editar">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="5.0" top="2.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <JFXButton fx:id="btnExportar" onAction="#btnExportarActionEvent" prefHeight="30.0" prefWidth="83.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Exportar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <TabPane fx:id="tabCliente" stylesheets="@../../../style/tabPane.css" VBox.vgrow="ALWAYS">
+               <tabs>
+                  <Tab closable="false" text="         Cliente                  ">
+                     <content>
+                        <TableView fx:id="tbCliente" onMouseClicked="#tbClienteActionEvent" prefWidth="900.0">
+                          <columns>
+                            <TableColumn fx:id="tbcCodigo" prefWidth="75.0" text="Codigo" />
+                            <TableColumn fx:id="tbcNombre" prefWidth="75.0" text="Nombre" />
+                              <TableColumn fx:id="tbcRepresentante" prefWidth="138.0" text="Representante" />
+                              <TableColumn fx:id="tbcDireccion" prefWidth="75.0" text="Direccion" />
+                              <TableColumn fx:id="tbcTelefono" prefWidth="75.0" text="Telefono" />
+                              <TableColumn fx:id="tbcCelular" prefWidth="75.0" text="Celular" />
+                              <TableColumn fx:id="tbcEstado" prefWidth="75.0" text="Estado" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </TableView>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="    Cuentas  Por  Cobrar   ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="601.0" prefWidth="890.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox prefHeight="35.0" prefWidth="1018.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="50.0" text="Filtrar" />
+                                          <JFXTextField fx:id="txtFiltrar" prefHeight="25.0" prefWidth="811.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <VBox>
+                                       <children>
+                                          <TableView fx:id="tbFactura" onMouseClicked="#tbFacturaMouseCliked" prefHeight="200.0" prefWidth="200.0">
+                                             <columns>
+                                                <TableColumn fx:id="tbcFactura" maxWidth="60.0" minWidth="60.0" prefWidth="50.0" text="Factura" />
+                                                <TableColumn fx:id="tbcCliente" minWidth="50.0" prefWidth="75.0" text="Cliente" />
+                                                <TableColumn fx:id="tbcFecha" prefWidth="75.0" text="Fecha" />
+                                                <TableColumn fx:id="tbcSubTotal" prefWidth="75.0" text="Sub Total" />
+                                                <TableColumn fx:id="tbcDescuento" prefWidth="70.0" text="Descuento" />
+                                                <TableColumn fx:id="tbcItbis" prefWidth="75.0" text="Itbis" />
+                                                <TableColumn fx:id="tbcTotal" prefWidth="112.0" text="Total" />
+                                                <TableColumn fx:id="tbcMontoAbonado" minWidth="50.0" prefWidth="50.0" text="Monto  Abonado  " />
+                                                <TableColumn fx:id="tbcMontoPendiente" minWidth="50.0" prefWidth="50.0" text="Monto  Pendiente" />
+                                                <TableColumn fx:id="tbcAnulada" prefWidth="50.0" text="Anulada" />
+                                                <TableColumn fx:id="tbcVerFactura" maxWidth="80.0" minWidth="80.0" resizable="false">
+                                                   <graphic>
+                                                      <ImageView fitHeight="40.0" fitWidth="70.0" pickOnBounds="true" smooth="false">
+                                                         <image>
+                                                            <Image url="@../../../imagen/img_documento.jpg" />
+                                                         </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="OPEN_HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </TableColumn>
+                                             </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </TableView>
+                                          <HBox alignment="BOTTOM_RIGHT" spacing="10.0" styleClass="table-view" stylesheets="@../../../style/table.css">
+                                             <children>
+                                                <Label prefHeight="25.0" prefWidth="128.0" text="Total Facturado ">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lbTotalFacturado" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="32.0" prefWidth="102.0" styleClass="TitledPane" stylesheets="@../../../style/style.css">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="112.0" layoutY="10.0" prefHeight="25.0" prefWidth="123.0" text="Total Abonado">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lbTotalabonado" alignment="CENTER" layoutX="214.0" layoutY="10.0" prefHeight="32.0" prefWidth="102.0" styleClass="TitledPane" stylesheets="@../../../style/style.css">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="316.0" layoutY="10.0" prefHeight="25.0" prefWidth="125.0" text="Total  Pendiente">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lbTotalPendiente" alignment="CENTER" layoutX="418.0" layoutY="10.0" prefHeight="32.0" prefWidth="102.0" styleClass="TitledPane" stylesheets="@../../../style/style.css">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <Separator prefWidth="200.0" />
+                                    <VBox spacing="5.0">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="270.0" styleClass="title-text" stylesheets="@../../../style/style.css" text="Detalle Factura" underline="true">
+                                             <VBox.margin>
+                                                <Insets left="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Separator prefWidth="200.0" />
+                                       </children>
+                                    </VBox>
+                                    <AnchorPane prefHeight="281.0" prefWidth="1018.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox prefHeight="294.0" prefWidth="1018.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <TableView fx:id="tbDetalleFactura" prefHeight="306.0" prefWidth="548.0" VBox.vgrow="ALWAYS">
+                                                   <columns>
+                                                      <TableColumn fx:id="tbcCodigoArticulo" prefWidth="75.0" text="Codigo Articulo" />
+                                                      <TableColumn fx:id="tbcArticulo" prefWidth="75.0" text="Articulo" />
+                                                      <TableColumn fx:id="tbcUnidad" prefWidth="75.0" text="Unidad" />
+                                                      <TableColumn fx:id="tbcCantidad" prefWidth="75.0" text="Cantidad" />
+                                                      <TableColumn fx:id="tbcPrecioUnitario" prefWidth="75.0" text="Precio" />
+                                                      <TableColumn fx:id="tbcDetSubTotal" prefWidth="75.0" text="Sub Total" />
+                                                   </columns>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </TableView>
+                                                <HBox id="HBox" alignment="BOTTOM_RIGHT" prefHeight="20.0" prefWidth="890.0" spacing="10.0">
+                                                   <children>
+                                                      <Label maxWidth="-1.0" text="Cantidad" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="11.0" fx:id="x31" />
+                                                         </font>
+                                                         <textFill>
+                                                            <Color blue="0.625" green="0.625" red="0.625" fx:id="x41" />
+                                                         </textFill>
+                                                      </Label>
+                                                      <Label fx:id="lbCantidad1" font="$x31" maxWidth="-1.0" text="Right status" textFill="$x41" HBox.hgrow="ALWAYS">
+                                                         <HBox.margin>
+                                                            <Insets right="5.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </VBox>
+    <HBox id="HBox" alignment="BOTTOM_RIGHT" spacing="10.0" VBox.vgrow="NEVER">
+      <children>
+        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Cantidad" HBox.hgrow="ALWAYS">
+          <font>
+            <Font size="11.0" fx:id="x3" />
+          </font>
+          <textFill>
+            <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Label fx:id="lbCantidad" font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>

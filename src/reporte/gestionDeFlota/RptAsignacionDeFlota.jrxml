@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-03-21T10:22:00 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RptAsignacionDeFlota" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8e47285-deb8-4e42-b057-0e5ba4d65b4b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="167"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="827"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<parameter name="unidad_negocio" class="java.lang.Integer"/>
+	<parameter name="numeroAsignacion" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[
+SELECT 
+  
+  (select  logo from unidad_de_negocio where codigo=$P{unidad_negocio}   )  as  logo ,
+  
+  af.codigo as asignacion,
+   af.fecha,nombre_responsable,nombre_empresa,nombre_cargo,
+  af.sim,af.imei,af.nombre_flota,af.modelo,af.marca,
+
+af.observacion,case when rf.nueva=true then 'Nueva' else 'Usada' end as condicion
+ 
+
+ from asignacion_de_flota af INNER JOIN registro_de_flota rf on af.flota=rf.codigo
+
+ where  af.codigo=$P{numeroAsignacion} ]]>
+	</queryString>
+	<field name="logo" class="java.io.InputStream"/>
+	<field name="asignacion" class="java.lang.Integer"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="nombre_responsable" class="java.lang.String"/>
+	<field name="nombre_empresa" class="java.lang.String"/>
+	<field name="nombre_cargo" class="java.lang.String"/>
+	<field name="sim" class="java.lang.String"/>
+	<field name="imei" class="java.lang.String"/>
+	<field name="nombre_flota" class="java.lang.String"/>
+	<field name="modelo" class="java.lang.String"/>
+	<field name="marca" class="java.lang.String"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="condicion" class="java.lang.String"/>
+	<background>
+		<band height="2" splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="187" splitType="Stretch">
+			<staticText>
+				<reportElement x="360" y="6" width="180" height="24" uuid="9a2ee14d-18c4-4b5e-a6c9-65f913f04f21">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box rightPadding="4">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asignacion de Flota ]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="474" y="36" width="63" height="14" uuid="9987a57f-ecd3-493a-9e01-939fddf39333"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asignacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="418" y="36" width="55" height="14" uuid="1cb97b4f-e7ac-419d-8695-a1b36d36094c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero :  ]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="6" y="5" width="266" height="104" uuid="28a8fc5c-a96e-4f82-9d65-8302cceec19b"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="-14" y="0" width="555" height="1" uuid="3354f7d1-0677-4ea8-a4ea-9b94e59948cd"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="418" y="52" width="55" height="14" uuid="672349f6-3c3b-4175-88e8-62681851f886"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha :  ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="114" width="555" height="1" uuid="1a99b9cf-6bfd-4025-9ad2-7f13aeb293e8"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="9" y="125" width="81" height="14" uuid="032d3269-8cdc-4332-83ad-7eabc6f58a2f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asignada a  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="142" width="81" height="14" uuid="98077603-8890-4609-8516-72efdbb7574e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargo           :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="160" width="81" height="14" uuid="36d82db5-7729-4fc8-bbb4-afd50bbf2324"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa      :]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="474" y="52" width="63" height="14" uuid="759ce72a-f2f5-4d92-8970-6ccb04a1901f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="125" width="220" height="14" uuid="8532f090-7e11-4056-bd6a-b9bff59a5e11"/>
+				<box leftPadding="3"/>
+				<textFieldExpression><![CDATA[$F{nombre_responsable}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="142" width="220" height="14" uuid="c27fe36b-6d2b-45fc-94fb-5ff7deecb064"/>
+				<box leftPadding="3"/>
+				<textFieldExpression><![CDATA[$F{nombre_cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="160" width="220" height="14" uuid="376d90fc-b44b-493d-b6e0-b38176b7d87c"/>
+				<box leftPadding="3"/>
+				<textFieldExpression><![CDATA[$F{nombre_empresa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<rectangle>
+				<reportElement x="3" y="0" width="552" height="19" backcolor="#BEF7C5" uuid="c46797e6-abd1-4c20-a824-b7fc174c47f6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="0" width="94" height="19" uuid="2a6f5bdc-6cbc-46fc-93fc-4e0c320ea2e7"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="0" width="212" height="19" uuid="8ed290e6-74a8-4974-969c-73d70f09bcf8"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre  Flota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="93" height="19" uuid="f932accc-ef50-4d73-8fa0-e01187a33dd6"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="0" width="77" height="19" uuid="1944317f-c474-4860-b46b-6acc9522b4a2"/>
+				<box leftPadding="5" rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="77" height="19" uuid="2cc106d7-2eef-49ab-afd1-d8eff75c10fb"/>
+				<box leftPadding="5" rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Condicion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="2" width="94" height="16" uuid="654d923b-057b-445f-aa57-64e9a224bc08"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sim}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="2" width="212" height="16" uuid="33ec93ee-b1fb-49ff-8447-5c59361a1ea9"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_flota}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###">
+				<reportElement x="310" y="2" width="93" height="16" uuid="220a201e-75ba-4c26-8f52-4b6d0bc56cb3"/>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="403" y="2" width="77" height="16" uuid="5c978b0c-0648-472b-9a66-6596be5b64b8"/>
+				<box leftPadding="5" rightPadding="0">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="480" y="2" width="77" height="16" uuid="d7298905-603f-4812-8845-1e8d4d7b14d9"/>
+				<box leftPadding="5" rightPadding="0">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{condicion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="188" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="134" width="129" height="16" uuid="c510c466-d9b2-4792-b0a6-5e9ea99fa4d0"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Fecha y Hora de Impresion :]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy h:mm a">
+				<reportElement x="140" y="134" width="129" height="16" uuid="f6439f47-2219-42fc-a7f2-d8a87364fc5d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="153" width="555" height="1" uuid="063ad147-7f6e-4fe2-8cf3-7b6a7ad627f2"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="134" width="555" height="1" uuid="2552df04-1cf0-4de9-82dd-ea19478cdd0f"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="9" y="4" width="81" height="14" uuid="009ddc42-5ab8-41c7-95f4-33edd673fdef"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observacion  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="21" width="535" height="53" uuid="ef74376a-1d70-4f3c-8673-be68d18b917a"/>
+				<box topPadding="1" leftPadding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="104" width="195" height="14" uuid="ec16becd-3944-48ad-8215-8b2294292880"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entregada por ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="105" width="195" height="14" uuid="c6eb5599-f385-4340-b971-05ab034261d3"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibida por ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

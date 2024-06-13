@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="575.0" prefWidth="1091.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.cxp.avanceSuplidor.AvanceASuplidorController">
+   <children>
+      <VBox fx:id="vbVisorDeProgreso">
+         <children>
+            <HBox prefHeight="3.0" prefWidth="1084.0">
+               <children>
+                  <Label fx:id="lbProgreso" alignment="CENTER" prefHeight="34.0" prefWidth="702.0" stylesheets="@../../../style/style.css">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ProgressIndicator fx:id="pgIndicador" prefHeight="34.0" prefWidth="506.0" progress="0.0" />
+               </children>
+            </HBox>
+            <ProgressBar fx:id="progresBar" prefHeight="18.0" prefWidth="1700.0" progress="0.0" />
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </VBox>
+      <VBox prefWidth="890.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="11.0" prefWidth="776.0" spacing="10.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="80.0" text="Fecha Inicio" />
+                  <JFXDatePicker fx:id="dpFechaInicio" prefHeight="25.0" prefWidth="140.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+                  <Label alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="79.0" text="Fecha Final" />
+                  <JFXDatePicker fx:id="dpFechaFinal" layoutX="79.0" layoutY="10.0" prefHeight="25.0" prefWidth="114.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+                  <JFXButton fx:id="btnNuevo" onAction="#btnNuevoActionEvent" prefHeight="32.0" prefWidth="77.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Nuevo">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnBuscar" onAction="#btnBuscarActionEvent" prefHeight="32.0" prefWidth="83.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Buscar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnAnular" onAction="#btnAnularAtionEvent" prefHeight="32.0" prefWidth="79.0" styleClass="btn-remove" stylesheets="@../../../style/style.css" text="Anular">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="347.0" spacing="5.0" style="-fx-border-color: #000000;">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="132.0" text="   EXPORTAR A PDF : ">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXButton fx:id="btnRuta" onAction="#btnRutaActionEvent" prefHeight="30.0" prefWidth="88.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Ruta" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnExportPdf" layoutX="122.0" layoutY="10.0" onAction="#btnExportPdfActionEvent" prefHeight="30.0" prefWidth="88.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Exportar" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnVerDocumento" onAction="#btnVerDocumentoActionEvent" prefHeight="32.0" prefWidth="79.0" styleClass="btn-update" stylesheets="@../../../style/style.css" text="Imprimir" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <TabPane fx:id="tabPane" stylesheets="@../../../style/tabPane.css" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <tabs>
+                  <Tab closable="false" text="    Avance  a  Suplidor       ">
+                     <content>
+                        <VBox spacing="5.0">
+                           <children>
+                              <HBox spacing="5.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="145.0" text="Filtrar">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <JFXTextField fx:id="txtFiltro" prefHeight="25.0" prefWidth="733.0">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </JFXTextField>
+                                    <HBox alignment="BOTTOM_RIGHT" spacing="20.0">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                    <Label fx:id="lbRutaArchivoHeder" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="441.0" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="tbAvanve" onMouseClicked="#tbReciboMouseClicked" prefHeight="196.0" prefWidth="886.0" VBox.vgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn fx:id="tbcNumero" prefWidth="122.06341552734375" text="Num.Avance" />
+                                    <TableColumn fx:id="tbcCliente" prefWidth="157.0" text="Suplidor" />
+                                    <TableColumn fx:id="tbcFecha" prefWidth="366.0" text="Fecha" />
+                                    <TableColumn fx:id="tbcFechaUltimoAvance" prefWidth="366.0" text="Fecha  Ultimo Avance" />
+                                    <TableColumn fx:id="tbcTotalAvance" prefWidth="157.0" text="Total Avance" />
+                                    <TableColumn fx:id="tbcTotalPendiente" prefWidth="157.0" text="Total Disponible" />
+                                </columns>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="1067.0" spacing="5.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="90.0" text="Total Avanve  : ">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <JFXTextField fx:id="txtTotalAvance" alignment="CENTER" editable="false" prefHeight="30.0" prefWidth="97.0">
+                                       <HBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <Label alignment="BOTTOM_LEFT" layoutX="897.0" layoutY="13.0" prefHeight="25.0" prefWidth="110.0" text="Total  Disponible   : " />
+                                    <JFXTextField fx:id="txtTotalDisponible" alignment="CENTER" editable="false" layoutX="1000.0" layoutY="13.0" prefHeight="30.0" prefWidth="108.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="    Detalle       ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="365.0" prefWidth="786.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <TableView fx:id="tbDetalleAvanve" onMouseClicked="#tbDetalleReciboMouseClicked" prefHeight="328.0" prefWidth="766.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="tbcRecibo" prefWidth="122.06341552734375" text="No.Comprobante" />
+                                          <TableColumn fx:id="tbcFechaAvanve" prefWidth="122.06341552734375" text="Fecha  Avance" />
+                                          <TableColumn fx:id="tbcAvanve" prefWidth="122.06341552734375" text="Monto Avance" />
+                                          <TableColumn fx:id="tbcVerDocumento" maxWidth="80.0" minWidth="80.0" resizable="false">
+                                             <graphic>
+                                                <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" smooth="false">
+                                                   <image>
+                                                      <Image url="@../../../imagen/img_documento.jpg" />
+                                                   </image>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                                             </graphic>
+                                          </TableColumn>
+                                       </columns>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT">
+                                       <children>
+                                          <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="88.0" text="Total  Avance  :">
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXTextField fx:id="txtAvance" alignment="BOTTOM_CENTER" editable="false" prefHeight="30.0" prefWidth="107.0">
+                                             <HBox.margin>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </JFXTextField>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets top="4.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="313.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.proyecto.RegistroProyectoController">
+  <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="272.0" text="Registro  de  Proyecto   " textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="13.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="273.0" prefWidth="620.0">
+         <children>
+            <Label alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="56.0" prefHeight="30.0" prefWidth="61.0" text="Nombre" />
+            <JFXTextField fx:id="txtNombre" layoutX="84.0" layoutY="57.0" prefHeight="25.0" prefWidth="493.0" />
+            <TextArea fx:id="txtDescripcion" layoutX="14.0" layoutY="145.0" prefHeight="118.0" prefWidth="592.0" promptText="DESCRIPCION" AnchorPane.bottomAnchor="10.0" />
+            <Label alignment="BOTTOM_LEFT" layoutX="338.0" layoutY="20.0" prefHeight="25.0" prefWidth="118.0" text="Fecha Final" />
+            <JFXDatePicker fx:id="dpFechaInicio" layoutX="133.0" layoutY="20.0" prefHeight="25.0" prefWidth="183.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXDatePicker>
+            <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="20.0" prefHeight="25.0" prefWidth="92.0" text="Fecha Inicio " />
+            <JFXDatePicker fx:id="dpFechaFinal" layoutX="420.0" layoutY="20.0" onAction="#dpFechaFinalActionEvent" prefHeight="25.0" prefWidth="167.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXDatePicker>
+            <Label layoutX="15.0" layoutY="100.0" prefHeight="25.0" prefWidth="71.0" text="Estado" />
+            <JFXComboBox fx:id="cbEstado" layoutX="87.0" layoutY="95.0" onAction="#cbEstadoActinEvent" prefHeight="25.0" prefWidth="202.0" />
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>

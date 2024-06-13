@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane stylesheets="@../../../style/tabPane.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
+         fx:controller="controlador.reportes.cxc.ReporteCuentasPorCobrarController">
+   <tabs>
+      <Tab closable="false" text="    Cuentas  por  Cobrar    ">
+         <content>
+            <VBox prefHeight="611.0" prefWidth="1028.0">
+               <children>
+                  <HBox prefHeight="183.0" prefWidth="1018.0">
+                     <children>
+                        <HBox prefHeight="183.0" prefWidth="156.0" spacing="10.0">
+                           <children>
+                              <VBox prefHeight="167.0" prefWidth="130.0" spacing="10.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="chDetallado" onAction="#chDetalladoActionEvent" prefHeight="28.0" prefWidth="98.0" text="Detallado ">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chResumido" onAction="#chResumidoActionevent" prefHeight="28.0" prefWidth="98.0" text="Resumido">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </JFXCheckBox>
+                                    <JFXButton fx:id="btnBuscarCliente" onAction="#btnBuscarClienteActionEvent" prefHeight="30.0" prefWidth="107.0" styleClass="btn-update" stylesheets="@../../../style/style.css" text="Por  Cliente" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="btnVerReporteFactPendiente" onAction="#btnVerReporteFactPendienteAcionEvent" prefHeight="32.0" prefWidth="106.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Ver  Reporte" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </HBox>
+                        <VBox prefHeight="168.0" prefWidth="612.0" spacing="5.0">
+                           <children>
+                              <VBox prefHeight="36.0" prefWidth="280.0" spacing="10.0">
+                                 <children>
+                                    <HBox prefHeight="18.0" prefWidth="320.0">
+                                       <children>
+                                          <JFXCheckBox fx:id="chAlCorte" onAction="#chAlCorteActionEvent" prefHeight="18.0" prefWidth="107.0" text="Al Corte" />
+                                          <JFXCheckBox fx:id="chIncluirPendienteCero" prefHeight="18.0" prefWidth="223.0" text="Incluir  Factura con  Pendiente  cero" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <JFXCheckBox fx:id="chEntreFecha" onAction="#chEntreFechaActionEvent" prefHeight="28.0" prefWidth="98.0" text="Entre Fecha " />
+                                    <HBox>
+                                       <children>
+                                          <Label prefHeight="29.0" prefWidth="50.0" text="Desde" />
+                                          <JFXDatePicker fx:id="dpFechaDesde1" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <Label prefHeight="29.0" prefWidth="48.0" text="Hasta" />
+                                          <JFXDatePicker fx:id="dpFecgaHasta1" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab closable="false" text=" Estado  de  Cuenta ">
+         <content>
+            <VBox prefHeight="611.0" prefWidth="1028.0">
+               <children>
+                  <HBox prefHeight="131.0" prefWidth="1018.0">
+                     <children>
+                        <VBox prefHeight="146.0" prefWidth="281.0" spacing="10.0">
+                           <children>
+                              <VBox prefHeight="36.0" prefWidth="280.0" spacing="10.0">
+                                 <children>
+                                    <HBox prefHeight="18.0" prefWidth="320.0">
+                                       <children>
+                                          <JFXCheckBox fx:id="chIncluirPendienteCero1" prefHeight="18.0" prefWidth="223.0" text="Incluir  Factura con  Pendiente  cero" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <HBox>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <JFXCheckBox fx:id="chEstadoAlCorte" onAction="#chEstadoAlCorteACtionEvent" prefHeight="26.0" prefWidth="82.0" text="Al Corte" />
+                                          <JFXDatePicker fx:id="dpFechaCorte" prefHeight="25.0" prefWidth="191.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="chEntreFecha1" onAction="#chEstadoEntreFechaActionEvent" prefHeight="28.0" prefWidth="98.0" text="Entre Fecha ">
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </JFXCheckBox>
+                                    <HBox>
+                                       <children>
+                                          <Label prefHeight="29.0" prefWidth="50.0" text="Desde" />
+                                          <JFXDatePicker fx:id="dpEstadoFechaDesde" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <Label prefHeight="29.0" prefWidth="48.0" text="Hasta" />
+                                          <JFXDatePicker fx:id="dpEstadoFecgaHasta" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <HBox prefHeight="183.0" prefWidth="156.0" spacing="10.0">
+                           <children>
+                              <VBox prefHeight="167.0" prefWidth="130.0" spacing="10.0">
+                                 <children>
+                                    <JFXButton fx:id="btnBuscarClienteEstadoCuenta" onAction="#btnBuscarClienteEstadoCuentaActionEvent" prefHeight="30.0" prefWidth="107.0" styleClass="btn-update" stylesheets="@../../../style/style.css" text="Por  Cliente" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="btnVerReporteEstadoCuenta" onAction="#btnVerReporteEstadoCuentaActionEvent" prefHeight="32.0" prefWidth="106.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Ver  Reporte" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="49.0" text="Cliente : " />
+                        <Label fx:id="lbCliente" prefHeight="29.0" prefWidth="680.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="633.0" prefWidth="1118.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.proyecto.ProyectoController">
+   <children>
+      <VBox prefWidth="890.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="11.0" prefWidth="776.0" spacing="10.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="80.0" text="Fecha Inicio" />
+                  <JFXDatePicker fx:id="dpFechaInicio" prefHeight="25.0" prefWidth="140.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+                  <Label alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="79.0" text="Fecha Final" />
+                  <JFXDatePicker fx:id="dpFechaFinal" layoutX="79.0" layoutY="10.0" prefHeight="25.0" prefWidth="114.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+                  <JFXButton fx:id="btnNuevo" accessibleText="Nuevor Contrato" onAction="#btnNuevoActionEvent" prefHeight="32.0" prefWidth="77.0" styleClass="btn-new" stylesheets="@../../style/style.css" text="Nuevo">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnBuscar" accessibleText="Buscar Contrato" onAction="#btnBuscarActionEvent" prefHeight="32.0" prefWidth="83.0" styleClass="btn-search" stylesheets="@../../style/style.css" text="Buscar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEditar" onAction="#btnEditarActionEvent" prefHeight="30.0" prefWidth="73.0" styleClass="btn-update" stylesheets="@../../style/style.css" text="Editar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <TabPane fx:id="tabPane" stylesheets="@../../style/tabPane.css" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <tabs>
+                  <Tab closable="false" text="   Proyestos     ">
+                     <content>
+                        <VBox spacing="5.0">
+                           <children>
+                              <HBox spacing="5.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="45.0" text="Filtrar">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <JFXTextField fx:id="txtFiltro" prefHeight="25.0" prefWidth="733.0">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </JFXTextField>
+                                    <HBox alignment="BOTTOM_RIGHT" spacing="20.0">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="tbHoraExtra" onMouseClicked="#tbContratoDeServicioClicked" prefHeight="196.0" prefWidth="886.0" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="tbcNumeroNom" maxWidth="300.0" minWidth="80.0" text="Codigo" />
+                                  <TableColumn fx:id="tbcFechaInicio" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Fecha Inicio" />
+                                    <TableColumn fx:id="tbcFechaFinal" maxWidth="150.0" minWidth="100.0" prefWidth="100.0" text="Fecha  Final" />
+                                    <TableColumn fx:id="tbcNombre" prefWidth="157.0" text="Nombre" />
+                                    <TableColumn fx:id="tbcEstado" maxWidth="100.0" minWidth="80.0" text="Estado" />
+                                </columns>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="786.0" spacing="5.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="77.0" text="Cantidad">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <JFXTextField fx:id="txtCantidad" alignment="BOTTOM_CENTER" editable="false" prefHeight="25.0" prefWidth="74.0">
+                                       <HBox.margin>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </HBox.margin>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="    Descripcion       ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="365.0" prefWidth="786.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <children>
+                                    <JFXTextArea fx:id="txtDescripcion" editable="false" styleClass="tab" stylesheets="@../../style/style.css" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextArea>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

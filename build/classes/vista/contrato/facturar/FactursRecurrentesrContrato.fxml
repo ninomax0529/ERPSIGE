@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="633.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contrato.facturar.FacturasRecurrentesContratoController">
+   <children>
+      <VBox prefWidth="890.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+                     <items>
+                        <VBox alignment="TOP_CENTER" spacing="10.0">
+                           <children>
+                              <VBox fx:id="vbVisorDeProgreso">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label fx:id="lbProgreso" alignment="CENTER" prefHeight="10.0" prefWidth="574.0" stylesheets="@../../../style/style.css">
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <ProgressIndicator fx:id="pgIndicador" prefHeight="34.0" prefWidth="278.0" progress="0.0" />
+                                       </children>
+                                    </HBox>
+                                    <ProgressBar fx:id="progresBar" prefHeight="18.0" prefWidth="1700.0" progress="0.0" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="18.0" prefWidth="506.0" spacing="10.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="52.0" text="Fecha">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <HBox fx:id="hbPermisos" spacing="10.0">
+                                       <children>
+                                          <JFXDatePicker fx:id="dpFechaFacturacion" accessibleText="Fecha de Corte" disable="true" editable="false" onAction="#dpFechaFacturacionActionEvent" prefHeight="25.0" prefWidth="140.0">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </JFXDatePicker>
+                                          <JFXButton fx:id="btnBuscarContratoRecurrente" accessibleText="Buscar Contrato" onAction="#btnBuscarActionEvent" prefHeight="29.0" prefWidth="76.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Buscar">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </JFXButton>
+                                          <JFXButton fx:id="btnGenerarFacturaRecurrente" accessibleText="Generar Factura" onAction="#btnNuevoActionEvent" prefHeight="29.0" prefWidth="133.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Generar  Factura">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <JFXButton fx:id="btnGuardarRecurrente" accessibleText="Guardar Factura" onAction="#btnGuardarActionEvent" prefHeight="29.0" prefWidth="80.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Guardar">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <VBox VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="45.0" text="Filtrar">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXTextField fx:id="txtFiltroContrato" prefHeight="25.0" prefWidth="465.0" />
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="tbContratoDeServicio" onMouseClicked="#tbContratoDeServicioClicked" prefHeight="416.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="tbcNumContratoContra" maxWidth="300.0" minWidth="80.0" prefWidth="200.0" text="No.Contrato" />
+                                          <TableColumn fx:id="tbcClienteContra" minWidth="200.0" prefWidth="200.0" text="Cliente" />
+                                          <TableColumn fx:id="tbcMontoContra" maxWidth="100.0" minWidth="80.0" prefWidth="100.0" text="Monto" />
+                                          <TableColumn fx:id="tbcFacturar" maxWidth="120.0" minWidth="70.0" text="Facturar">
+                                             <graphic>
+                                                <JFXCheckBox fx:id="chFactuarar" onAction="#chFactuararActionEvent" text="Facturar" />
+                                             </graphic></TableColumn>
+                                       </columns>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="526.0" spacing="10.0" style="-fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lbFechaDeFacturacion" alignment="CENTER" prefHeight="30.0" prefWidth="164.0" styleClass="existencia" stylesheets="@../../../style/style.css" textFill="#41abe0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="104.0" text="Fecha Hasta : ">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXDatePicker fx:id="dpFechaHasta" accessibleText="Fecha de Corte" editable="false" onAction="#dpFechaHastaActionevent" prefHeight="25.0" prefWidth="145.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </JFXDatePicker>
+                                    <Label prefHeight="26.0" prefWidth="97.0" text="Cantidad">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbCantidadContrato" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #000000;">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <VBox />
+                              <Label alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="553.0" stylesheets="@../../../style/style.css" text=" Facturas  generadas  por Contrato (UV)  " textFill="#1e1b1a">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <HBox>
+                                 <children>
+                                    <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="45.0" text="Filtrar" />
+                                    <JFXTextField fx:id="txtFiltroFactura" prefHeight="25.0" prefWidth="465.0" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <TabPane stylesheets="@../../../style/tabPane.css" VBox.vgrow="ALWAYS">
+                                 <tabs>
+                                    <Tab closable="false" text="   Factura      ">
+                                       <content>
+                                          <TableView fx:id="tbFacturaDeContrato" onMouseClicked="#tbFacturaDeContratoMouseClicked" prefHeight="416.0" prefWidth="525.0">
+                                             <columns>
+                                                <TableColumn fx:id="tbcNoContratoFact" maxWidth="300.0" minWidth="80.0" prefWidth="200.0" text="No.Contrato" />
+                                                <TableColumn fx:id="tbcFacturaFact" prefWidth="366.0" text="Factura" />
+                                                <TableColumn fx:id="tbcClienteFact" prefWidth="157.0" text="Cliente" />
+                                                <TableColumn fx:id="tbcMontoFact" prefWidth="157.0" text="Monto" />
+                                                <TableColumn fx:id="tbcVerFactura" maxWidth="70.0" minWidth="80.0" prefWidth="70.0" resizable="false">
+                                                   <graphic>
+                                                      <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" smooth="false">
+                                                         <image>
+                                                            <Image url="@../../../imagen/img_documento.jpg" />
+                                                         </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="OPEN_HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </TableColumn>
+                                                <TableColumn fx:id="tbcFacturarPrevio" maxWidth="120.0" minWidth="70.0" text="Facturar" />
+                                             </columns>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </TableView>
+                                       </content>
+                                    </Tab>
+                                 </tabs>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </TabPane>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="526.0" spacing="10.0" style="-fx-border-color: #000000;">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="137.0" text="Cantidad  de Factura">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbCantidadFactura" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="117.0" style="-fx-border-color: #000000;">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </items>
+                  </SplitPane>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

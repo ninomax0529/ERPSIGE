@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpVenta" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contrato.ModuloDeContratoController">
+   <left>
+      <ScrollPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <content>
+            <VBox fx:id="vbMenu" prefHeight="807.0" prefWidth="193.0" spacing="15.0" style="-fx-background-color: #292F36;">
+               <children>
+                  <Label alignment="CENTER" onMouseClicked="#menuPrincipalMouseClick" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #292F36;" stylesheets="@../../css/mai.css" text="Menu" textAlignment="CENTER" textFill="WHITE" underline="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXButton fx:id="btnAsistenciaTecnica" accessibleText="Asistencia Tecnica" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="539.0" onAction="#btnAsistenciaTecnicaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Asistencia Tecnica" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnRegistroContrato" accessibleText="Crear Clontrato" alignment="TOP_LEFT" disable="true" onAction="#btnRegistroContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Contrato" textFill="WHITE" textOverrun="WORD_ELLIPSIS" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" top="2.0" />
+                     </VBox.margin>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFacturarContrato" accessibleText="Facturar Contrato" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="116.0" onAction="#btnFacturarContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Factuar   Contrato" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFacturasRecurrentesContrato" accessibleText="Factura Recurrentes" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="106.0" onAction="#btnFacturasRecurrentesContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Factuas  Recurrentes" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" top="2.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnRenovarContrato" accessibleText=" Renovar  Contrato" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="398.0" onAction="#btnRenovarContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Renovar  Contrato" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFacturaAvanceContrato" accessibleText="Facturar Avance de Contrato" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="351.0" onAction="#btnFacturaAvanceContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Facturar   Avance" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFacturaPorCorreo" accessibleText="Enviar Factura por Correo" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="210.0" onAction="#btnFacturaPorCorreoActionActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text=" Enviar  por  Correo" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnContratoPorVencer" accessibleText="Contrato por Vencer" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="163.0" onAction="#btnContratoPorVencerActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Contrato  Por  Vencer" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnContratoVencido" accessibleText="Contrato Vencido" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="398.0" onAction="#btnContratoVencidoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Contrato  Vencido" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFacturaContrato" accessibleText="Facturas de Contratcto" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="304.0" onAction="#btnFacturaContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Facturas  de  Contrato" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnRegistrarSim" accessibleText="Registrar  Sim" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="492.0" onAction="#btnRegistrarSimACtionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Registrar  Sim" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnRegistrarImei" accessibleText="Registrar  ImeiGps" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="539.0" onAction="#btnRegistrarImeiActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Registrar  Imei  Gps" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Separator prefHeight="3.0" prefWidth="904.0" styleClass="head-background" stylesheets="@../../style/style.css" />
+                  <JFXButton fx:id="btnReporteContrato" accessibleText=" Reporte de Contrato" alignment="TOP_LEFT" disable="true" onAction="#btnReporteContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="         Reportes" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFacturasAnualesContrato" accessibleText="Facturas  Anuales" alignment="TOP_LEFT" layoutX="20.0" layoutY="163.0" onAction="#btnFacturasAnualesContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="180.0" stylesheets="@../../css/mai.css" text="  Factuas  Anuales" textFill="WHITE" visible="false">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </left>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane opacity="0.81" prefHeight="28.0" prefWidth="904.0">
+               <children>
+                  <Label fx:id="lbModuloVenta" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="19.0" prefWidth="307.0" text="Modulo Contrato de Servicio" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" styleClass="fondo_contrato" stylesheets="@../../css/style.css" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="69.0" text="Version: " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="1.0.0" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

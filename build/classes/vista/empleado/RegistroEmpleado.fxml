@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="514.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.empleado.RegistroEmpleadoController">
+  <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="280.0" text="Registro  de  Empleado  " textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="14.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Cerrar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <TabPane VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab closable="false" text="    Datos   Empleado     ">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="470.0" prefWidth="885.0" spacing="5.0">
+                     <children>
+                        <AnchorPane prefHeight="277.0" prefWidth="860.0">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" layoutX="7.0" layoutY="135.0" text="Apellidos" />
+                              <JFXTextField fx:id="txtNombre" layoutX="86.0" layoutY="92.0" prefHeight="25.0" prefWidth="472.0" AnchorPane.leftAnchor="86.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="100.0" text="Nombre" />
+                              <JFXTextField fx:id="txtApellido" layoutX="83.0" layoutY="122.0" prefHeight="25.0" prefWidth="470.0" AnchorPane.leftAnchor="83.0" />
+                              <Label alignment="BOTTOM_LEFT" layoutX="569.0" layoutY="136.0" text="Cedula" />
+                              <JFXTextField fx:id="txtCedula" alignment="CENTER" layoutX="623.0" layoutY="126.0" prefHeight="25.0" prefWidth="212.0" />
+                              <Label layoutX="7.0" layoutY="172.0" prefHeight="17.0" prefWidth="58.0" text="Direccion" />
+                              <JFXTextField fx:id="txtdireccion" layoutX="83.0" layoutY="160.0" prefHeight="25.0" prefWidth="751.0" />
+                              <JFXTextField fx:id="txtTelefono" alignment="CENTER" layoutX="79.0" layoutY="199.0" prefHeight="25.0" prefWidth="123.0" />
+                              <Label layoutX="7.0" layoutY="211.0" prefHeight="17.0" prefWidth="58.0" text="Telefono" />
+                              <Label layoutX="224.0" layoutY="215.0" prefHeight="17.0" prefWidth="44.0" text="Celular" />
+                              <JFXTextField fx:id="txtCelular" alignment="CENTER" layoutX="270.0" layoutY="202.0" prefHeight="25.0" prefWidth="150.0" />
+                              <Label layoutX="236.0" layoutY="68.0" prefHeight="17.0" prefWidth="35.0" text="Cargo" />
+                              <JFXComboBox fx:id="cbCargo" layoutX="276.0" layoutY="56.0" onAction="#cbCargoActionEvent" prefHeight="25.0" prefWidth="157.0" />
+                              <JFXDatePicker fx:id="dpFechaIngreso" layoutX="89.0" layoutY="9.0" prefHeight="25.0" prefWidth="121.0" />
+                              <Label layoutX="8.0" layoutY="17.0" prefHeight="17.0" prefWidth="84.0" text="Fecha  Ingreso" />
+                              <Label layoutX="441.0" layoutY="216.0" prefHeight="17.0" prefWidth="107.0" text="Correo electronico  " />
+                              <JFXTextField fx:id="txtCorreoElectronico" alignment="CENTER" layoutX="560.0" layoutY="207.0" prefHeight="25.0" prefWidth="271.0" />
+                              <Separator layoutY="239.0" prefHeight="6.0" prefWidth="840.0" />
+                              <Label layoutX="5.0" layoutY="66.0" prefHeight="17.0" prefWidth="83.0" text="Tipo  Nomina" />
+                              <JFXComboBox fx:id="cbTipoNomina" layoutX="87.0" layoutY="56.0" prefHeight="25.0" prefWidth="138.0" />
+                              <Label layoutX="439.0" layoutY="67.0" prefHeight="17.0" prefWidth="46.0" text="Sueldo" />
+                              <JFXTextField fx:id="txtSueldo" alignment="CENTER" layoutX="484.0" layoutY="56.0" prefHeight="25.0" prefWidth="87.0" />
+                              <Label layoutX="662.0" layoutY="21.0" prefHeight="17.0" prefWidth="42.0" text="Estado" />
+                              <JFXComboBox fx:id="cbEstado" layoutX="710.0" layoutY="11.0" prefHeight="25.0" prefWidth="114.0" />
+                              <HBox layoutX="583.0" layoutY="66.0" prefHeight="19.0" prefWidth="248.0" spacing="10.0" style="-fx-border-color: #000000;">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="58.0" text=" Sexo" />
+                                    <JFXRadioButton fx:id="rbMasculino" prefHeight="17.0" prefWidth="110.0" text="Masculino" />
+                                    <JFXRadioButton fx:id="rbFemenino" prefHeight="17.0" prefWidth="130.0" text="Femenino" />
+                                 </children>
+                              </HBox>
+                              <Label layoutX="465.0" layoutY="17.0" prefHeight="17.0" prefWidth="61.0" text="Condicion" />
+                              <JFXComboBox fx:id="cbCondicion" layoutX="529.0" layoutY="7.0" prefHeight="25.0" prefWidth="114.0" />
+                              <Label layoutX="588.0" layoutY="104.0" prefHeight="17.0" prefWidth="70.0" text="Estado Civil " />
+                              <JFXComboBox fx:id="cbEstadoCivil" layoutX="663.0" layoutY="92.0" onAction="#cbEstadoCivilActionEvent" prefHeight="25.0" prefWidth="157.0" />
+                              <JFXDatePicker fx:id="dpFecha" layoutX="335.0" layoutY="7.0" prefHeight="25.0" prefWidth="127.0" />
+                              <Label layoutX="223.0" layoutY="18.0" prefHeight="17.0" prefWidth="104.0" text="Fecha  Cumpleaño" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <VBox prefHeight="148.0" prefWidth="860.0">
+                           <children>
+                              <Separator prefWidth="200.0" />
+                              <Label prefHeight="17.0" prefWidth="863.0" styleClass="table-view" stylesheets="@../../../style/table-view.css" text="Observacion">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="txtObservacion" prefHeight="150.0" prefWidth="860.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </TabPane>
+  </children>
+</VBox>

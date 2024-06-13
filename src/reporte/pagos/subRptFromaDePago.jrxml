@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2022-12-21T11:40:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subRptFromaDePago" pageWidth="250" pageHeight="150" orientation="Landscape" columnWidth="240" leftMargin="5" rightMargin="5" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="962f3612-dcda-4e4e-bdbe-33c0d7b2176b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<parameter name="comprobante" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT tfp.descripcion,fp.monto from forma_pago fp INNER JOIN tipo_forma_pago tfp  on fp.tipo_forma_pago=tfp.codigo
+
+  where  tipo_documento=9  and   fp.documento=$P{comprobante} ]]>
+	</queryString>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="monto" class="java.lang.Double"/>
+	<variable name="monto1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-5" y="0" width="249" height="16" backcolor="#91DBA6" uuid="e2406990-4c77-4d61-9fe3-693d967568d9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="-5" y="0" width="144" height="16" uuid="1231d5f3-c131-4f06-9082-141e617025b4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box leftPadding="10">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMA DE PAGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="0" width="106" height="16" uuid="41717d83-2c7d-4228-b4ee-7180bdb0e162"/>
+				<box rightPadding="10">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement x="-5" y="0" width="144" height="16" uuid="8fd9f58a-9fd6-4059-a132-d5aea1540dbe">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box leftPadding="10">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="0" width="106" height="16" uuid="5977b987-d2c2-4e78-ac93-f3776edf9602"/>
+				<box rightPadding="10">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="139" y="0" width="106" height="16" uuid="8c29e2dd-cd97-4091-b677-4034d62bb584">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box rightPadding="10">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{monto1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-5" y="0" width="144" height="16" uuid="4baccf9a-1e7e-4ef1-bacc-8d4cbab723e3">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box leftPadding="10" rightPadding="10">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

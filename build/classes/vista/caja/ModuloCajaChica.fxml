@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpCajaChica" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.caja.ModuloCajaChicaController">
+   <left>
+      <VBox prefHeight="807.0" prefWidth="170.0" spacing="10.0" style="-fx-background-color: #292F36;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" onMouseClicked="#menuPrincipalMouseClick" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #292F36;" stylesheets="@../../css/mai.css" text="Menu" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <JFXButton fx:id="btnAperturaCaja" alignment="TOP_LEFT" layoutX="20.0" layoutY="62.0" onAction="#btnAperturaCajaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="150.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Abrir Caja" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnMovCajaChica" alignment="TOP_LEFT" onAction="#btnMovCajaChicaActionevent" opacity="0.97" prefHeight="32.0" prefWidth="150.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Mov de Caja" textFill="WHITE" textOverrun="WORD_ELLIPSIS" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="10.0" top="2.0" />
+               </VBox.margin>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrarCaja" alignment="TOP_LEFT" layoutX="20.0" layoutY="148.0" onAction="#btnCerrarCajaActionevent" opacity="0.97" prefHeight="32.0" prefWidth="150.0" stylesheets="@../../css/mai.css" text="   Cerrar  Caja" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnConsultaCajaChica" alignment="TOP_LEFT" layoutX="20.0" layoutY="146.0" onAction="#btnConsultaCajaChicaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="150.0" stylesheets="@../../css/mai.css" text=" Consulta  Caja" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Registro">
+                     <items>
+                        <MenuItem fx:id="mRegistroCajaChica" mnemonicParsing="false" onAction="#mRegistroCajaChicaOnAction" text="Caja chica" />
+                     </items></Menu>
+                <Menu mnemonicParsing="false" text="Consulta" />
+                <Menu mnemonicParsing="false" text="Reporte">
+                     <items>
+                        <MenuItem fx:id="menuRptCuadreCaja" mnemonicParsing="false" onAction="#menuRptCuadreCajaActionevent" text="Cuadre Caja" />
+                     </items></Menu>
+              </menus>
+            </MenuBar>
+            <AnchorPane opacity="0.81">
+               <children>
+                  <Label fx:id="lbModuloVenta" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="18.0" nodeOrientation="LEFT_TO_RIGHT" text="Modulo de Caja Chica" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </AnchorPane>
+            <Separator prefHeight="3.0" prefWidth="904.0" styleClass="head-background" stylesheets="@../../style/style.css" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" styleClass="fondo_caja_chica" stylesheets="@../../css/style.css" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="69.0" text="Version: " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="1.0.0" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

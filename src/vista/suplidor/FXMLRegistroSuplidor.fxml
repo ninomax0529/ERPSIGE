@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.suplidor.FXMLRegistroSuplidorController">
+   <children>
+      <VBox layoutX="14.0" prefHeight="200.0" prefWidth="900.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <HBox prefHeight="32.0" prefWidth="895.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="48.0" text="Fecha">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFecha" prefHeight="25.0" prefWidth="144.0" />
+                  <Label prefHeight="25.0" prefWidth="62.0" text="Nombre">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtNombre" alignment="CENTER" prefHeight="25.0" prefWidth="268.0" />
+                  <Label prefHeight="25.0" prefWidth="40.0" text="Tipo " />
+                  <JFXComboBox fx:id="cbTipoSuplidor" prefHeight="25.0" prefWidth="162.0" />
+               </children>
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox spacing="10.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="46.0" text="Rnc">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtRnc" alignment="CENTER" prefHeight="25.0" prefWidth="96.0" />
+                  <Label prefHeight="25.0" prefWidth="40.0" text="Plazo" />
+                  <JFXComboBox fx:id="cbPlazo" prefHeight="25.0" prefWidth="131.0" />
+                  <Label prefHeight="25.0" prefWidth="64.0" text="Telefono">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtTelefono" prefHeight="25.0" prefWidth="123.0" />
+                  <Label prefHeight="25.0" prefWidth="53.0" text="Celular">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtCelular" prefHeight="25.0" prefWidth="117.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin></JFXTextField>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="656.0" spacing="10.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="10.0" prefHeight="25.0" prefWidth="68.0" text="Dirección">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtDireccion" prefHeight="25.0" prefWidth="401.0" />
+                  <Label prefHeight="25.0" prefWidth="49.0" text="Email">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtEmail" prefHeight="25.0" prefWidth="181.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox spacing="10.0">
+               <children>
+                  <Label prefHeight="31.0" prefWidth="110.0" text="Nombre  Contacto" />
+                  <JFXTextField fx:id="txtContacto" prefHeight="25.0" prefWidth="272.0" />
+                  <Label prefHeight="36.0" prefWidth="121.0" text="Telefono  Contacto " />
+                  <JFXTextField fx:id="txtTelefonoContacto" prefHeight="25.0" prefWidth="203.0" />
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Pane prefHeight="40.0" prefWidth="765.0" stylesheets="@../../../css/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="40.0" prefWidth="765.0" styleClass="head-background" stylesheets="@../../style/style.css" text="Registro  Suplidor  " textFill="#f5eded">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutX="9.0" layoutY="2.0" onAction="#btnGuardarActionEvent" prefHeight="40.0" prefWidth="62.0" text="Guadar" textFill="#eeeeee" />
+            <JFXButton fx:id="btnCerrar" layoutX="81.0" layoutY="7.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Cerrar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+         <styleClass>
+            <String fx:value="btn-new" />
+            <String fx:value="titulo" />
+         </styleClass>
+      </Pane>
+   </children>
+</AnchorPane>

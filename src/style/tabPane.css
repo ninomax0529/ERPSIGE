@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 13, 2021, 7:52:22 AM
+    Author     : maximilianoa-te
+*/
+
+.tab-pane {
+    -fx-background-color: #e6e6e6;
+}
+/* Modificar el color de fondo de la pestaña */
+.tab {
+    -fx-background-color: #FFFFFF;
+}
+/* Modificar el color de fondo de la barra superior */
+.tab-pane>*.tab-header-area>*.tab-header-background
+{
+    -fx-background-color: -fx-outer-border, -fx-text-box-border,#536E71;
+
+}
+/* Modificar el color del texto en la pestaña */
+.tab-label {
+    -fx-text-fill: #000000;
+}
+/* Selector secundario, seleccione su etiqueta de elemento secundario cuando se selecciona Tabulador */
+.tab:selected .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
+/* Establecer el color de fondo cuando se selecciona la pestaña */
+.tab:selected {
+    -fx-background-color: #3BB839;
+}
+/* Cuando se selecciona Tab, seleccione su borde y modifique el estilo 
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-radius: 0px;
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-color: #4d1a4dff;
+}
+*/

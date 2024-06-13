@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-06-19T08:29:24 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RptConciliacionBanFV" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9a73cbb2-5f69-437c-a98c-cbd7aeff95fe">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="337"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="658"/>
+	<subDataset name="Empty Dataset1" uuid="0a108deb-1cdf-45c9-bb45-adec03f573e2"/>
+	<parameter name="numero" class="java.lang.Integer"/>
+	<parameter name="tituto" class="java.lang.String"/>
+	<parameter name="subTitulo" class="java.lang.String"/>
+	<parameter name="LIBRO_MAS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="LIBRO_MENOS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="BANCO_MAS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="BANCO_MENOS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="unidad_negocio" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+
+ (select  logo from unidad_de_negocio where codigo= $P{unidad_negocio} )  as  logo ,
+ fecha,nombre_banco,cuenta_banco,saldo_a_conciliar_banco
+ ,saldo_a_conciliar_libro,saldo_conciliado_banco,saldo_conciliado_libro,
+ fecha_hasta
+ 
+ from conciliacion_bancaria 
+  where   codigo=$P{numero}]]>
+	</queryString>
+	<field name="logo" class="java.io.InputStream"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="nombre_banco" class="java.lang.String"/>
+	<field name="cuenta_banco" class="java.lang.String"/>
+	<field name="saldo_a_conciliar_banco" class="java.lang.Double"/>
+	<field name="saldo_a_conciliar_libro" class="java.lang.Double"/>
+	<field name="saldo_conciliado_banco" class="java.lang.Double"/>
+	<field name="saldo_conciliado_libro" class="java.lang.Double"/>
+	<field name="fecha_hasta" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="152" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<line>
+				<reportElement x="0" y="0" width="752" height="1" uuid="b5b1ec66-5fbe-4774-b05e-e04d904f81bc"/>
+			</line>
+			<textField>
+				<reportElement x="297" y="60" width="422" height="20" uuid="6477f927-35f8-4a94-81c0-73cfb3ddf5e9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{subTitulo}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="10" y="11" width="250" height="99" uuid="f7dd8963-6227-4c17-b13b-6c1ddb70622f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="290" y="12" width="447" height="44" uuid="a06c9780-96fa-4199-96d5-5d87d0a16df0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Conciliacion Bancaria]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="748" height="30" uuid="412bf120-ab3b-42c4-9031-9218f9f5011f"/>
+			</rectangle>
+			<textField pattern="#,##0.00#">
+				<reportElement x="250" y="0" width="110" height="25" uuid="e81fb0f2-01af-419d-b1f7-d2de64f1a883"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saldo_a_conciliar_libro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="154" height="25" uuid="dec9415a-5930-4843-b294-d526aad256de"/>
+				<box leftPadding="4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo  Segun Libro Al]]></text>
+			</staticText>
+			<textField pattern="#,##0.00#">
+				<reportElement x="650" y="0" width="98" height="25" uuid="1b0efbd7-311b-4df2-98f2-928cfdda3cf7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saldo_a_conciliar_banco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="397" y="0" width="163" height="25" uuid="735cc19b-0336-43ee-8b0c-0d6e344dce65"/>
+				<box leftPadding="4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo  Segun Banco Al]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="155" y="0" width="95" height="25" uuid="d971b703-0f1f-4beb-b97e-da5fc0f2cc9d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_hasta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="561" y="0" width="88" height="25" uuid="2e53e215-1ba4-4cf2-a771-3ab3d2f203f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_hasta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="100">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<subreport overflowType="Stretch">
+				<reportElement x="0" y="0" width="376" height="100" uuid="3c0646ae-08f8-47dd-8173-345364d45964"/>
+				<subreportParameter name="conciliacion">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{LIBRO_MAS}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="376" y="0" width="376" height="100" uuid="f9978c57-84a9-4898-88d3-1e36392a75e2"/>
+				<subreportParameter name="conciliacion">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{BANCO_MAS}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="80">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
+			<subreport>
+				<reportElement x="0" y="0" width="376" height="80" uuid="7f4a0cae-8097-4f9e-b985-d6cc9d05361d"/>
+				<subreportParameter name="conciliacion">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{LIBRO_MENOS}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="376" y="0" width="376" height="80" uuid="02758da0-842b-49ae-9097-05b9d1080afa"/>
+				<subreportParameter name="conciliacion">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="tituto">
+					<subreportParameterExpression><![CDATA[$P{tituto}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subTitulo">
+					<subreportParameterExpression><![CDATA[$P{subTitulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBRO_MAS">
+					<subreportParameterExpression><![CDATA[$P{LIBRO_MAS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBRO_MENOS">
+					<subreportParameterExpression><![CDATA[$P{LIBRO_MENOS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BANCO_MAS">
+					<subreportParameterExpression><![CDATA[$P{BANCO_MAS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BANCO_MENOS">
+					<subreportParameterExpression><![CDATA[$P{BANCO_MENOS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{BANCO_MENOS}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="89">
+			<staticText>
+				<reportElement x="50" y="27" width="290" height="20" uuid="01a1b14f-e2c1-48cb-8d30-075b6ef9da45"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborada Por :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="25" width="360" height="20" uuid="e92f4878-654c-49c6-9a6f-5a2bc7bdd82a"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Revisada Por :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="1" width="752" height="1" uuid="99c769ec-06c5-4684-a399-1c930d5d9bc7"/>
+			</line>
+			<line>
+				<reportElement x="-4" y="72" width="752" height="1" uuid="2492cccf-02ec-4501-b8a6-32f3acc5ad04"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="561" y="54" width="100" height="16" uuid="a8ec36bf-6f57-46a3-b70c-47bd13022088"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="661" y="54" width="69" height="16" uuid="e0bd133c-f76d-4bad-82a4-7da386a82ee1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a">
+				<reportElement x="150" y="54" width="119" height="16" uuid="af28ba4c-0009-4fa0-bc20-cc239dfe38ae">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="54" width="140" height="16" uuid="2d4e3419-eebc-4892-b255-2c5a18e83923"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y Hora de Impresion :]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="7" width="748" height="20" uuid="3125ea75-f81f-4b20-9bf1-ce701c900665"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="7" width="210" height="20" uuid="523667da-ae43-4ef4-b272-c511081cae85"/>
+				<box leftPadding="4"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo  Conciliado  Segun Libro]]></text>
+			</staticText>
+			<textField pattern="#,##0.00#">
+				<reportElement x="210" y="7" width="130" height="20" uuid="726c9168-fa4c-4178-8101-05e6e6133e1b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saldo_conciliado_libro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="408" y="7" width="201" height="20" uuid="3fdf36f7-ef30-4673-b229-e9fee9c096d7"/>
+				<box leftPadding="4"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo  Conciliado Segun Banco]]></text>
+			</staticText>
+			<textField pattern="#,##0.00#">
+				<reportElement x="620" y="7" width="128" height="20" uuid="3349a753-fc2e-4410-931f-c94788f4677a"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saldo_conciliado_banco}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

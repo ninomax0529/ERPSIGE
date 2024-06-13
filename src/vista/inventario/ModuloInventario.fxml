@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inventario.ModuloInventarioController">
+   <left>
+      <VBox fx:id="vbMenu" prefHeight="807.0" prefWidth="206.0" spacing="15.0" style="-fx-background-color: #292F36;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" onMouseClicked="#menuPrincipalMouseClick" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #292F36;" stylesheets="@../../css/mai.css" text="Menu" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <JFXButton fx:id="btnAlmacen" accessibleText="Crear Almacen" alignment="TOP_LEFT" onAction="#btnAlmacenActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="196.0" stylesheets="@../../css/mai.css" text=" Almacen" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnArticulo" accessibleText="Crear Articulos" alignment="TOP_LEFT" onAction="#btnRegistrarArticulo" opacity="0.97" prefHeight="32.0" prefWidth="196.0" stylesheets="@../../css/mai.css" text="  Articulo" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnListaDePrecio" accessibleText="Crear Lista de Precio" alignment="TOP_LEFT" layoutX="15.0" layoutY="269.0" onAction="#btnListaDePrecioActionevent" opacity="0.97" prefHeight="32.0" prefWidth="196.0" stylesheets="@../../css/mai.css" text="  Lista de Precio " textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnEntradaInventario" accessibleText="Crear Entrada de Inventario" alignment="TOP_LEFT" layoutX="20.0" layoutY="171.0" onAction="#btnEntradaInventarioActionevent" opacity="0.97" prefHeight="32.0" prefWidth="196.0" stylesheets="@../../css/mai.css" text=" Entrada Inventario" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnDevolucionInventario" accessibleText="Crear Devolucion  de Inventario" alignment="TOP_LEFT" layoutX="15.0" layoutY="398.0" onAction="#btnDevolucionInventarioActionEvent" opacity="0.97" prefHeight="28.0" prefWidth="192.0" stylesheets="@../../css/mai.css" text=" Devolucion  de Inventario" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnAjusteDeInventario" accessibleText="Crear Ajuste de Inventario" alignment="TOP_LEFT" layoutX="15.0" layoutY="288.0" onAction="#btnAjusteDeInventarioActionevent" opacity="0.97" prefHeight="28.0" prefWidth="190.0" stylesheets="@../../css/mai.css" text=" Ajuste  de Inventario" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnCierreInventario" accessibleText="Cierre Mensual de Inventario" alignment="TOP_LEFT" onAction="#btnCierreInventarioActionEvent" opacity="0.97" prefHeight="28.0" prefWidth="191.0" stylesheets="@../../css/mai.css" text=" Cierre  Mensual" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnSolicitudSalida" accessibleText="Crear Solicitud de Salida" alignment="TOP_LEFT" onAction="#btnSolicitudSalidaActionEvent" opacity="0.97" prefHeight="28.0" prefWidth="196.0" stylesheets="@../../css/mai.css" text=" Solicitud  Salida" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnSalidaInventario" accessibleText="Crear Salida de Inventario" alignment="TOP_LEFT" onAction="#btnSalidaInventarioActionEvent" opacity="0.97" prefHeight="28.0" prefWidth="192.0" stylesheets="@../../css/mai.css" text=" Salida  de  Inventario" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnTransferenciaAlmacen" accessibleText="Crear Transferencia de Inventario" alignment="TOP_LEFT" layoutX="15.0" layoutY="445.0" onAction="#btnTransferenciaAlmacenActionEvent" opacity="0.97" prefHeight="28.0" prefWidth="196.0" stylesheets="@../../css/mai.css" text=" Transferencia  de  Inventario" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="2.0" right="5.0" top="2.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar fx:id="menuBar">
+              <menus>
+                <Menu mnemonicParsing="false" text="Registro">
+                  <items>
+                        <MenuItem fx:id="imUnidad" mnemonicParsing="false" onAction="#imUnidadActionEvent" text="Unidad" />
+                    <MenuItem fx:id="imArticulo" mnemonicParsing="false" onAction="#imArticuloEventAction" text="Articulo" />
+                        <MenuItem fx:id="imCategoria" mnemonicParsing="false" onAction="#imCategoriaEventAction" text="Categoria" />
+                        <MenuItem fx:id="imSubCategoria" mnemonicParsing="false" onAction="#imSubCategoriaActionEvent" text="Sub Categoria" />
+                        <MenuItem fx:id="imSubInvetarioInicial" mnemonicParsing="false" onAction="#imSubInvetarioInicialActionEvent" text="Inventario Inicial" />
+                        <MenuItem fx:id="imRegistroLoteProduccion" mnemonicParsing="false" onAction="#imRegistroLoteProduccionActionEvent" text="Registro Lote de Produccion" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reportes">
+                     <items>
+                        <MenuItem fx:id="menuRptInventario" mnemonicParsing="false" onAction="#menuRptInventarioActionEvent" text="Inventario" />
+                        <MenuItem fx:id="menuRptListaDeArticulo" mnemonicParsing="false" onAction="#menuRptListaDeArticuloActionEvent" text="Lista de Articulos" />
+                        <MenuItem fx:id="menuRptValorInventario" mnemonicParsing="false" onAction="#menuRptValorInventarioActionEvent" text="Valor de Inventario" />
+                        <MenuItem fx:id="menuRptEntradaInvetario" mnemonicParsing="false" onAction="#menuRptEntradaInvetarioActionEvent" text="Entrada de Inventario" />
+                        <MenuItem fx:id="menuRptMovimientoInventario" mnemonicParsing="false" onAction="#menuRptMovimientoInventarioActionevent" text="Movimiento de Inventario" />
+                        <MenuItem fx:id="menuRptPrecioDeLista" mnemonicParsing="false" onAction="#menuRptPrecioDeListaActionEvent" text="Precio de Lista" />
+                     </items></Menu>
+              </menus>
+            </MenuBar>
+            <AnchorPane>
+               <children>
+                  <Label fx:id="lbModulo" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" text="Modulo de Inventario" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </AnchorPane>
+            <Separator prefHeight="3.0" prefWidth="904.0" styleClass="head-background" stylesheets="@../../style/style.css" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" styleClass="fondo_inventario" stylesheets="@../../css/style.css" />
+   </center>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="69.0" text="Version: " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="1.0.0" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

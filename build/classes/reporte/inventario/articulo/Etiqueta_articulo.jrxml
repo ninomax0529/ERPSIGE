@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-05-04T15:37:02 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Etiqueta_articulo" pageWidth="170" pageHeight="113" whenNoDataType="NoPages" columnWidth="161" columnSpacing="22" leftMargin="4" rightMargin="5" topMargin="6" bottomMargin="4" isIgnorePagination="true" uuid="da004b85-551d-4d85-8402-237a7a1dd301">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="398"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="597"/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<parameter name="articulo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="url" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="unidad_negocio" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+
+(select nombre  from unidad_de_negocio where  codigo= $P{unidad_negocio}  ) as empresa,
+ a.numero as codigo,a. descripcion,  ubicacion, u.descripcion   as  unidad,
+ a.codigo_barra
+,catg.descripcion as catg,
+
+subct.descripcion as sub_cat,
+ a.nombre
+
+  
+ FROM   articulo a,unidad   u,sub_categoria subct,categoria catg
+ 
+    WHERE 
+   
+   a.unidad_entrada=u.codigo   
+   and  catg.codigo=a.categoria  
+   and  subct.codigo=a.sub_categoria and 
+   
+    a.codigo=$P{articulo}]]>
+	</queryString>
+	<field name="empresa" class="java.lang.String"/>
+	<field name="codigo" class="java.lang.Integer"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="unidad" class="java.lang.String"/>
+	<field name="codigo_barra" class="java.lang.String"/>
+	<field name="catg" class="java.lang.String"/>
+	<field name="sub_cat" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="62" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="cm"/>
+			<componentElement>
+				<reportElement x="5" y="15" width="139" height="11" uuid="46e9d882-474a-43be-bd26-3575100c896b"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128A" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{codigo}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="5" y="24" width="139" height="11" uuid="0832f89e-8516-40ba-b911-5d69c3fc4e6c"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo_barra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="36" width="155" height="16" isPrintWhenDetailOverflows="true" uuid="f9bed463-a8bd-498a-81e4-687f2a76a79a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box topPadding="1" leftPadding="1">
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="0" width="138" height="14" uuid="e6c818fd-903f-4376-9146-93c2b90ec999"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="53" width="155" height="9" uuid="8c4d2b1d-7dda-4be4-b641-77a9e9613d96">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Unidad :  "+$F{unidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

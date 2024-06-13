@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="551.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contabilidad.proceso.FXMLEntradaDiarioController">
+   <children>
+      <VBox layoutX="319.0" layoutY="54.0" prefHeight="534.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Pane prefHeight="124.0">
+               <children>
+                  <Label layoutX="11.0" layoutY="32.0" prefHeight="17.0" prefWidth="42.0" text="Fecha" />
+                  <JFXDatePicker fx:id="dpFecha" layoutX="67.0" layoutY="27.0" />
+                  <Label layoutX="268.0" layoutY="33.0" text="Modulo" />
+                  <JFXComboBox fx:id="cbModulo" layoutX="353.0" layoutY="27.0" prefHeight="27.0" prefWidth="166.0" />
+                  <Label layoutX="528.0" layoutY="32.0" text="Tipo Asiento" />
+                  <JFXComboBox fx:id="cbTipoAsiento" layoutX="620.0" layoutY="27.0" prefHeight="27.0" prefWidth="166.0" />
+                  <Label layoutX="11.0" layoutY="70.0" prefHeight="25.0" prefWidth="94.0" text="No.Documento" />
+                  <TextField fx:id="txtDocumento" layoutX="111.0" layoutY="72.0" prefHeight="25.0" prefWidth="166.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="59.0">
+               <children>
+                  <HBox layoutY="14.0" prefHeight="27.0" prefWidth="773.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="78.0" text="Descripcion" />
+                        <TextField fx:id="txtDescripcion" editable="false" prefHeight="27.0" prefWidth="364.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <JFXButton fx:id="btnCatalogoCons" onAction="#btnCatalogoConsActionEvent" prefHeight="25.0" prefWidth="87.0" styleClass="btn-search" stylesheets="@../../../css/style.css" text="Buscar" />
+                        <JFXButton fx:id="btnAgregar" onAction="#btnAgregarActionEvent" prefHeight="25.0" prefWidth="87.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="Agregar" />
+                        <JFXButton fx:id="btnEliminar" onAction="#btnEliminarActionEvent" prefHeight="25.0" prefWidth="87.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="223.0">
+               <children>
+                  <TableView fx:id="tblDetalleEnt" layoutX="11.0" layoutY="14.0" onKeyReleased="#tbDetalleEntActionEvent" prefHeight="200.0" prefWidth="779.0">
+                    <columns>
+                      <TableColumn fx:id="tbrCuenta" prefWidth="141.0" text="Cuenta" />
+                      <TableColumn fx:id="tbrDescripcion" prefWidth="312.0" text="Descripcion" />
+                        <TableColumn fx:id="tbrDebito" onEditCommit="#changeDebitoCellEnvent" prefWidth="140.0" text="Debito" />
+                        <TableColumn fx:id="tbrCredito" onEditCommit="#changeCreditoCellEnvent" prefWidth="179.0" text="Credito" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane prefHeight="142.0">
+               <children>
+                  <Label layoutX="562.0" layoutY="14.0" prefHeight="17.0" prefWidth="80.0" text="Total debito" />
+                  <TextField fx:id="txtTotalDebito" editable="false" layoutX="647.0" layoutY="10.0" prefHeight="15.0" prefWidth="100.0" />
+                  <Label layoutX="562.0" layoutY="42.0" prefHeight="17.0" prefWidth="80.0" text="Total crédito" />
+                  <TextField fx:id="txtTotalCredito" editable="false" layoutX="647.0" layoutY="38.0" prefHeight="15.0" prefWidth="100.0" />
+                  <HBox alignment="CENTER_RIGHT" layoutX="556.0" layoutY="104.0" prefHeight="25.0" prefWidth="188.0" spacing="10.0">
+                     <children>
+                        <JFXButton fx:id="btnGuardar" onAction="#btnGuardarActionEvent" prefHeight="25.0" prefWidth="105.0" styleClass="btn-update" stylesheets="@../../../css/style.css" text="Guadar" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="562.0" layoutY="74.0" prefHeight="17.0" prefWidth="80.0" text="Diferencia" />
+                  <TextField fx:id="txtDiferencia" editable="false" layoutX="647.0" layoutY="68.0" prefHeight="17.0" prefWidth="100.0" styleClass="btn-new" stylesheets="@../../css/style.css" />
+                  <TextArea fx:id="txtComentario" layoutX="21.0" layoutY="39.0" prefHeight="70.0" prefWidth="420.0" />
+                  <Label layoutX="21.0" layoutY="10.0" prefHeight="25.0" prefWidth="420.0" stylesheets="@../../../style/style.css" text="Concepto" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <Pane prefHeight="40.0" prefWidth="800.0" stylesheets="@../../../css/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="40.0" prefWidth="800.0" styleClass="head-background" stylesheets="@../../../style/style.css" text="Registro Entrada de Diario" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="titulo" />
+            <String fx:value="btn-new" />
+         </styleClass>
+      </Pane>
+   </children>
+</AnchorPane>

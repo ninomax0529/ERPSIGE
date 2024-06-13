@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.configuracion.unidadDeNegocio.RegistroUnidadDeNegocioController">
+   <children>
+      <AnchorPane prefHeight="34.0" prefWidth="627.0" styleClass="head-background" stylesheets="@../../../style/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="300.0" text="Registro  Unidad  de  Negocio  " textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Label layoutX="11.0" layoutY="75.0" prefHeight="32.0" prefWidth="62.0" text="Nombre" />
+      <JFXTextField fx:id="txtNombre" layoutX="99.0" layoutY="77.0" prefHeight="25.0" prefWidth="466.0" />
+      <Label alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="143.0" prefHeight="25.0" prefWidth="62.0" text="Telefono" />
+      <JFXTextField fx:id="txtTelefono" layoutX="91.0" layoutY="143.0" prefHeight="25.0" prefWidth="248.0" />
+      <Label alignment="BOTTOM_LEFT" layoutX="345.0" layoutY="147.0" prefHeight="27.0" prefWidth="37.0" text="Email" />
+      <JFXTextField fx:id="txtEmail" layoutX="379.0" layoutY="143.0" prefHeight="25.0" prefWidth="194.0" />
+      <Label layoutX="12.0" layoutY="183.0" prefHeight="26.0" prefWidth="68.0" text="Direccion" />
+      <JFXTextField fx:id="txtDireccion" layoutX="89.0" layoutY="176.0" prefHeight="25.0" prefWidth="483.0" />
+      <Label layoutX="10.0" layoutY="114.0" prefHeight="26.0" prefWidth="82.0" text="Descripcion" />
+      <JFXTextField fx:id="txtDescripcion" layoutX="105.0" layoutY="107.0" prefHeight="25.0" prefWidth="466.0" />
+      <Label layoutX="12.0" layoutY="214.0" prefHeight="26.0" prefWidth="185.0" text="Dia de facturacion  de  cada mes" />
+      <JFXComboBox fx:id="cbDiaDeFacturacion" layoutX="200.0" layoutY="208.0" prefHeight="25.0" prefWidth="68.0" />
+      <Label layoutX="310.0" layoutY="217.0" prefHeight="26.0" prefWidth="147.0" text="Dia antes  del vencimiento" />
+      <JFXComboBox fx:id="cbDiaAntesVencimiento" layoutX="461.0" layoutY="211.0" prefHeight="25.0" prefWidth="70.0" />
+      <Label layoutX="371.0" layoutY="45.0" prefHeight="32.0" prefWidth="37.0" text="RNC" />
+      <JFXTextField fx:id="txtRnc" layoutX="420.0" layoutY="49.0" prefHeight="25.0" prefWidth="147.0" />
+      <JFXTextField fx:id="txtPorcientoMontoGravado" layoutX="168.0" layoutY="250.0" prefHeight="25.0" prefWidth="61.0" />
+      <Label layoutX="9.0" layoutY="250.0" prefHeight="32.0" prefWidth="147.0" text=" Monto Gravado con Itbis" />
+      <Label layoutX="242.0" layoutY="253.0" prefHeight="32.0" prefWidth="101.0" text="\%   del   subTotal" />
+      <Label layoutX="11.0" layoutY="49.0" prefHeight="26.0" prefWidth="90.0" text="Empresa / Grupo" />
+      <JFXComboBox fx:id="cbEmpresaOGrupo" layoutX="115.0" layoutY="49.0" onAction="#cbEmpresaOGrupoActionEvent" prefHeight="25.0" prefWidth="240.0" />
+      <Label layoutX="12.0" layoutY="291.0" prefHeight="18.0" prefWidth="120.0" text="Dia de  Renovacion" />
+      <JFXComboBox fx:id="cbDiaDeRenovacion" layoutX="140.0" layoutY="282.0" prefHeight="25.0" prefWidth="70.0" />
+      <Label layoutX="236.0" layoutY="296.0" prefHeight="18.0" prefWidth="111.0" text="Mes  de  Renovacion" />
+      <JFXComboBox fx:id="cbMesDeRenovacion" layoutX="365.0" layoutY="287.0" prefHeight="25.0" prefWidth="70.0" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+</AnchorPane>

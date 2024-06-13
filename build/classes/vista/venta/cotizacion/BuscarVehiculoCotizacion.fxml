@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefWidth="890.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.venta.cotizacion.BuscarVehiculoCotizacionController">
+   <children>
+      <HBox prefHeight="35.0" prefWidth="1018.0" spacing="10.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="44.0" text="Filtrar" />
+            <JFXTextField fx:id="txtFiltrar" prefHeight="25.0" prefWidth="703.0" />
+            <JFXButton fx:id="btnAceptar" onAction="#btnAceptarActionEvent" prefHeight="25.0" prefWidth="72.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Aceptar">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <TableView fx:id="tbVehiculos" onMouseClicked="#tbSolicitudDePagoMouseClicked" prefHeight="450.0" prefWidth="991.0" stylesheets="@../../../style/table-view.css">
+         <columns>
+            <TableColumn fx:id="tbcVehiculo" maxWidth="1.7976931348623157E308" prefWidth="454.0" text="Vehiculo" />
+            <TableColumn fx:id="tbcPlaca" maxWidth="1.7976931348623157E308" minWidth="220.0" prefWidth="307.0" text="Placa" />
+            <TableColumn fx:id="tbcSeleccionar" maxWidth="100.0" minWidth="50.0" prefWidth="90.0" text="Seleccionar" />
+         </columns>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TableView>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

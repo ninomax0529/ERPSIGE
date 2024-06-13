@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="567.0" prefWidth="1033.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contrato.reporte.RptComisionesController">
+   <children>
+      <VBox prefHeight="72.0" prefWidth="912.0" spacing="10.0">
+         <children>
+            <HBox>
+               <children>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="95.0" text="Fecha  desde" />
+                  <JFXDatePicker fx:id="dpFechaInicio" prefHeight="25.0" prefWidth="149.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="92.0" text="Fecha  hasta" />
+                  <JFXDatePicker fx:id="dpFechaFinal" prefHeight="25.0" prefWidth="161.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXDatePicker>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="11.0" prefWidth="776.0" spacing="10.0">
+               <children>
+                  <JFXCheckBox fx:id="chPorServicio" layoutX="573.0" layoutY="10.0" onAction="#chPorServicioActionEvent" prefHeight="29.0" prefWidth="103.0" text="Por Servicios" />
+                  <JFXCheckBox fx:id="chPorCobros" layoutX="601.0" layoutY="10.0" onAction="#chPorCobrosActionEvent" prefHeight="29.0" prefWidth="96.0" text="Por Cobros" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <JFXCheckBox fx:id="chPorVentas" onAction="#chPorVentasActionEvent" prefHeight="29.0" prefWidth="105.0" text="Por Ventas ">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </JFXCheckBox>
+                  <HBox fx:id="hbComPorVenta" prefHeight="30.0" prefWidth="479.0" style="-fx-border-color: #00dddd;">
+                     <children>
+                        <JFXCheckBox fx:id="chEmpleado" layoutX="10.0" layoutY="10.0" onAction="#chEmpleadoActionEvent" prefHeight="29.0" prefWidth="105.0" text="Empleado " />
+                        <JFXCheckBox fx:id="chCliente" layoutX="115.0" layoutY="10.0" onAction="#chClienteActionEvent" prefHeight="29.0" prefWidth="86.0" text="Cliente" />
+                        <JFXCheckBox fx:id="chSuplidor" layoutX="121.0" layoutY="16.0" onAction="#chSuplidorActionEvent" prefHeight="18.0" prefWidth="81.0" text="Suplidor" />
+                        <JFXCheckBox fx:id="chTodos" layoutX="121.0" layoutY="16.0" onAction="#chTodosActionEvent" prefHeight="29.0" prefWidth="86.0" text="Todos" />
+                        <JFXCheckBox fx:id="chResumido" layoutX="226.0" layoutY="16.0" onAction="#chResumidoActionEvent" prefHeight="29.0" prefWidth="86.0" text="Resumido  " />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <JFXButton fx:id="btnVerReporte" disable="true" onAction="#btnVerReporteActionEvent" prefHeight="29.0" prefWidth="120.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Ver  Reporte" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </VBox>
+      <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+         <items>
+            <VBox spacing="5.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="506.0" style="-fx-border-color: #000000;" styleClass="thumb" stylesheets="@../../../css/mai.css" text="Ejecutivos de Ventas" textFill="#1054d3" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="42.0" text="Filtrar">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txtFiltroEjVenta" prefHeight="25.0" prefWidth="458.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TableView fx:id="tbVendedor" onMouseClicked="#tbClienteActionEvent" prefWidth="900.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="tbcCodigo" prefWidth="75.0" text="Codigo" />
+                        <TableColumn fx:id="tbcNombre" prefWidth="75.0" text="Nombre" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="507.0" style="-fx-border-color: #000000;" styleClass="thumb" stylesheets="@../../../css/mai.css" text="Tecnicos" textFill="#1054d3" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="46.0" text="Filtrar">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txtFiltroInstalador" prefHeight="25.0" prefWidth="458.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TableView fx:id="tbInstalador" onMouseClicked="#tbInstaladorMouseClicked" prefWidth="900.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="tbcCodInstalador" prefWidth="75.0" text="Codigo" />
+                        <TableColumn fx:id="tbcNomInstalador" prefWidth="75.0" text="Nombre" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+   </children>
+</VBox>

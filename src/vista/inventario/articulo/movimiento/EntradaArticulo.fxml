@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="611.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inventario.articulo.movimiento.EntradaArticuloController">
+  <children>
+      <HBox prefHeight="57.0" prefWidth="1028.0" spacing="10.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="50.0" text="Filtrar">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+            <JFXTextField fx:id="txtFiltrar" prefHeight="25.0" prefWidth="171.0" />
+            <Label prefHeight="34.0" prefWidth="82.0" text="Fecha Desde">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+            <JFXDatePicker fx:id="dpFechaDesde" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="82.0" text="Fecha Hasta" />
+            <JFXDatePicker fx:id="dpFecgaHasta" layoutX="92.0" layoutY="10.0" />
+            <JFXButton fx:id="btnBuscar" onAction="#btnBuscarActionEvent" prefHeight="32.0" prefWidth="95.0" styleClass="btn-search" stylesheets="@../../../../css/style.css" text="Buscar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnReimprimir" layoutX="526.0" layoutY="10.0" onAction="#btnReimprimirActionEvent" prefHeight="32.0" prefWidth="97.0" styleClass="btn-new" stylesheets="@../../../../css/style.css" text="Exportar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+      <VBox prefHeight="601.0" prefWidth="890.0" spacing="5.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox spacing="5.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <children>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="281.0" prefWidth="1018.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="294.0" prefWidth="1018.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label fx:id="lbTipoVenta" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="38.0" prefWidth="354.0" styleClass="column-header" stylesheets="@../../../../css/btn_menu.css" text="Entrada de Inventario   ">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tbEntradaArticulo" prefHeight="306.0" prefWidth="548.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                              <TableColumn fx:id="tbcEntrada" prefWidth="75.0" text="Entrada" />
+                              <TableColumn fx:id="tbcFecha" prefWidth="75.0" text="Fecha" />
+                              <TableColumn fx:id="tbcCantidad" prefWidth="75.0" text="Cantidad" />
+                              <TableColumn fx:id="tbcUnidad" prefWidth="75.0" text="Unidad" />
+                            <TableColumn fx:id="tbcArticulo" prefWidth="135.0" text="Articulo" />
+                              <TableColumn fx:id="tbcCostoUnidatario" prefWidth="91.0" text="Costo Unitario" />
+                              <TableColumn fx:id="tbcCostoTotal" prefWidth="75.0" text="Costo  Total" />
+                              <TableColumn fx:id="tbcAnulada" prefWidth="75.0" text="Anulada" />
+                              <TableColumn fx:id="btnVerDocumento" maxWidth="-1.0" minWidth="70.0" prefWidth="75.0" resizable="false" text="Documento" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TableView>
+                        <HBox id="HBox" alignment="BOTTOM_RIGHT" prefHeight="20.0" prefWidth="890.0" spacing="10.0">
+                           <children>
+                              <Label maxWidth="-1.0" prefHeight="39.0" prefWidth="210.0" styleClass="title-text" stylesheets="@../../../../css/style.css" text="Total Entrada" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="11.0" fx:id="x3" />
+                                 </font>
+                                 <textFill>
+                                    <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+                                 </textFill>
+                              </Label>
+                              <Label fx:id="lbCantidad" alignment="CENTER" font="$x3" maxWidth="-1.0" prefHeight="39.0" prefWidth="113.0" styleClass="title-text" stylesheets="@../../../../css/style.css" textFill="$x4" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </VBox>
+  </children>
+</VBox>

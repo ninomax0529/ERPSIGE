@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane stylesheets="@../../../style/tabPane.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.reportes.flota.ReporteDeFlotaController">
+   <tabs>
+      <Tab closable="false" text="    Flotas      ">
+         <content>
+            <VBox prefHeight="611.0" prefWidth="1028.0" spacing="10.0">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <JFXCheckBox fx:id="chEntreFecha" onAction="#chEntreFechaActionEvent" />
+                  <VBox fx:id="vbEntreFecha" prefHeight="83.0" prefWidth="1008.0" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="26.0" prefWidth="221.0">
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="50.0" text="Desde" />
+                              <JFXDatePicker fx:id="dpFechaDesde" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="50.0" text="Hasta" />
+                              <JFXDatePicker fx:id="dpFechaHasta" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="btnVerReporte" onAction="#btnVerReporteActionEvent" prefHeight="32.0" prefWidth="93.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Ver  Reporte" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="514.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.venta.vendedor.RegistroVendedorController">
+  <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="280.0" text="Registro  de  Vendedor  " textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="14.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Cerrar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <TabPane stylesheets="@../../../style/tabPane.css" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab closable="false" text="    Datos   Vendedor      ">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="470.0" prefWidth="885.0" spacing="5.0">
+                     <children>
+                        <AnchorPane prefHeight="235.0" prefWidth="860.0">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" layoutX="8.0" layoutY="88.0" text="Apellidos" />
+                              <JFXTextField fx:id="txtNombre" layoutX="103.0" layoutY="44.0" prefHeight="25.0" prefWidth="562.0" AnchorPane.leftAnchor="98.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </JFXTextField>
+                              <Label alignment="BOTTOM_LEFT" layoutX="7.0" layoutY="59.0" text="Nombre" />
+                              <JFXTextField fx:id="txtApellido" layoutX="92.0" layoutY="75.0" prefHeight="25.0" prefWidth="442.0" AnchorPane.leftAnchor="87.0" />
+                              <Label alignment="BOTTOM_LEFT" layoutX="549.0" layoutY="89.0" text="Cedula" />
+                              <JFXTextField fx:id="txtRnc" alignment="CENTER" layoutX="613.0" layoutY="79.0" prefHeight="25.0" prefWidth="222.0" />
+                              <Label layoutX="7.0" layoutY="121.0" prefHeight="17.0" prefWidth="58.0" text="Direccion" />
+                              <JFXTextField fx:id="txtdireccion" layoutX="83.0" layoutY="109.0" prefHeight="25.0" prefWidth="751.0" />
+                              <JFXTextField fx:id="txtTelefono" alignment="CENTER" layoutX="73.0" layoutY="146.0" prefHeight="25.0" prefWidth="129.0" />
+                              <Label layoutX="7.0" layoutY="158.0" prefHeight="17.0" prefWidth="58.0" text="Telefono" />
+                              <Label layoutX="224.0" layoutY="162.0" prefHeight="17.0" prefWidth="44.0" text="Celular" />
+                              <JFXTextField fx:id="txtCelular" alignment="CENTER" layoutX="270.0" layoutY="149.0" prefHeight="25.0" prefWidth="150.0" />
+                              <Label layoutX="593.0" layoutY="18.0" prefHeight="17.0" prefWidth="113.0" text="Cargo" />
+                              <JFXComboBox fx:id="cbCargo" layoutX="638.0" layoutY="8.0" prefHeight="25.0" prefWidth="196.0" />
+                              <JFXDatePicker fx:id="dpFecha" layoutX="129.0" layoutY="10.0" prefHeight="25.0" prefWidth="158.0" />
+                              <Label layoutX="8.0" layoutY="18.0" prefHeight="17.0" prefWidth="109.0" text="Fecaha   Cumpleaño" />
+                              <Label layoutX="441.0" layoutY="163.0" prefHeight="17.0" prefWidth="107.0" text="Correo electronico  " />
+                              <JFXTextField fx:id="txtCorreoElectronico" alignment="CENTER" layoutX="560.0" layoutY="154.0" prefHeight="25.0" prefWidth="271.0" />
+                              <Separator layoutX="1.0" layoutY="197.0" prefHeight="6.0" prefWidth="840.0" />
+                              <Label layoutX="297.0" layoutY="15.0" prefHeight="17.0" prefWidth="92.0" text="Tipo  Vendedor" />
+                              <JFXComboBox fx:id="cbTipoVendedor" layoutX="391.0" layoutY="5.0" onAction="#cbTipoVendedorActionEvent" prefHeight="25.0" prefWidth="179.0" />
+                              <JFXCheckBox fx:id="chSuplidorDeCliente" layoutX="678.0" layoutY="54.0" prefHeight="18.0" prefWidth="165.0" text="Es  Suplidor de  Clientes " />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </AnchorPane>
+                        <VBox prefHeight="192.0" prefWidth="860.0">
+                           <children>
+                              <Separator prefWidth="200.0" />
+                              <Label prefHeight="17.0" prefWidth="863.0" styleClass="table-view" stylesheets="@../../../style/table-view.css" text="Observacion">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="txtObservacion" prefHeight="154.0" prefWidth="860.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="  Comisiones  ">
+              <content>
+                  <VBox>
+                     <children>
+                        <HBox prefHeight="35.0" prefWidth="842.0" spacing="10.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="119.0" text="\%  En Ventas directa  " />
+                              <JFXTextField fx:id="txtComisionVenta" alignment="CENTER" layoutX="80.0" layoutY="10.0" prefHeight="25.0" prefWidth="54.0" />
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="337.0" text=" Porciento por las  ventas realizada y cobradas   a  clientes">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="10.0" top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="20.0" layoutY="65.0" prefHeight="35.0" prefWidth="842.0" spacing="10.0">
+                           <children>
+                              <Label layoutX="134.0" layoutY="10.0" prefHeight="35.0" prefWidth="190.0" text="\%  En  Ventas  por  Compatibilidad" />
+                              <JFXTextField fx:id="txtComisionPorCompatibilidad" alignment="CENTER" layoutX="204.0" layoutY="10.0" prefHeight="25.0" prefWidth="71.0" />
+                              <Label prefHeight="28.0" prefWidth="467.0" text=" Porciento por las  ventas realizada y cobradas   a  clientes  por compatibilidad  ">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="20.0" layoutY="30.0" prefHeight="35.0" prefWidth="842.0" spacing="10.0">
+                           <children>
+                              <Label layoutX="134.0" layoutY="10.0" prefHeight="37.0" prefWidth="81.0" text="\% En  Cobros" />
+                              <JFXTextField fx:id="txtComisionCobros" alignment="CENTER" layoutX="204.0" layoutY="10.0" prefHeight="25.0" prefWidth="71.0" />
+                              <Label prefHeight="28.0" prefWidth="337.0" text=" Porciento  por  la gestion de cobros    a  clientes" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+              </content>
+            </Tab>
+         </tabs>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </TabPane>
+  </children>
+</VBox>

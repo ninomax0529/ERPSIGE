@@ -1,0 +1,171 @@
+.body {
+    -fx-background-color: #f9f9f9;
+}
+
+.fondo_venta {
+
+    -fx-background-image: url("/imagen/img_venta.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+
+
+}
+
+.fondo_nomina {
+
+    -fx-background-image: url("/imagen/img_nomina.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+
+
+}
+
+.fondo_contrato {
+
+    -fx-background-image: url("/imagen/img_contrac.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+
+
+}
+
+.fondo_contabilidad {
+
+    -fx-background-image: url("/imagen/img_comtabilidad.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+
+
+}
+.fondo_inventario {
+
+    -fx-background-image: url("/imagen/img_inventario.jpg") ;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+
+
+}
+.fondo_caja_chica {
+
+    -fx-background-image: url("/imagen/img_cajon.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50%;
+    -fx-background-position: center;
+    -fx-background-radius: 3;
+    -fx-background-color: #ffffff;
+
+
+}
+
+.fondo_config {
+
+    -fx-background-image: url("/imagen/img_config.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50%;
+    -fx-background-position: center;
+    -fx-background-radius: 3;
+    -fx-background-color: #ffffff;
+
+
+}
+
+
+.fondo_sistema {
+
+    -fx-background-image: url("/imagen/img_fondo.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+
+}
+.fondo_cx {
+
+    -fx-background-image: url("/imagen/img_cxc_3.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+    -fx-background-radius: 3;
+    -fx-background-color: #555;
+
+
+}
+
+.note {
+    -fx-background-color: #E2FBE1;
+    -fx-alignment: CENTER;
+}
+.note > .label {
+    -fx-text-fill: #3BB839;
+}
+.title-text {
+    -fx-text-fill: #555;
+    -fx-font-family: 'segoe ui';
+    -fx-font-size: 24pt;
+}
+.new-user-title {
+    -fx-text-fill: #555;
+    -fx-font-family: 'segoe ui';
+    -fx-font-size: 16pt;
+}
+.status-bar {
+    -fx-padding: .25em .75em;
+}
+.status-bar > .label {
+    -fx-text-fill: #f9f9f9;
+}
+.status-bar-disconnected {
+    -fx-background-color: #d53400;
+}
+.status-bar-connected {
+    -fx-background-color: #5CB85C;
+}
+/************** BUTTONS *************/
+.btn {
+    -fx-border-radius: 2px;
+    -fx-padding: .5em 1em;
+}
+.btn:focused {
+    -fx-outline: none;
+}
+.btn-new {
+    -fx-background-color: #5CB85C;
+    -fx-text-fill: #f9f9f9;
+}
+.btn-new:hover {
+    -fx-background-color: #459C45;
+}
+.btn-update {
+    -fx-background-color: #5BC0DE;
+    -fx-text-fill: #f9f9f9;
+}
+.btn-update:hover {
+    -fx-background-color: #4AA2BD;
+    -fx-outline: none;
+}
+.btn-remove {
+    -fx-background-color: #d53400;
+    -fx-text-fill: #f9f9f9;
+}
+.btn-remove:hover {
+    -fx-background-color: #BA3D13;
+    -fx-outline: none;
+}
+.btn-search {
+    -fx-background-color: #428BCA;
+    -fx-text-fill: #f9f9f9;
+}
+.btn-search:hover {
+    -fx-background-color: #3879B2;
+    -fx-outline: none;
+}
+.txt-search {
+    -fx-padding: .5em .5em;
+}
+.table-cell {
+    -fx-alignment: CENTER;
+}

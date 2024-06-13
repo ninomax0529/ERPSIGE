@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" prefHeight="868.0" prefWidth="1263.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.principal.FXMLModulosController">
+   <top>
+      <VBox stylesheets="@../../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="achMenu" opacity="0.81" prefHeight="29.0" prefWidth="1256.0" styleClass="head-background" stylesheets="@../../style/style.css" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lbUnidadNegocio" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1099.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#lbUnidadNegocioMouseClicked" prefHeight="37.0" prefWidth="149.0" text="ERP SIGE" textAlignment="RIGHT" textFill="WHITE" underline="true" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </Label>
+                  <HBox fx:id="hbMenuModulo" alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="17.0" prefWidth="1085.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton fx:id="btnConfiguracion" alignment="TOP_LEFT" disable="true" onAction="#btnConfiguracionAcionEvent" opacity="0.97" prefHeight="32.0" prefWidth="95.0" style="-fx-border-radius: 60px;" text=" Config" textFill="WHITE">
+                           <graphic>
+                              <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20">
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                              </FontAwesomeIconView>
+                           </graphic>
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnInventario" alignment="TOP_LEFT" disable="true" onAction="#btnInventarioActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="107.0" style="-fx-border-radius: 60px;" text="  Inventario" textFill="WHITE">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnPuntoVenta" accessibleText="Punto de Venta" alignment="TOP_LEFT" disable="true" onAction="#btnPuntoVentaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="124.0" style="-fx-border-radius: 60px;" text=" Punto de Venta" textFill="WHITE">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnConsultaVenta" alignment="TOP_LEFT" disable="true" onAction="#btnConsultaVentaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="71.0" style="-fx-border-radius: 60px;" text="Venta" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnOrdenCompra" alignment="TOP_LEFT" disable="true" onAction="#btnOrdenCompraActionevent" opacity="0.97" prefHeight="32.0" prefWidth="93.0" style="-fx-border-radius: 60px;" text="Compra" textFill="WHITE">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnContabilidad" alignment="TOP_LEFT" disable="true" onAction="#btnContabilidadActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="110.0" style="-fx-border-radius: 60px;" text="Contabilidad" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnCxP" alignment="TOP_LEFT" disable="true" onAction="#btnCxPActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="64.0" style="-fx-border-radius: 60px;" text="CXP" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnCxc" alignment="TOP_LEFT" disable="true" onAction="#btnCxcActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="59.0" style="-fx-border-radius: 60px;" text=" CxC" textFill="WHITE">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnContrato" alignment="TOP_LEFT" disable="true" onAction="#btnContratoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="89.0" style="-fx-border-radius: 60px;" text="Contrato" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnNomina" alignment="TOP_LEFT" disable="true" layoutX="866.0" layoutY="12.0" onAction="#btnNominaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="81.0" style="-fx-border-radius: 60px;" text="Nomina" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnBanco" alignment="TOP_LEFT" disable="true" layoutX="941.0" layoutY="15.0" onAction="#btnBancoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="81.0" style="-fx-border-radius: 60px;" text="Banco" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnReportes" alignment="TOP_LEFT" disable="true" layoutX="800.0" layoutY="12.0" onAction="#btnReportesActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="89.0" style="-fx-border-radius: 60px;" text="Reportes" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </AnchorPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" styleClass="fondo_sistema" stylesheets="@../../css/style.css" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <VBox fx:id="vlModulos" alignment="CENTER" prefHeight="885.0" prefWidth="1190.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <JFXButton fx:id="btnPedidos" alignment="TOP_LEFT" onAction="#btnPedidosActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="106.0" style="-fx-border-radius: 60px;" text="Pedidos" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCajaChica" alignment="TOP_LEFT" disable="true" onAction="#btnCajaChicaActionevent" opacity="0.97" prefHeight="32.0" prefWidth="79.0" style="-fx-border-radius: 60px;" text="  Caja" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane styleClass="head-background" stylesheets="@../../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" prefHeight="25.0" prefWidth="586.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z   Contacto : 809-280-7944" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="90.0" text="Version : " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="2.9.9" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label fx:id="lbUsuario" alignment="BOTTOM_RIGHT" layoutX="620.0" prefHeight="29.0" prefWidth="422.0" text="USUARIO" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

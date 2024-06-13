@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contabilidad.registro.FXMLCatalogoConsController">
+   <children>
+      <Pane layoutX="14.0" layoutY="24.0" prefHeight="51.0" prefWidth="787.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Label layoutX="16.0" layoutY="17.0" prefHeight="17.0" prefWidth="57.0" text="Filtrar" />
+            <TextField fx:id="txBuscar" layoutX="93.0" layoutY="12.0" prefHeight="27.0" prefWidth="669.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="75.0" prefHeight="431.0" prefWidth="787.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TableView fx:id="tbCatalogo" layoutX="14.0" layoutY="14.0" onMouseClicked="#tbCatalogoActionEvent" prefHeight="396.0" prefWidth="768.0">
+              <columns>
+                <TableColumn fx:id="tcCuenta" prefWidth="257.0" text="Cuenta" />
+                <TableColumn fx:id="tcDescripcion" prefWidth="486.0" text="Descripcion" />
+              </columns>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </TableView>
+         </children>
+      </Pane>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="40.0" prefWidth="807.0" styleClass="head-background" stylesheets="@../../../style/style.css" text="Buscar  Cuenta" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+   </children>
+</AnchorPane>

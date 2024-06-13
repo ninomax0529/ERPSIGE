@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.reconciliacion.reconciliacionCliente.RegistroReconciliacionClienteController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1216.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="1002.0" styleClass="head-background" stylesheets="@../../../style/style.css" text="Reconciliacion  Interna  de Cliente    " textFill="WHITE" AnchorPane.bottomAnchor="590.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="8.0" layoutY="6.0" prefHeight="620.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="17.0" layoutY="46.0" prefHeight="25.0" prefWidth="42.0" text="Fecha">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXDatePicker fx:id="dpFecha" layoutX="80.0" layoutY="38.0" prefHeight="25.0" prefWidth="125.0" />
+                  <Label layoutX="236.0" layoutY="41.0" prefHeight="25.0" prefWidth="70.0" text="Numero">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtNumero" alignment="BOTTOM_CENTER" editable="false" layoutX="314.0" layoutY="31.0" prefHeight="30.0" prefWidth="94.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="txtCodigoCliente" alignment="CENTER" editable="false" layoutX="493.0" layoutY="37.0" prefHeight="25.0" prefWidth="352.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXTextField>
+                  <Label alignment="BOTTOM_LEFT" layoutX="419.0" layoutY="43.0" prefHeight="25.0" prefWidth="53.0" text="Cliente">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnBuscarCliente" layoutX="867.0" layoutY="38.0" onAction="#btnBuscarClienteActionEvent" prefHeight="29.0" prefWidth="77.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Buscar" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnGuardar" onAction="#btnGuardarActionEvent" prefHeight="30.0" prefWidth="81.0" text="Guadar" textFill="#f5eded">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnNuevo" layoutX="80.0" onAction="#btnNuevoActionEvent" prefHeight="25.0" prefWidth="77.0" text="Nuevo" textFill="#f5f2f2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <VBox layoutX="8.0" layoutY="251.0" prefHeight="620.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+               <children>
+                  <HBox fx:id="hbDetallePago" prefHeight="422.0" prefWidth="1201.0">
+                     <children>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="640.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <VBox layoutX="12.0" layoutY="50.0" prefHeight="299.0" prefWidth="513.0" spacing="5.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="49.0">
+                                 <children>
+                                    <TableView fx:id="tbFacturaPendiente" prefHeight="237.0" prefWidth="575.0">
+                                      <columns>
+                                        <TableColumn fx:id="tbcFechaFact" maxWidth="200.0" prefWidth="100.0" text="Fecha" />
+                                        <TableColumn fx:id="tbcFactura" maxWidth="200.0" prefWidth="100.0" text="Factura" />
+                                          <TableColumn fx:id="tbcMontoFact" prefWidth="100.0" text="Monto" />
+                                          <TableColumn fx:id="tbcAbonoFact" maxWidth="200.0" prefWidth="100.0" text="Abono" />
+                                          <TableColumn fx:id="tbcMontoPendienteFact" maxWidth="120.0" text="Pendiente" />
+                                          <TableColumn fx:id="tbcSeleccionarFact" maxWidth="120.0" minWidth="50.0" prefWidth="92.0" text="Seleccionar" />
+                                      </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="510.0" spacing="10.0">
+                                       <children>
+                                          <Label alignment="BOTTOM_LEFT" layoutX="260.0" layoutY="23.0" prefHeight="25.0" prefWidth="130.0" text="Monto  a  Reconciliado" />
+                                          <JFXTextField fx:id="txtMontoAReconciliarFact" alignment="CENTER" disable="true" layoutX="407.0" layoutY="10.0" prefHeight="39.0" prefWidth="135.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font></JFXTextField>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Label alignment="CENTER" layoutX="14.0" layoutY="6.0" prefHeight="38.0" prefWidth="325.0" styleClass="existencia" stylesheets="@../../../style/style.css" text="Facturas  Pendiente" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="292.0" prefWidth="683.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="5.0" layoutY="4.0" prefHeight="38.0" prefWidth="402.0" styleClass="existencia" stylesheets="@../../../style/style.css" text="Recibo de Avance" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <VBox layoutX="8.0" layoutY="50.0" prefHeight="299.0" prefWidth="522.0" spacing="5.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="48.0">
+                                 <children>
+                                    <TableView fx:id="tbReciboAvance" prefHeight="352.0" prefWidth="408.0">
+                                       <columns>
+                                          <TableColumn fx:id="tbcFechaAvance" maxWidth="200.0" minWidth="90.0" prefWidth="90.0" text="Fecha" />
+                                          <TableColumn fx:id="tbcRecibo" maxWidth="150.0" minWidth="80.0" prefWidth="105.0" text="Recibo" />
+                                          <TableColumn fx:id="tbcMontoAvance" maxWidth="200.0" minWidth="80.0" prefWidth="100.0" text="Monto" />
+                                          <TableColumn fx:id="tbcMontoDisponibleAvance" maxWidth="200.0" minWidth="80.0" prefWidth="100.0" text="Disponible" />
+                                          <TableColumn fx:id="tbcSeleccionarRecibo" maxWidth="120.0" minWidth="50.0" prefWidth="92.0" text="Seleccionar" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="553.0">
+                                       <children>
+                                          <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="134.0" text="Monto  a  Reconciliado" />
+                                          <JFXTextField fx:id="txtMontoAReconciliarRecib" alignment="CENTER" disable="true" prefHeight="30.0" prefWidth="115.0">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </JFXTextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="845.0" spacing="10.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="1034.0" text="  Detalle Reconciliacion " textFill="#08588d">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btnEliminar" onAction="#btnEliminarActionEvent" prefHeight="25.0" prefWidth="73.0" styleClass="btn-remove" stylesheets="@../../../style/style.css" text="Eliminar">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="btnAgregar" onAction="#btnAgregarActionEvent" prefHeight="25.0" prefWidth="72.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Agregar">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets right="2.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <TableView fx:id="tbDetalleReconciliacion" prefHeight="328.0" prefWidth="1206.0">
+                           <columns>
+                              <TableColumn fx:id="tbcTipoDoc" maxWidth="250.0" prefWidth="200.0" text="Tipo Documento" />
+                              <TableColumn fx:id="tbcNumeroDoc" maxWidth="250.0" prefWidth="150.0" text="Numero  Documento" />
+                              <TableColumn fx:id="tbcDebito" maxWidth="250.0" prefWidth="248.0" text="Debito" />
+                              <TableColumn fx:id="tbcCredito" maxWidth="322.0" prefWidth="322.0" text="Cedito" />
+                              <TableColumn fx:id="tbcVerRecibo" maxWidth="80.0" minWidth="74.0" prefWidth="74.0" resizable="false">
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" smooth="false">
+                                       <image>
+                                          <Image url="@../../../imagen/img_documento.jpg" />
+                                       </image>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
+                                    </ImageView>
+                                 </graphic>
+                              </TableColumn>
+                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="111.0" text=" Total Reconciliado  ">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="txtTotalReconciliado" alignment="BOTTOM_CENTER" editable="false" prefHeight="25.0" prefWidth="115.0">
+                                 <HBox.margin>
+                                    <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXTextField>
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

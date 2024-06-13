@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 21, 2018, 1:30:49 PM
+    Author     : maximilianoa-te
+*/
+
+/*Formato de table */
+
+/*formato para las celdas del tableview*/
+.table-cell {     
+    -fx-padding: 0.5em 0.5em 0.1em 0.3em;
+    -fx-border-color: -fx-box-border -fx-box-border transparent transparent;  
+    -fx-font: 12px "Segoe UI";    
+    -fx-border-insets: 0;
+}
+.table-view .column-header .label{
+    -fx-text-fill:#000000; 
+    -fx-alignment: CENTER;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #f9f9f9;    
+    -fx-size:30;
+    -fx-border-color: -fx-box-border;
+    -fx-border-width: 0 1 2 0;
+    -fx-border-insets: 0;
+}
+
+/* color de fondo para cuando el raton este sobre la celda*/
+.table-cell:hover {
+    -fx-background-color: #FFFF8D;
+      -fx-size:50;
+}
+
+/* color para filas vacias, 
+// aplicar el mismo color cuando el raton este sobre una celda de una fila vacia  */

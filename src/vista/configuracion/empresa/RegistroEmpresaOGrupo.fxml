@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.configuracion.empresa.RegistroEmpresaOGrupoController">
+   <children>
+      <AnchorPane prefHeight="34.0" prefWidth="627.0" styleClass="head-background" stylesheets="@../../../style/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="300.0" text="Registro  Emprsa/Grupo  " textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Label layoutX="22.0" layoutY="75.0" prefHeight="32.0" prefWidth="62.0" text="Nombre" />
+      <JFXTextField fx:id="txtNombre" layoutX="99.0" layoutY="77.0" prefHeight="25.0" prefWidth="466.0" />
+      <Label alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="143.0" prefHeight="25.0" prefWidth="62.0" text="Telefono" />
+      <JFXTextField fx:id="txtTelefono" layoutX="91.0" layoutY="143.0" prefHeight="25.0" prefWidth="248.0" />
+      <Label alignment="BOTTOM_LEFT" layoutX="345.0" layoutY="147.0" prefHeight="27.0" prefWidth="37.0" text="Email" />
+      <JFXTextField fx:id="txtEmail" layoutX="379.0" layoutY="143.0" prefHeight="25.0" prefWidth="185.0" />
+      <Label layoutX="12.0" layoutY="183.0" prefHeight="26.0" prefWidth="68.0" text="Direccion" />
+      <JFXTextField fx:id="txtDireccion" layoutX="89.0" layoutY="176.0" prefHeight="25.0" prefWidth="473.0" />
+      <Label layoutX="21.0" layoutY="114.0" prefHeight="26.0" prefWidth="82.0" text="Descripcion" />
+      <JFXTextField fx:id="txtDescripcion" layoutX="105.0" layoutY="107.0" prefHeight="25.0" prefWidth="466.0" />
+      <Label layoutX="21.0" layoutY="45.0" prefHeight="32.0" prefWidth="48.0" text="RNC" />
+      <JFXTextField fx:id="txtRnc" layoutX="90.0" layoutY="49.0" prefHeight="25.0" prefWidth="176.0" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+</AnchorPane>

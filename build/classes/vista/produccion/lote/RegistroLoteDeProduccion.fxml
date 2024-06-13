@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="287.0" prefWidth="566.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.produccion.lote.RegistroLoteDeProduccionController">
+  <children>
+      <AnchorPane prefHeight="40.0" prefWidth="467.0" styleClass="head-background" stylesheets="@../../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" layoutX="210.0" layoutY="1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="280.0" text="Registro  Lote  de  Produccion" textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="10.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="38.0" prefWidth="566.0">
+         <children>
+            <Label alignment="BOTTOM_LEFT" layoutX="231.0" layoutY="9.0" prefHeight="30.0" prefWidth="100.0" text="Numero de Lote" />
+            <JFXTextField fx:id="txtNumeroDeLote" alignment="CENTER" layoutX="334.0" layoutY="9.0" prefHeight="25.0" prefWidth="183.0" />
+            <Label layoutX="9.0" layoutY="25.0" prefHeight="17.0" prefWidth="42.0" text="Fecha" />
+            <JFXDatePicker fx:id="dpFecha" layoutX="69.0" layoutY="14.0" onAction="#dpFechaActionEvent" prefHeight="25.0" prefWidth="150.0" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </AnchorPane>
+      <HBox spacing="10.0">
+         <children>
+            <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="60.0" text="Producto">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <JFXTextField fx:id="txtArticulo" editable="false" prefHeight="25.0" prefWidth="344.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXTextField>
+            <JFXButton fx:id="btnBuscarArticulo" onAction="#btnBuscarArticuloActionEvent" prefHeight="25.0" prefWidth="89.0" styleClass="btn-search" stylesheets="@../../../css/style.css" text="Buscar">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox spacing="5.0">
+         <children>
+            <Label prefHeight="29.0" prefWidth="53.0" text="Unidad" />
+            <JFXComboBox fx:id="cbUnidad" prefHeight="25.0" prefWidth="142.0" />
+            <Label prefHeight="29.0" prefWidth="62.0" text="Capacidad" />
+            <JFXComboBox fx:id="cbCapacidad" prefHeight="25.0" prefWidth="117.0" />
+            <Label prefHeight="34.0" prefWidth="71.0" text="Produccion" />
+            <JFXTextField fx:id="txtProduccion" alignment="CENTER" prefHeight="25.0" prefWidth="65.0">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+  </children>
+</VBox>

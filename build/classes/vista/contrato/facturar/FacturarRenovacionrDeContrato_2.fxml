@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="693.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.contrato.facturar.FacturarRenovacionDeContratoController2">
+   <children>
+      <SplitPane VBox.vgrow="ALWAYS">
+         <items>
+            <VBox alignment="TOP_CENTER" spacing="10.0">
+               <children>
+                  <HBox prefHeight="18.0" prefWidth="506.0" spacing="15.0">
+                     <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="48.0" text="Cliente" />
+                        <JFXTextField fx:id="txtCliente" editable="false" prefHeight="25.0" prefWidth="334.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXTextField>
+                        <JFXButton fx:id="btnBuscarCliente" onAction="#btnBuscarClienteActionEvent" prefHeight="19.0" prefWidth="70.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Buscar">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <HBox fx:id="hbPermisos" prefHeight="29.0" prefWidth="656.0" spacing="10.0">
+                           <children>
+                              <JFXButton fx:id="btnGenerarFacturaRecurrente" accessibleText="Generar Factura" onAction="#btnNuevoActionEvent" prefHeight="29.0" prefWidth="134.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Generar  Factura">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="btnGuardarRecurrente" accessibleText="Guardar Factura" onAction="#btnGuardarActionEvent" prefHeight="29.0" prefWidth="98.0" styleClass="btn-search" stylesheets="@../../../style/style.css" text="Guardar">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <JFXButton fx:id="btnReciboIngreso" accessibleText="Recibo Ingreso" disable="true" onAction="#btnReciboIngresoActionEvent" prefHeight="29.0" prefWidth="99.0" styleClass="btn-update" stylesheets="@../../../style/style.css" text="Recibo.Ing">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <JFXCheckBox fx:id="chNuevaModalidad" prefHeight="26.0" prefWidth="161.0" text="Nueva Modalidad" />
+                              <JFXCheckBox fx:id="chNuevaModalidRnv" layoutX="245.0" layoutY="10.0" prefHeight="26.0" prefWidth="244.0" text="Con Renovacion" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <VBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="45.0" text="Filtrar">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="txtFiltroContrato" prefHeight="25.0" prefWidth="465.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <TabPane fx:id="tabPane" stylesheets="@../../../style/tabPane.css" VBox.vgrow="ALWAYS">
+                           <tabs>
+                              <Tab closable="false" text=" Contrato  ">
+                                 <content>
+                                    <TableView fx:id="tbContratoDeServicio" onMouseClicked="#tbContratoDeServicioClicked" prefHeight="416.0">
+                                       <columns>
+                                          <TableColumn fx:id="tbcNumContratoContra" prefWidth="122.06341552734375" text="No.Contrato" />
+                                          <TableColumn fx:id="tbcClienteContra" minWidth="200.0" prefWidth="200.0" text="Cliente" />
+                                          <TableColumn fx:id="tbcTipoDeContrato" minWidth="150.0" prefWidth="150.0" text="Tipo de Contrato" />
+                                          <TableColumn fx:id="tbcMontoContra" maxWidth="100.0" minWidth="80.0" prefWidth="100.0" text="Monto" />
+                                       </columns>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </content>
+                              </Tab>
+                              <Tab closable="false" text="    Detalle  Contrato   ">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane layoutX="5.0" layoutY="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <tabs>
+                                                <Tab closable="false" text="   Servicio   ">
+                                                   <content>
+                                                      <VBox prefHeight="365.0" prefWidth="786.0" spacing="5.0">
+                                                         <children>
+                                                            <HBox>
+                                                               <children>
+                                                                  <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="45.0" text="Filtrar">
+                                                                     <HBox.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </HBox.margin>
+                                                                  </Label>
+                                                                  <JFXTextField fx:id="txtFiltroServicio" prefHeight="25.0" prefWidth="465.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <TableView fx:id="tbDetalleContrato" onMouseClicked="#tbDetalleContratoMouseClicked" prefHeight="134.0" prefWidth="1134.0" VBox.vgrow="ALWAYS">
+                                                               <columns>
+                                                                  <TableColumn fx:id="tbcEquipo" maxWidth="700.0" minWidth="150.0" prefWidth="300.0" text="Servicio" />
+                                                                  <TableColumn fx:id="tbcCantidad" maxWidth="100.0" minWidth="70.0" text="Cantidad" />
+                                                                  <TableColumn fx:id="tbcPrecioAcordado" maxWidth="150.0" minWidth="80.0" text="Precio" />
+                                                                  <TableColumn fx:id="tbcPrecioRenovacion" maxWidth="150.0" minWidth="110.0" prefWidth="120.0" text="Precio Renovacion" />
+                                                                  <TableColumn fx:id="tbcPagoDesde" maxWidth="600.0" minWidth="200.0" prefWidth="300.0" text="Ultimo  Pago Desde" />
+                                                                  <TableColumn fx:id="tbcPagoHasta" maxWidth="400.0" minWidth="200.0" prefWidth="300.0" text="Ultimo  Pago Hasta" />
+                                                                  <TableColumn fx:id="tbcTipoServicio" maxWidth="120.0" minWidth="80.0" text="Tipo Servicio" />
+                                                                  <TableColumn fx:id="tbcMeses" maxWidth="300.0" minWidth="120.0" prefWidth="170.0" text="Cantidad  de  Años" />
+                                                                  <TableColumn fx:id="tbcAvance" maxWidth="80.0" minWidth="70.0" prefWidth="70.0" text="Renovar" />
+                                                               </columns>
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                               <columnResizePolicy>
+                                                                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                               </columnResizePolicy>
+                                                            </TableView>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </content>
+                                                </Tab>
+                                                <Tab closable="false" text="    Datos  de  Vehiculo     ">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <VBox prefHeight="365.0" prefWidth="786.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <Label alignment="BOTTOM_LEFT" prefHeight="28.0" prefWidth="45.0" text="Filtrar">
+                                                                           <HBox.margin>
+                                                                              <Insets left="10.0" />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                        <JFXTextField fx:id="txtFiltroVehiculo" prefHeight="25.0" prefWidth="465.0" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <TableView fx:id="tbDatosDeVehiculo" onMouseClicked="#tbDetalleReciboMouseClicked" prefHeight="328.0" prefWidth="766.0" VBox.vgrow="ALWAYS">
+                                                                     <columns>
+                                                                        <TableColumn fx:id="tbcTipoVehiculo" prefWidth="156.3262939453125" text="Tipo de Vehiculo" />
+                                                                        <TableColumn fx:id="tbcMarca" prefWidth="122.06341552734375" text="Marca" />
+                                                                        <TableColumn fx:id="tbcModelo" prefWidth="156.3262939453125" text="Modelo" />
+                                                                        <TableColumn fx:id="tbcPlaca" prefWidth="156.3262939453125" text="Placa" />
+                                                                        <TableColumn fx:id="tbcChasis" prefWidth="156.3262939453125" text="Chasis" />
+                                                                        <TableColumn fx:id="tbcColor" prefWidth="156.3262939453125" text="Color" />
+                                                                        <TableColumn fx:id="tbcAdicional" prefWidth="156.3262939453125" text="Adicional" />
+                                                                        <TableColumn fx:id="tbcVehiculoHabilitado" maxWidth="120.0" minWidth="80.0" text="Habilitado" />
+                                                                        <TableColumn fx:id="tbcAgregar" maxWidth="120.0" minWidth="80.0" text="Renovar" />
+                                                                     </columns>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                     <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                     </columnResizePolicy>
+                                                                  </TableView>
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
+                                                            </VBox>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab closable="false" text="   Factura      ">
+                                 <content>
+                                    <TableView fx:id="tbFacturaDeContrato" onMouseClicked="#tbFacturaDeContratoMouseClicked" prefHeight="416.0" prefWidth="525.0">
+                                       <columns>
+                                          <TableColumn fx:id="tbcNoContratoFact" maxWidth="300.0" minWidth="100.0" prefWidth="200.0" text="No.Contrato" />
+                                          <TableColumn fx:id="tbcFacturaFact" prefWidth="366.0" text="Factura" />
+                                          <TableColumn fx:id="tbcClienteFact" prefWidth="157.0" text="Cliente" />
+                                          <TableColumn fx:id="tbcMontoFact" prefWidth="157.0" text="Monto" />
+                                          <TableColumn fx:id="tbcVerFactura" maxWidth="70.0" minWidth="80.0" prefWidth="70.0" resizable="false">
+                                             <graphic>
+                                                <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" smooth="false">
+                                                   <image>
+                                                      <Image url="@../../../imagen/img_documento.jpg" />
+                                                   </image>
+                                                   <cursor>
+                                                      <Cursor fx:constant="OPEN_HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                                             </graphic>
+                                          </TableColumn>
+                                       </columns>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </TableView>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="526.0" style="-fx-border-color: #000000;">
+                     <children>
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="39.0" text="Fecha" visible="false" />
+                        <JFXDatePicker fx:id="dpFechaFacturacion" accessibleText="Fecha  Factura" disable="true" editable="false" onAction="#dpFechaFacturacionActionEvent" prefHeight="25.0" prefWidth="140.0" visible="false">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXDatePicker>
+                        <Label prefHeight="26.0" prefWidth="157.0" text="Cantidad  de  Contrato">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbCantidadContrato" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="92.0" style="-fx-border-color: #000000;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+   </children>
+</VBox>

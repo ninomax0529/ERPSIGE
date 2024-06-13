@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpVenta" prefHeight="721.0" prefWidth="1093.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.venta.pedido.ModuloPedidoController">
+   <top>
+      <VBox>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+         <children>
+            <Separator layoutX="10.0" layoutY="57.0" prefHeight="0.0" prefWidth="1083.0" styleClass="vbbox" stylesheets="@../../../css/mai.css" />
+            <HBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="904.0" spacing="13.0">
+               <children>
+                  <JFXButton fx:id="btnPedido" alignment="CENTER" onAction="#btnPedidoActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="254.0" style="-fx-background-color: #0096d2;" stylesheets="@../../../style/style.css" text="Crear  Pedidos" textFill="WHITE">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPedidoPendiente" alignment="CENTER" onAction="#btnPedidoPendienteActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="252.0" style="-fx-background-color: #cb3234;" stylesheets="@../../../style/style.css" text="Pedidos  Por Despachar" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPedidoDespachado" alignment="CENTER" onAction="#btnPedidoDespachadoActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="252.0" style="-fx-background-color: #e5be05;" stylesheets="@../../../style/style.css" text="Pedidos Para Entregar a Delivery" textFill="WHITE">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEntregadoADelivery" alignment="CENTER" layoutX="611.0" layoutY="16.0" onAction="#btnEntregadoADeliveryActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="252.0" style="-fx-background-color: #00bb2d;" stylesheets="@../../../style/style.css" text="Pedidos  Entregado  a  Delivery" textFill="WHITE">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEntregadoACliente" alignment="CENTER" layoutX="841.0" layoutY="16.0" onAction="#btnEntregadoAClienteActionevent" opacity="0.97" prefHeight="37.0" prefWidth="252.0" style="-fx-background-color: #0096d2;" stylesheets="@../../../style/style.css" text="Pedidos  Entregado  a  Cliente" textFill="WHITE">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <Separator prefHeight="0.0" prefWidth="1083.0" styleClass="vbbox" stylesheets="@../../../css/mai.css" />
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="640.0" styleClass="fondo_venta" stylesheets="@../../css/style.css" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="69.0" text="Version: " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="1.0.0" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="739.0" prefWidth="1234.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.banco.conciliacion.RegistrarConciliacionBancariaController">
+   <children>
+      <VBox layoutX="224.0" layoutY="88.0" prefHeight="600.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <SplitPane dividerPositions="0.5163934426229508" prefHeight="481.0" prefWidth="801.0" VBox.vgrow="ALWAYS">
+               <items>
+                  <VBox prefWidth="1100.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="jfx-layout-heading" stylesheets="@../../../css/mai.css">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="40.0" prefWidth="449.0" text="Estado  de  Cuenta  Segun  Auxiliar  Libro de Banco">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="31.0" prefWidth="1090.0" spacing="2.0">
+                           <children>
+                              <Label alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="45.0" text="Fecha ">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXDatePicker fx:id="dpFechaFinal" onAction="#dpFechaFinalActionEvent" prefHeight="25.0" prefWidth="126.0" />
+                              <JFXTextField fx:id="txtCuenta" alignment="CENTER" prefHeight="25.0" prefWidth="344.0" promptText="Cuenta" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXTextField>
+                              <JFXButton fx:id="btnCatalogo" onAction="#btnCatalogoActionEvent" prefHeight="25.0" prefWidth="70.0" styleClass="btn-update" stylesheets="@../../../css/style.css" text="Buscar">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                           <children>
+                              <Label layoutX="261.0" layoutY="14.0" prefHeight="17.0" prefWidth="113.0" text="Saldo  Segun Libro" HBox.hgrow="NEVER" />
+                              <TextField fx:id="txtSaldoLibro" alignment="CENTER" layoutX="337.0" layoutY="10.0" prefHeight="25.0" prefWidth="140.0" HBox.hgrow="NEVER">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                           <children>
+                              <VBox VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="633.0" spacing="5.0">
+                                       <children>
+                                          <Label prefHeight="39.0" prefWidth="71.0" text="Concepto">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXComboBox fx:id="cbConceptoLibroMas" onAction="#cbConceptoLibroMasActionEvent" prefHeight="25.0" prefWidth="209.0" />
+                                          <Label prefHeight="59.0" prefWidth="121.0" text="Numero.Documento" />
+                                          <TextField fx:id="txtNumeroDocLibroMas" alignment="CENTER" prefHeight="25.0" prefWidth="106.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="229.0" layoutY="15.0" prefHeight="25.0" prefWidth="51.0" text="Monto" />
+                                          <TextField fx:id="txtMontoLibroMas" alignment="CENTER" layoutX="350.0" layoutY="15.0" prefHeight="25.0" prefWidth="106.0" HBox.hgrow="NEVER" />
+                                          <JFXButton fx:id="btnAgrgarMasLibro" onAction="#btnAgrgarMasLibroActionEvent" prefHeight="27.0" prefWidth="52.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="+" HBox.hgrow="NEVER">
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <TableView fx:id="tbMasConciliacionLibro" prefHeight="204.0" prefWidth="583.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="tbcMasConcLibro" prefWidth="410.0" text="Mas" />
+                                          <TableColumn fx:id="tbcMasNumeroConcLibro" maxWidth="494.0" minWidth="0.0" prefWidth="118.0" text="Numero" />
+                                          <TableColumn fx:id="tbcMasMontoConcLibro" maxWidth="494.0" minWidth="0.0" prefWidth="103.0" text="Monto" />
+                                       </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="71.0" text="Sub Total" />
+                                          <TextField fx:id="txtMasSubTotal" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="139.0">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <JFXButton fx:id="btnEliminarLibroMas" onAction="#btnEliminarLibroMasActionEvent" prefHeight="25.0" prefWidth="75.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="633.0" spacing="5.0">
+                                       <children>
+                                          <Label prefHeight="39.0" prefWidth="71.0" text="Concepto">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXComboBox fx:id="cbConceptoLibroMenos" onAction="#cbConceptoLibroMenosActionEvent" prefHeight="25.0" prefWidth="209.0" />
+                                          <Label prefHeight="59.0" prefWidth="121.0" text="Numero.Documento" />
+                                          <TextField fx:id="txtNumDocLibroMenos" alignment="CENTER" prefHeight="25.0" prefWidth="106.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="229.0" layoutY="15.0" prefHeight="25.0" prefWidth="51.0" text="Monto" />
+                                          <TextField fx:id="txtMontoLibroMenos" alignment="CENTER" layoutX="350.0" layoutY="15.0" prefHeight="25.0" prefWidth="106.0" />
+                                          <JFXButton fx:id="btnAgrgarMenosLibro" onAction="#btnAgrgarMenosLibroActionEvent" prefHeight="27.0" prefWidth="52.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="+" HBox.hgrow="NEVER">
+                                             <HBox.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <TableView fx:id="tbMenosConciliacionLibro" prefHeight="178.0" prefWidth="583.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="tbcMenosConcLibro" prefWidth="403.0" text="Menos" />
+                                          <TableColumn fx:id="tbcMenosNumeroConcLibro" maxWidth="494.0" minWidth="80.0" prefWidth="114.0" text="Numero" />
+                                          <TableColumn fx:id="tbcMenosMontoConcLibro" maxWidth="494.0" minWidth="80.0" prefWidth="111.0" text="Monto" />
+                                       </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="62.0" text="Sub Total" />
+                                          <TextField fx:id="txtMenosSubTotal" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="145.0">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <JFXButton fx:id="btnEliminarLibroMenos" onAction="#btnEliminarLibroMenosActionEvent" prefHeight="25.0" prefWidth="75.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="96.0" text="Saldo  Conciliado" />
+                                    <TextField fx:id="txtSaldoConciliado" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="145.0">
+                                       <HBox.margin>
+                                          <Insets right="100.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="1100.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="jfx-layout-heading" stylesheets="@../../../css/mai.css">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="40.0" prefWidth="411.0" text="Estado  de Cuenta  Segun  Banco">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btnGuaradar" onAction="#btnGuaradarActionEvent" prefHeight="33.0" prefWidth="91.0" styleClass="btn-search" stylesheets="@../../../css/style.css" text="Guardar" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                           <children>
+                              <Label layoutX="328.0" layoutY="14.0" prefHeight="17.0" prefWidth="112.0" text="Saldo Segun Banco" HBox.hgrow="NEVER" />
+                              <TextField fx:id="txtSaldoBanco" alignment="CENTER" layoutX="404.0" layoutY="10.0" prefHeight="25.0" prefWidth="139.0" HBox.hgrow="NEVER">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox alignment="CENTER" spacing="5.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                           <children>
+                              <VBox VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="633.0" spacing="5.0">
+                                       <children>
+                                          <Label prefHeight="39.0" prefWidth="71.0" text="Concepto">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXComboBox fx:id="cbConceptoBancoMas" onAction="#cbConceptoBancoMasActionevent" prefHeight="25.0" prefWidth="209.0" />
+                                          <Label prefHeight="59.0" prefWidth="121.0" text="Numero.Documento" />
+                                          <TextField fx:id="txtNumDocBancoMas" alignment="CENTER" prefHeight="25.0" prefWidth="106.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="229.0" layoutY="15.0" prefHeight="25.0" prefWidth="51.0" text="Monto" />
+                                          <TextField fx:id="txtMontoBancoMas" alignment="CENTER" layoutX="350.0" layoutY="15.0" prefHeight="25.0" prefWidth="106.0" />
+                                          <JFXButton fx:id="btnAgrgarMasBanco" onAction="#btnAgrgarMasBancoActionEvent" prefHeight="27.0" prefWidth="52.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="+" HBox.hgrow="NEVER">
+                                             <HBox.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <TableView fx:id="tbMasConciliacionBanco" prefHeight="204.0" prefWidth="583.0" VBox.vgrow="ALWAYS">
+                                      <columns>
+                                        <TableColumn fx:id="tbcMasConcBanco" prefWidth="356.0" text="Mas" />
+                                        <TableColumn fx:id="tbcMasNumeroConcBanco" maxWidth="300.0" minWidth="42.0" prefWidth="127.0" text="Numero" />
+                                          <TableColumn fx:id="tbcMasMontoConcBanco" maxWidth="300.0" minWidth="97.0" prefWidth="99.0" resizable="false" text="Monto" />
+                                      </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="71.0" text="Sub Total" />
+                                          <TextField fx:id="txtMasSubTotalBanco" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="139.0">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <JFXButton fx:id="btnEliminarBancoMas" onAction="#btnEliminarBancoMasActionEvent" prefHeight="25.0" prefWidth="75.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="633.0" spacing="5.0">
+                                       <children>
+                                          <Label prefHeight="39.0" prefWidth="71.0" text="Concepto">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXComboBox fx:id="cbConceptoBancoMenos" onAction="#cbConceptoBancoMenosActionevent" prefHeight="25.0" prefWidth="209.0" />
+                                          <Label prefHeight="59.0" prefWidth="121.0" text="Numero.Documento" />
+                                          <TextField fx:id="txtNumDocBancoMenos" alignment="CENTER" prefHeight="25.0" prefWidth="106.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="229.0" layoutY="15.0" prefHeight="25.0" prefWidth="51.0" text="Monto" />
+                                          <TextField fx:id="txtMontoBancoMenos" alignment="CENTER" layoutX="350.0" layoutY="15.0" prefHeight="25.0" prefWidth="106.0" />
+                                          <JFXButton fx:id="btnAgrgarMenosBanco" onAction="#btnAgrgarMenosBancoActionevent" prefHeight="27.0" prefWidth="52.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="+" HBox.hgrow="NEVER">
+                                             <HBox.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <TableView fx:id="tbMenosConciliacionBanco" prefHeight="178.0" prefWidth="583.0" VBox.vgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="tbcMenosConcBanco" prefWidth="334.0" text="Menos" />
+                                          <TableColumn fx:id="tbcMenosNumeroConcBanco" maxWidth="300.0" minWidth="49.0" prefWidth="116.0" text="Numero" />
+                                          <TableColumn fx:id="tbcMenosMontoConcBanco" maxWidth="300.0" minWidth="49.0" prefWidth="125.0" text="Monto" />
+                                       </columns>
+                                    </TableView>
+                                    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="71.0" text="Sub Total" />
+                                          <TextField fx:id="txtMenosSubTotalBanco" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="149.0">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <JFXButton fx:id="btnEliminarBancoMenos" onAction="#btnEliminarBancoMenosActionEvent" prefHeight="25.0" prefWidth="77.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="117.0" text="Saldo  Conciliado" />
+                                    <TextField fx:id="txtSaldoConciliadoBanco" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="149.0">
+                                       <HBox.margin>
+                                          <Insets right="100.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+         </children>
+      </VBox>
+      <Pane prefHeight="40.0" stylesheets="@../../../css/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="40.0" prefWidth="1224.0" stylesheets="@../../css/style.css" text="Conciliacion  Bancaria  " textFill="#141313">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="btn-new" />
+                  <String fx:value="titulo" />
+               </styleClass>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="titulo" />
+            <String fx:value="btn-new" />
+         </styleClass>
+      </Pane>
+   </children>
+</AnchorPane>

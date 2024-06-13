@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-04-24T15:56:46 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subActividadDeInversion" pageWidth="450" pageHeight="842" columnWidth="450" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="1ea0385c-f4e5-426b-a169-34d4aaa57612">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="192"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="802"/>
+	<parameter name="fecha_es_actual" class="java.util.Date"/>
+	<parameter name="fecha_es_anterior" class="java.util.Date"/>
+	<parameter name="unidad_negocio" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+
+
+gc.codigo as cod_grupo,sgc.codigo as cod_sub_grupo,gc.nombre as grupo, sgc.nombre as nombre_sub_grupo,c.cuenta,c.descripcion ,ifnull(saldo_acterior.saldo,0) as saldo_ant,
+
+ifnull(saldo_actual.saldo,0) as saldo_act,  
+
+  ifnull(saldo_actual.saldo-saldo_acterior.saldo,0)*-1   as  variacion
+
+  FROM  catalogo  c  INNER JOIN grupo_cuenta gc 
+
+    on c.grupo=gc.codigo INNER JOIN sub_grupo_cuenta sgc 
+
+    on sgc.codigo=c.sub_grupo 
+
+left join
+
+ (
+ 	  SELECT ded.cuenta_control,ded.cuenta,ded.catalogo,
+ 
+ sum(ded.debito) -sum(ded.credito)  as saldo  
+
+ FROM  entrada_diario ed,detalle_entrada_diario ded
+ 
+   where  ed.codigo=ded.entrada_diario     
+       and  ed.unidad_de_negocio= $P{unidad_negocio} 
+
+
+   and   ed.fecha<=$P{fecha_es_anterior} 
+
+ group by   ded.cuenta  order  by  ded.cuenta 
+ 	
+ )  as  saldo_acterior  on c.codigo=saldo_acterior.catalogo
+
+LEFT JOIN
+ (
+ 	  SELECT ded.cuenta_control,ded.cuenta,ded.catalogo,
+ 
+ sum(ded.debito) -sum(ded.credito)  as saldo  
+
+ FROM  entrada_diario ed,detalle_entrada_diario ded
+ 
+   where  ed.codigo=ded.entrada_diario     
+       and  ed.unidad_de_negocio= $P{unidad_negocio} 
+
+
+   and   ed.fecha<=$P{fecha_es_actual} 
+
+ group by   ded.cuenta  order  by  ded.cuenta 
+ 	
+ )  as  saldo_actual  on c.codigo=saldo_actual.catalogo
+
+
+ where  c.grupo=1      and   c.sub_grupo=2
+
+  and   unidad_de_negocio= $P{unidad_negocio} 
+     
+   --  and    ifnull(saldo_actual.saldo-saldo_acterior.saldo,0) >0
+  order by  c.cuenta]]>
+	</queryString>
+	<field name="cod_grupo" class="java.lang.Integer"/>
+	<field name="cod_sub_grupo" class="java.lang.Integer"/>
+	<field name="grupo" class="java.lang.String"/>
+	<field name="nombre_sub_grupo" class="java.lang.String"/>
+	<field name="cuenta" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="saldo_ant" class="java.lang.Double"/>
+	<field name="saldo_act" class="java.lang.Double"/>
+	<field name="variacion" class="java.lang.Double"/>
+	<variable name="total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{variacion}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="17" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="16" y="3" width="136" height="14" uuid="66069394-84c5-4cc3-8069-57bfd8a744e0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Actividades de Inversion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="26" y="2" width="96" height="14" uuid="b1a07775-a82a-44a7-83a2-a215c3542344"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="2" width="216" height="14" uuid="c509e387-dd78-402a-af86-a181aa9895e3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#">
+				<reportElement x="360" y="2" width="86" height="14" uuid="58ce0c0e-0d11-4838-aa97-93e34c32831f"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{variacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="#,##0.00#">
+				<reportElement x="360" y="2" width="86" height="14" uuid="28783420-7233-48f8-9105-dcdfdcc733a1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="2" width="106" height="14" uuid="16c275b9-ca6a-483e-a341-407a8b94a189"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

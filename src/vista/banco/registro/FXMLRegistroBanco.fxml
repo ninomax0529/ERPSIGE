@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.banco.registro.FXMLRegistroBancoController">
+   <children>
+      <VBox layoutX="21.0" layoutY="43.0" prefHeight="498.0" prefWidth="787.0" spacing="5.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <HBox>
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="104.0" text="Nombre  Banco" />
+                  <JFXTextField fx:id="txtNombre" prefHeight="25.0" prefWidth="300.0" />
+                  <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="78.0" text="Sucursal" />
+                  <JFXTextField fx:id="txtSucursal" layoutX="131.0" layoutY="10.0" prefHeight="25.0" prefWidth="289.0" />
+               </children>
+               <VBox.margin>
+                  <Insets right="5.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="15.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="71.0" text="Contacto" />
+                  <JFXTextField fx:id="txtContacto" prefHeight="25.0" prefWidth="300.0" />
+                  <Label alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="66.0" text="Telefono " />
+                  <JFXTextField fx:id="txtTelefonoContacto" layoutX="131.0" layoutY="10.0" prefHeight="25.0" prefWidth="332.0" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="43.0" prefWidth="787.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="71.0" text="Direccion " />
+                  <JFXTextField fx:id="txtDireccion" prefHeight="25.0" prefWidth="695.0" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="17.0" prefWidth="777.0" spacing="5.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="93.0" text="Tipo de Cuenta ">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXComboBox fx:id="cbTipouenta" prefHeight="25.0" prefWidth="161.0" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="75.0" text="No.Cuenta " />
+                  <JFXTextField fx:id="txtNumeroCuenta" prefHeight="25.0" prefWidth="160.0" />
+                  <Label prefHeight="24.0" prefWidth="62.0" text="Moneda" />
+                  <JFXComboBox fx:id="cbMoneda" prefHeight="25.0" prefWidth="165.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <children>
+                  <JFXTextField fx:id="txtCuenta" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="451.0" promptText="Cuenta  Contable" />
+                  <JFXButton fx:id="btnCatalogo" onAction="#btnCatalogoActionEvent" prefHeight="25.0" prefWidth="66.0" styleClass="btn-update" stylesheets="@../../../css/style.css" text="Buscar">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></JFXButton>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="49.0" text="Saldo" />
+                  <JFXTextField fx:id="txtSaldo" alignment="CENTER" layoutX="96.0" layoutY="10.0" prefHeight="25.0" prefWidth="165.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="777.0" spacing="10.0">
+               <children>
+                  <JFXButton fx:id="btnAgregar" onAction="#btnAgregarActionEvent" prefHeight="25.0" prefWidth="66.0" styleClass="btn-new" stylesheets="@../../../css/style.css" text="Agregar" />
+                  <JFXButton fx:id="btnEliminar" onAction="#btnEliminarActionEvent" prefHeight="25.0" prefWidth="63.0" styleClass="btn-remove" stylesheets="@../../../css/style.css" text="Eliminar" />
+               </children>
+               <VBox.margin>
+                  <Insets right="10.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox prefHeight="223.0" prefWidth="787.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="tbCuentaBanco" onMouseClicked="#tbCuentaBancoMouseClick" prefHeight="263.0" prefWidth="787.0">
+                     <columns>
+                        <TableColumn fx:id="tbcNombreBanco" minWidth="150.0" prefWidth="170.0" text="Banco" />
+                        <TableColumn fx:id="tbcTipoCuenta" maxWidth="300.0" prefWidth="150.0" text="Tipo Cuenta" />
+                        <TableColumn fx:id="tbcNumeroCuenta" maxWidth="300.0" minWidth="116.0" prefWidth="192.0" text="No.Cuenta" />
+                        <TableColumn fx:id="tbcCuentaContable" maxWidth="300.0" minWidth="108.0" prefWidth="153.0" text="Cuenta Contable" />
+                        <TableColumn fx:id="tbcSaldo" maxWidth="150.0" minWidth="100.0" prefWidth="100.0" text="Saldo" />
+                     </columns>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <AnchorPane styleClass="head-background" stylesheets="@../../../style/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="394.0" prefHeight="40.0" prefWidth="386.0" text="Registro de Banco" textFill="#eee5e5">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="btnGuardar" layoutX="5.0" layoutY="8.0" onAction="#btnGuardarActionEvent" prefHeight="25.0" prefWidth="62.0" stylesheets="@../../../css/style.css" text="Guadar" textFill="#f2eded" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2023-09-28T16:27:26 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subRptResumenGpsVendido" pageWidth="425" pageHeight="555" orientation="Landscape" columnWidth="425" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="26b8885d-ec0a-438d-84bb-1827f6830d6b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_erp_sige"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="176"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="818"/>
+	<parameter name="sqlParam" class="java.lang.String"/>
+	<parameter name="fecha_desde" class="java.util.Date"/>
+	<parameter name="fecha_hasta" class="java.util.Date"/>
+	<queryString language="SQL">
+		<![CDATA[select  
+   nombre, sum(cantidad) as cantidad,sum(total) as total,sum(abono) as abono,sum(pendiente) as pendiente
+  from  (
+
+	
+SELECT
+
+  'EQUIPO'  as  nombre
+  ,sum(df.cantidad) as cantidad,
+ sum(f.total) as total,
+ 
+  sum(( SELECT IFNULL(sum(total),0) from recibo_ingreso ri  INNER JOIN  detalle_recibo_ingreso dri 
+on ri.codigo=dri.recibo  where ri.anulado=false and  factura=f.codigo
+  and  ri.fecha<=$P{fecha_hasta} ) )  as abono,
+
+ sum(f.total-( SELECT IFNULL(sum(total),0) from recibo_ingreso ri INNER JOIN detalle_recibo_ingreso dri 
+on ri.codigo=dri.recibo  where ri.anulado=false and  factura=f.codigo
+  and  ri.fecha<=$P{fecha_hasta} ) )  as  pendiente
+  
+   from factura  f
+   INNER JOIN  detalle_factura df on f.codigo=df.factura
+   INNER JOIN articulo a on a.codigo=df.articulo
+
+
+   where 
+     f.anulada=false
+    and  a.categoria=3
+     and a.sub_categoria=19
+
+    and  f.fecha  between  $P{fecha_desde}   and  $P{fecha_hasta} 
+    
+ group by  f.codigo
+  
+  union  all 
+  
+  SELECT
+ case when dcs.compatibilidad=true then 'COMPACTIBILIDAD' ELSE 'REACTIVAVION' END AS  nombre
+  ,sum(df.cantidad) as cantidad,
+  sum(f.total) as total,
+sum(( SELECT IFNULL(sum(total),0) from recibo_ingreso ri INNER JOIN detalle_recibo_ingreso dri 
+on ri.codigo=dri.recibo  where ri.anulado=false and  factura=f.codigo
+  and  ri.fecha<=$P{fecha_hasta} ))  as abono,
+
+ sum( f.total-( SELECT IFNULL(sum(total),0) from recibo_ingreso ri INNER JOIN detalle_recibo_ingreso dri 
+on ri.codigo=dri.recibo  where ri.anulado=false and  factura=f.codigo
+  and  ri.fecha<=$P{fecha_hasta} ))  as pendiente
+  
+   from factura f
+   INNER JOIN  detalle_factura df on f.codigo=df.factura
+   INNER JOIN articulo a on a.codigo=df.articulo
+     inner join detalle_contrato_de_servicio dcs on dcs.codigo=df.detalle_contrato 
+      and (dcs.compatibilidad=true  or dcs.reactivacion=true)
+         and  dcs.fecha_desde   between   $P{fecha_desde}   and  $P{fecha_hasta} 
+   where 
+      f.anulada=false
+      and  a.tipo_articulo=3
+
+   
+    and    f.fecha  between  $P{fecha_desde}   and  $P{fecha_hasta} 
+    
+   group by  f.codigo
+  
+     )   as  r  group by nombre
+;]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="total" class="java.lang.Double"/>
+	<field name="abono" class="java.lang.Double"/>
+	<field name="pendiente" class="java.lang.Double"/>
+	<variable name="cantidad1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+	</variable>
+	<variable name="total1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<variable name="abono1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{abono}]]></variableExpression>
+	</variable>
+	<variable name="pendiente1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pendiente}]]></variableExpression>
+	</variable>
+	<group name="servicio">
+		<groupExpression><![CDATA[$F{nombre}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="425" height="22" uuid="f192b6f3-34ce-4b0f-be38-01936551463a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen  de venta]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<rectangle>
+				<reportElement x="0" y="1" width="425" height="15" backcolor="#AEF5BC" uuid="f370688b-a3c1-4dac-92f4-796617b70753"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="1" width="128" height="16" uuid="ba8f74b9-41f3-460d-999d-9fef4c1278af"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="1" width="58" height="16" uuid="eb263e55-5a40-48c3-8a09-19a2ac79f41a"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="269" y="1" width="82" height="16" uuid="bd13cf5c-a09c-4641-a7a8-c870a2efbe7d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="351" y="1" width="72" height="16" uuid="37800c52-49a7-4369-a479-956fe1a9174a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box rightPadding="4">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pendiente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="1" width="82" height="16" uuid="5747782d-4e1f-4422-9a35-a99223f0aaa5"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="-1" width="128" height="15" uuid="aaa495b5-84d4-4f8a-a09b-6135009c6b18"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="-1" width="58" height="15" uuid="6f2b48e8-01e1-41b1-8967-bacc24e04303"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="187" y="-1" width="82" height="15" uuid="d1c2f3e9-187b-45b5-bbe3-8032619b9f36"/>
+				<box rightPadding="6">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="269" y="-1" width="82" height="15" uuid="7790629a-938b-4719-bee7-86cdea5f2417"/>
+				<box rightPadding="6">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{abono}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="351" y="-1" width="72" height="15" uuid="9f464320-4d87-4566-8600-23dc565ab80b"/>
+				<box rightPadding="6">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pendiente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="270" height="1" uuid="693ee8bd-0c5b-486d-b1b5-bf7964a6ff9b"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="-1" width="128" height="17" isPrintInFirstWholeBand="true" uuid="87b2216d-3ab2-4c46-9897-929e8ae0b243"/>
+				<box rightPadding="7">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="#,###.00#">
+				<reportElement x="187" y="-1" width="82" height="17" uuid="918fd600-c7ce-4699-b0c2-0682f8ba57d2"/>
+				<box rightPadding="6">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="129" y="-1" width="58" height="17" uuid="1894c134-aefe-4931-adad-5a2bb187da1b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cantidad1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="269" y="-1" width="82" height="17" uuid="6d229109-1d64-4679-846a-e03adb7364f4"/>
+				<box rightPadding="6">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{abono1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.00#">
+				<reportElement x="351" y="-1" width="72" height="17" uuid="8cf83309-6ceb-4bfc-a7bd-082a6c5333a9"/>
+				<box rightPadding="6">
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{pendiente1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

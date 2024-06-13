@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpVenta" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.reportes.ModuloReportesController">
+   <top>
+      <VBox prefHeight="24.0" prefWidth="904.0" styleClass="btn-new" stylesheets="@../../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane minHeight="45.0" opacity="0.81">
+               <children>
+                  <Label fx:id="lbModuloVenta" alignment="CENTER_RIGHT" layoutX="603.0" layoutY="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="287.0" text="Reportes " textFill="#f5eded" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </AnchorPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="69.0" text="Version: " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="1.0.0" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+      </AnchorPane>
+   </bottom>
+   <left>
+      <VBox fx:id="vbMenu" prefHeight="807.0" prefWidth="154.0" spacing="15.0" style="-fx-background-color: #292F36;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" onMouseClicked="#menuPrincipalMouseClick" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #292F36;" stylesheets="@../../css/mai.css" text="Menu" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <JFXButton fx:id="btnVentas" accessibleText="Reporte de Ventas" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="106.0" onAction="#btnVentasActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="192.0" stylesheets="@../../css/mai.css" text="  Ventas" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnCxC" accessibleText="Reporte de Cuetas Por Cobrar" alignment="TOP_LEFT" layoutX="20.0" layoutY="116.0" onAction="#btnCxCActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="205.0" stylesheets="@../../css/mai.css" text="   CxC" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnCobros" accessibleText="Reporte de Cobros" alignment="TOP_LEFT" layoutX="15.0" layoutY="122.0" onAction="#btnCobrosActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="205.0" stylesheets="@../../css/mai.css" text="   Cobros" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnCxP" accessibleText="Reporte de Cuetas Por  Pagar" alignment="TOP_LEFT" layoutX="15.0" layoutY="122.0" onAction="#btnCxPActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="205.0" stylesheets="@../../css/mai.css" text="   CxP" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <Separator prefHeight="3.0" prefWidth="904.0" styleClass="head-background" stylesheets="@../../style/style.css" />
+            <JFXButton fx:id="btnFlota" accessibleText="Reporte de Flotas" alignment="TOP_LEFT" layoutX="15.0" layoutY="244.0" onAction="#btnFlotaActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="205.0" stylesheets="@../../css/mai.css" text="   Flotas" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <Separator prefWidth="200.0" />
+            <JFXButton fx:id="btnContabilidad" accessibleText="Reporte de  Contabilidad" alignment="TOP_LEFT" layoutX="15.0" layoutY="296.0" onAction="#btnContabilidadActionEvent" opacity="0.97" prefHeight="37.0" prefWidth="205.0" stylesheets="@../../css/mai.css" text="   Contabilidad" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="20" textAlignment="CENTER">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" right="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+</BorderPane>

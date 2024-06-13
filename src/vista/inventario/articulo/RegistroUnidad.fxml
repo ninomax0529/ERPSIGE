@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="182.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.inventario.articulo.RegistroUnidadController">
+  <children>
+      <AnchorPane styleClass="head-background" stylesheets="@../../../style/style.css">
+         <children>
+            <Label alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" text="Registro  Unidad" textAlignment="RIGHT" textFill="WHITE" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="btnGuardar" layoutY="4.0" onAction="#btnGuardarEventAction" prefHeight="30.0" prefWidth="70.0" text="Guardar" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCerrar" layoutX="72.0" layoutY="4.0" onAction="#btnCerrarActionEvent" prefHeight="30.0" prefWidth="61.0" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane>
+         <children>
+            <Label alignment="BOTTOM_LEFT" layoutX="11.0" layoutY="47.0" prefHeight="30.0" prefWidth="70.0" text="Abreviatura" />
+            <JFXTextField fx:id="txtAbreviatura" layoutX="84.0" layoutY="49.0" prefHeight="25.0" prefWidth="227.0" />
+            <Label alignment="BOTTOM_LEFT" layoutX="12.0" layoutY="11.0" prefHeight="30.0" prefWidth="61.0" text="Nombre" />
+            <JFXTextField fx:id="txtNombre" layoutX="81.0" layoutY="12.0" prefHeight="25.0" prefWidth="236.0" />
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>

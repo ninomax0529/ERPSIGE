@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane stylesheets="@../../../style/tabPane.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.reportes.contabilidad.ReporteContabilidadController">
+   <tabs>
+      <Tab closable="false" text="   Libros  Contables   ">
+         <content>
+            <VBox prefHeight="611.0" prefWidth="1028.0" spacing="10.0">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <VBox fx:id="vbEntreFecha1" prefHeight="141.0" prefWidth="1008.0" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="30.0" prefWidth="1008.0" spacing="10.0">
+                           <children>
+                              <JFXRadioButton fx:id="rbLibroDiario" prefHeight="26.0" prefWidth="132.0" text="Diario  General" />
+                              <JFXRadioButton fx:id="rbLibroMayor" prefHeight="26.0" prefWidth="122.0" text="Mayor General" />
+                              <JFXRadioButton fx:id="rbBalanzaDeComprobacion" prefHeight="26.0" prefWidth="174.0" text="Balanza de Comprbacion" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="221.0">
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="50.0" text="Desde" />
+                              <JFXDatePicker fx:id="dpFechaDesdeLc" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="50.0" text="Hasta" />
+                              <JFXDatePicker fx:id="dpFechaHastaLc" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="10.0" visible="false">
+                           <children>
+                              <JFXCheckBox fx:id="chEntreFecha1" disable="true" onAction="#chEntreFechaActionEvent" prefHeight="28.0" prefWidth="98.0" text="Entre Fecha " />
+                              <JFXCheckBox fx:id="chAlCorte1" disable="true" onAction="#chAlCorteActionEvent" prefHeight="28.0" prefWidth="79.0" text="Al Corte" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="btnVerLibroContable" onAction="#btnVerLibroContableActionEvent" prefHeight="32.0" prefWidth="93.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Ver  Reporte" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab closable="false" text="   Estados Finacieros      ">
+         <content>
+            <VBox prefHeight="611.0" prefWidth="1028.0" spacing="10.0">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <VBox fx:id="vbEntreFecha" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="30.0" prefWidth="1008.0" spacing="10.0">
+                           <children>
+                              <JFXRadioButton fx:id="rbEstadoDeSituacion" prefHeight="28.0" prefWidth="152.0" text="Estado de Situacion" />
+                              <JFXRadioButton fx:id="rbEstadoDeResultado" prefHeight="26.0" prefWidth="148.0" text="Estado de Resultado" />
+                              <JFXRadioButton fx:id="rbEstadoFlujoDeEfectivo" prefHeight="30.0" prefWidth="77.0" text="Estado flujo de efectivo" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="221.0">
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="50.0" text="Desde" />
+                              <JFXDatePicker fx:id="dpFechaDesdeEf" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="50.0" text="Hasta" />
+                              <JFXDatePicker fx:id="dpFechaHastaEf" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="10.0" visible="false">
+                           <children>
+                              <JFXCheckBox fx:id="chEntreFecha" disable="true" onAction="#chEntreFechaActionEvent" prefHeight="28.0" prefWidth="98.0" text="Entre Fecha " />
+                              <JFXCheckBox fx:id="chAlCorte" disable="true" onAction="#chAlCorteActionEvent" prefHeight="28.0" prefWidth="79.0" text="Al Corte" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="btnVerEstadoFinanciero" onAction="#btnVerEstadoFinancieroActionEvent" prefHeight="32.0" prefWidth="93.0" styleClass="btn-new" stylesheets="@../../../style/style.css" text="Ver  Reporte" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

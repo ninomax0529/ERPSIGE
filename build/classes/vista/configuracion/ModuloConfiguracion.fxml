@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpCajaChica" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.configuracion.ModuloConfiguracionController">
+   <left>
+      <VBox fx:id="vbMenu" prefHeight="807.0" prefWidth="178.0" spacing="15.0" style="-fx-background-color: #292F36;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" onMouseClicked="#menuPrincipalMouseClick" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: #292F36;" stylesheets="@../../css/mai.css" text="Menu" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Separator prefWidth="200.0" />
+            <JFXButton fx:id="btnConfiguracion" accessibleText="Configuracion" alignment="TOP_LEFT" layoutX="20.0" layoutY="83.0" onAction="#btnConfiguracionActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Configuracion" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnEmpresa" accessibleText="Crear Empresa" alignment="TOP_LEFT" layoutX="20.0" layoutY="60.0" onAction="#btnEmpresaActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Empresa/Grupo" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnUnidadDeNegocio" accessibleText="Unidad  de Negocio" alignment="TOP_LEFT" layoutX="20.0" layoutY="270.0" onAction="#btnUnidadDeNegocioActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="162.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Unidad  de Negocio" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="25.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnNcf" accessibleText="Registrar  NCF" alignment="TOP_LEFT" layoutX="20.0" layoutY="394.0" onAction="#btnNcfActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="162.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Registrar  NCF" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="24.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnSecuenciaDoc" accessibleText="Secuencia Documento" alignment="TOP_LEFT" layoutX="20.0" layoutY="312.0" onAction="#btnSecuenciaDocActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Secuencia" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <Separator prefWidth="200.0" />
+            <JFXButton fx:id="btnUsuario" accessibleText="Crear Usuario" alignment="TOP_LEFT" layoutX="20.0" layoutY="62.0" onAction="#btnUsuarioActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Usuario" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnGestionarRol" accessibleText="Gestionar Rol" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="144.0" onAction="#btnGestionarRolACtionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Gestionar  Rol" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnAsignarPermiso" accessibleText="Aisgnar Permisos" alignment="TOP_LEFT" disable="true" layoutX="20.0" layoutY="102.0" onAction="#btnAsignarPermisoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Asignar  Permisos" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <Separator prefWidth="200.0" />
+            <JFXButton fx:id="btnDescuentoPorUsuario" accessibleText="Descuento  por Usuario" alignment="TOP_LEFT" onAction="#btnDescuentoPorUsuarioActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" stylesheets="@../../css/mai.css" text=" Descuento" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="ALIGN_JUSTIFY" nodeOrientation="LEFT_TO_RIGHT" size="18">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnDireccion" accessibleText="Registrar  Direccion" alignment="TOP_LEFT" onAction="#btnDireccionActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Direccion" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnDelivery" accessibleText="Registrar Delyvery" alignment="TOP_LEFT" onAction="#btnDeliveryActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="159.0" style="-fx-border-radius: 60px;" stylesheets="@../../css/mai.css" text="Delivery" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+               <graphic>
+                  <FontAwesomeIconView fill="#eee8e7" focusTraversable="true" glyphName="USER_PLUS" nodeOrientation="LEFT_TO_RIGHT" size="20" text="" wrappingWidth="32.428571701049805">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+               <effect>
+                  <Glow />
+               </effect>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane opacity="0.81">
+               <children>
+                  <Label fx:id="lbModulo" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="18.0" nodeOrientation="LEFT_TO_RIGHT" text="Modulo de Configuración" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </AnchorPane>
+            <Separator prefHeight="3.0" prefWidth="904.0" styleClass="head-background" stylesheets="@../../style/style.css" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" styleClass="fondo_config" stylesheets="@../../css/style.css" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefHeight="4.0" prefWidth="904.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+            <Label layoutX="1.0" layoutY="5.0" text="  Desarrollado  Por  Maximiliano Almonte Rodrigue.z" textFill="WHITE" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="775.0" layoutY="3.0" prefHeight="25.0" prefWidth="69.0" text="Version: " textFill="WHITE" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="839.0" layoutY="2.0" text="1.0.0" textFill="WHITE" AnchorPane.rightAnchor="32.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator prefHeight="7.0" prefWidth="904.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </Separator>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
