@@ -89,6 +89,8 @@ public class FXMLModulosController implements Initializable {
     private JFXButton btnReportes;
     @FXML
     private JFXButton btnBanco;
+    @FXML
+    private JFXButton btnModuloAlquilerEquipo;
 
     /**
      * Initializes the controller class.
@@ -473,6 +475,12 @@ public class FXMLModulosController implements Initializable {
     @FXML
     private void btnBancoActionEvent(ActionEvent event) throws IOException {
         FXMain.vistaModuloBanco();
+    }
+
+    @FXML
+    private void btnModuloAlquilerEquipoActionEvent(ActionEvent event) throws IOException {
+        
+          FXMain.vistaModuloAlquilerEquipos();
     }
 
 }

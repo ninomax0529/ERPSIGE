@@ -175,15 +175,13 @@ public class FXMain extends Application {
             primaryStage.setMaximized(false);
             primaryStage.setResizable(false);
             primaryStage.show();
-            
-           
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-       public  static void vistaLoginP() throws IOException {
+    public static void vistaLoginP() throws IOException {
 
         try {
 
@@ -202,7 +200,7 @@ public class FXMain extends Application {
             e.printStackTrace();
         }
     }
-    
+
     public static void vistaCliente() throws IOException {
 
         FXMLLoader fXMLLoader = new FXMLLoader();
@@ -291,6 +289,15 @@ public class FXMain extends Application {
 
         FXMLLoader fXMLLoader = new FXMLLoader();
         fXMLLoader.setLocation(FXMain.class.getResource("/vista/banco/ModuloBanco.fxml"));
+        BorderPane vistaModulo = fXMLLoader.load();
+        mainLayout.setCenter(vistaModulo);
+
+    }
+
+    public static void vistaModuloAlquilerEquipos() throws IOException {
+
+        FXMLLoader fXMLLoader = new FXMLLoader();
+        fXMLLoader.setLocation(FXMain.class.getResource("/vista/alquilerEquipo/ModuloAlquilerEquipo.fxml"));
         BorderPane vistaModulo = fXMLLoader.load();
         mainLayout.setCenter(vistaModulo);
 

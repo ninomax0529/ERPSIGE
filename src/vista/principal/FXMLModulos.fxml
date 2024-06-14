@@ -17,9 +17,9 @@
    <top>
       <VBox stylesheets="@../../style/style.css" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="achMenu" opacity="0.81" prefHeight="29.0" prefWidth="1256.0" styleClass="head-background" stylesheets="@../../style/style.css" VBox.vgrow="ALWAYS">
+            <AnchorPane fx:id="achMenu" opacity="0.81" prefHeight="25.0" prefWidth="1256.0" styleClass="head-background" stylesheets="@../../style/style.css" VBox.vgrow="ALWAYS">
                <children>
-                  <Label fx:id="lbUnidadNegocio" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1099.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#lbUnidadNegocioMouseClicked" prefHeight="37.0" prefWidth="149.0" text="ERP SIGE" textAlignment="RIGHT" textFill="WHITE" underline="true" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                  <Label fx:id="lbUnidadNegocio" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1116.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#lbUnidadNegocioMouseClicked" prefHeight="37.0" prefWidth="121.0" text="ERP SIGE" textAlignment="RIGHT" textFill="WHITE" underline="true" AnchorPane.leftAnchor="1116.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -27,7 +27,7 @@
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </padding>
                   </Label>
-                  <HBox fx:id="hbMenuModulo" alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="17.0" prefWidth="1085.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="0.0">
+                  <HBox fx:id="hbMenuModulo" alignment="CENTER_LEFT" layoutX="20.0" layoutY="10.0" prefHeight="44.0" prefWidth="1106.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="5.0">
                      <children>
                         <JFXButton fx:id="btnConfiguracion" alignment="TOP_LEFT" disable="true" onAction="#btnConfiguracionAcionEvent" opacity="0.97" prefHeight="32.0" prefWidth="95.0" style="-fx-border-radius: 60px;" text=" Config" textFill="WHITE">
                            <graphic>
@@ -47,7 +47,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton fx:id="btnInventario" alignment="TOP_LEFT" disable="true" onAction="#btnInventarioActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="107.0" style="-fx-border-radius: 60px;" text="  Inventario" textFill="WHITE">
+                        <JFXButton fx:id="btnInventario" alignment="TOP_LEFT" disable="true" onAction="#btnInventarioActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="99.0" style="-fx-border-radius: 60px;" text="  Inventario" textFill="WHITE">
                            <effect>
                               <Glow />
                            </effect>
@@ -146,7 +146,18 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton fx:id="btnBanco" alignment="TOP_LEFT" disable="true" layoutX="941.0" layoutY="15.0" onAction="#btnBancoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="81.0" style="-fx-border-radius: 60px;" text="Banco" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                        <JFXButton fx:id="btnBanco" alignment="TOP_LEFT" disable="true" layoutX="941.0" layoutY="15.0" onAction="#btnBancoActionEvent" opacity="0.97" prefHeight="32.0" prefWidth="70.0" style="-fx-border-radius: 60px;" text="Banco" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="btnModuloAlquilerEquipo" alignment="TOP_LEFT" disable="true" layoutX="930.0" layoutY="15.0" onAction="#btnModuloAlquilerEquipoActionEvent" opacity="0.97" prefHeight="30.0" prefWidth="129.0" style="-fx-border-radius: 60px;" text="Alquiler Equipos" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                            <effect>
                               <Glow />
                            </effect>
