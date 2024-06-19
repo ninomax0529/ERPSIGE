@@ -250,11 +250,11 @@ public class TecladoDigitalController implements Initializable {
 
             return;
         }
-
-        if (tbArticuloUnidad.getSelectionModel().getSelectedIndex() == -1) {
-            ClaseUtil.mensaje("Tiene que selccionar una unidad de Venta ");
-            return;
-        }
+//
+//        if (tbArticuloUnidad.getSelectionModel().getSelectedIndex() == -1) {
+//            ClaseUtil.mensaje("Tiene que selccionar una unidad de Venta ");
+//            return;
+//        }
 
         setArticuloDTO(tbArticuloUnidad.getSelectionModel().getSelectedItem());
 

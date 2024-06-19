@@ -597,21 +597,21 @@ public class ListaDePrecioController implements Initializable {
         try {
 
 //              System.out.println("Lista general de precio  " + listaDePrecio.getCodigo());
-            ArticuloUnidad au;
+//            ArticuloUnidad au;
             if (actualizarListaPrecio == true) {
 
                 listaDePrecio.setDetalleListaDePrecioCollection(listaDetalleListaDePrecio);
 
                 ManejoListaDePrecio.getInstancia().actualizar(listaDePrecio);
 
-                for (DetalleListaDePrecio dlp : listaDetalleListaDePrecio) {
-
-                    au = ManejoArticuloUnidad.getInstancia().getArticuloUnidadSslida(dlp.getArticulo().getCodigo(), dlp.getUnidadSalida().getCodigo());
-                    au.setPrecioVenta(dlp.getPrecio());
-                    au.setCostoUnitario(dlp.getCostoUnitario());
-                    ManejoArticuloUnidad.getInstancia().actualizar(au);
-
-                }
+//                for (DetalleListaDePrecio dlp : listaDetalleListaDePrecio) {
+//
+//                    au = ManejoArticuloUnidad.getInstancia().getArticuloUnidadSslida(dlp.getArticulo().getCodigo(), dlp.getUnidadSalida().getCodigo());
+//                    au.setPrecioVenta(dlp.getPrecio());
+//                    au.setCostoUnitario(dlp.getCostoUnitario());
+//                    ManejoArticuloUnidad.getInstancia().actualizar(au);
+//
+//                }
 
                 listaDetalleListaDePrecio.clear();
 

@@ -15,6 +15,7 @@ import controlador.produccion.lote.BusacrLoteDeProduccionController;
 import dto.articulo.ArticuloDTO;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +40,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import manejo.articulo.ManejoArticulo;
+import manejo.articulo.ManejoExistenciaArticulo;
 import modelo.Articulo;
+import modelo.ExistenciaArticulo;
 import modelo.RegistroLote;
 import reporte.inventario.RptImprimirEtiqueta;
 import utiles.ClaseUtil;
@@ -112,7 +115,7 @@ public class ArticulosController implements Initializable {
     @FXML
     private Label lbCantidadArticulo;
     @FXML
-    private TableView<ArticuloDTO> tbExistenciaArticulo;
+    private TableView<ExistenciaArticulo> tbExistenciaArticulo;
     @FXML
     private TableColumn<ArticuloDTO, String> tbcAlmacen;
     @FXML
@@ -123,12 +126,14 @@ public class ArticulosController implements Initializable {
     ObservableList<Articulo> listaArticulo = FXCollections.observableArrayList();
 
     ObservableList<ArticuloDTO> listaDetalleArticulo = FXCollections.observableArrayList();
-    ObservableList<ArticuloDTO> listaExistenciaArticulo = FXCollections.observableArrayList();
+    ObservableList<ExistenciaArticulo> listaExistenciaArticulo = FXCollections.observableArrayList();
     @FXML
     private JFXButton btnSeleccionarLote;
     @FXML
     private Label lbLote;
     RegistroLote registroLote;
+    @FXML
+    private TableColumn<ExistenciaArticulo, String> tbcFechaActualizacion;
 
     public RegistroLote getRegistroLote() {
         return registroLote;
@@ -287,31 +292,25 @@ public class ArticulosController implements Initializable {
         tbExistenciaArticulo.setItems(listaExistenciaArticulo);
 
         tbcAlmacen.setCellValueFactory(new PropertyValueFactory<>("nombreAlmacen"));
-        tbcUnidad.setCellValueFactory(new PropertyValueFactory<>("unidad"));
+        tbcUnidad.setCellValueFactory(new PropertyValueFactory<>("nombreUnidadBase"));
         tbcExistencia.setCellValueFactory(new PropertyValueFactory<>("existencia"));
+        tbcFechaActualizacion.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 
-//        tbcAlmacen.setCellValueFactory(
-//                cellData -> {
-//                    SimpleStringProperty property = new SimpleStringProperty();
-//                    if (cellData.getValue() != null) {
-//                        property.setValue(cellData.getValue().getAlmacen().getNombre());
-//                    }
-//                    return property;
-//                });
-//        tbcUnidad.setCellValueFactory(
-//                cellData -> {
-//                    SimpleStringProperty property = new SimpleStringProperty();
-//                    if (cellData.getValue() != null) {
-//                        property.setValue(cellData.getValue().getUnidad().getDescripcion());
-//                    }
-//                    return property;
-//                });
+           tbcFechaActualizacion.setCellValueFactory(
+                    cellData -> {
+                        SimpleStringProperty property = new SimpleStringProperty();
+                        if (cellData.getValue().getFecha() != null) {
+                            property.setValue(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().getFecha()));
+                        }
+                        return property;
+                    });
     }
 
     @FXML
     private void btnNuevoActionEvent(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/vista/inventario/articulo/RegistroArticulo_1.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/vista/inventario/articulo/RegistroArticulo_1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/vista/inventario/articulo/RegistroArticulos.fxml"));
 
         ClaseUtil.getStageModal(root);
 
@@ -333,17 +332,17 @@ public class ArticulosController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader();
 
-            loader.setLocation(getClass().getResource("/vista/inventario/articulo/RegistroArticulo_1.fxml"));
+            loader.setLocation(getClass().getResource("/vista/inventario/articulo/RegistroArticulos.fxml"));
             loader.load();
 
             Parent root = loader.getRoot();
 
-            RegistroArticuloController1 registroArticuloController = loader.getController();
+            RegistroArticulosController articuloControllller = loader.getController();
 
-            registroArticuloController.setEditar(true);
-            registroArticuloController.setArticulo(getArticulo());
+            articuloControllller.setEditar(true);
+            articuloControllller.setArticulo(getArticulo());
 
-            registroArticuloController.llenarCampo();
+            articuloControllller.llenarCampo();
 
             ClaseUtil.getStageModal(root);
 
@@ -375,9 +374,9 @@ public class ArticulosController implements Initializable {
 
             if (articulo.getUnidadDeNegocio().getCodigo() == 1) {
 
-                System.out.println(" getRegistroLote().getCapacidad() "+ getRegistroLote().getUnidad()+" "+
-                         getRegistroLote().getCapacidad()+" "+getRegistroLote().getUnidad().getDescripcion());
-                
+                System.out.println(" getRegistroLote().getCapacidad() " + getRegistroLote().getUnidad() + " "
+                        + getRegistroLote().getCapacidad() + " " + getRegistroLote().getUnidad().getDescripcion());
+
                 RptImprimirEtiqueta.getInstancia().verEtiqueta(
                         articulo.getCodigo().toString(),
                         Integer.parseInt(lbLote.getText().trim()),
@@ -536,7 +535,7 @@ public class ArticulosController implements Initializable {
             listaDetalleArticulo.addAll(ManejoArticulo.getInstancia().getListaDePrecioArticuloDTO(getArticulo()));
 
             listaExistenciaArticulo.clear();
-            listaExistenciaArticulo.addAll(ManejoArticulo.getInstancia().getExistenciaArticuloArticuloDTO(getArticulo()));
+            listaExistenciaArticulo.addAll(ManejoExistenciaArticulo.getInstancia().getAlmacenExistenciaArticulo(getArticulo().getCodigo()));
 
             if (event.getClickCount() == 2) {
                 tabPane.getSelectionModel().select(1);

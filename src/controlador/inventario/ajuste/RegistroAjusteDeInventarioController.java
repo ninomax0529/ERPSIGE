@@ -212,13 +212,7 @@ public class RegistroAjusteDeInventarioController implements Initializable {
         tbcUnidadSalida.setCellValueFactory(
                 cellData -> {
                     SimpleStringProperty property = new SimpleStringProperty();
-                    if (cellData.getValue() != null) {
-
-                        property.setValue(ManejoArticuloUnidad.getInstancia()
-                                .getArticuloUnidadSslida(cellData.getValue()
-                                        .getArticulo().getCodigo()).getUnidad()
-                                .getDescripcion());
-                    }
+                     property.setValue(cellData.getValue().getUnidadEntrada().getDescripcion());
                     return property;
                 });
 
@@ -518,38 +512,38 @@ public class RegistroAjusteDeInventarioController implements Initializable {
             return;
         }
         
-        if (cbUnidad.getSelectionModel().getSelectedIndex() == -1) {
-
-            ClaseUtil.mensaje(" Tiene que seleccionar una unidad ");
-            return;
-        }
+//        if (cbUnidad.getSelectionModel().getSelectedIndex() == -1) {
+//
+//            ClaseUtil.mensaje(" Tiene que seleccionar una unidad ");
+//            return;
+//        }
 
         if (txtCantidadPedida.getText().isEmpty()) {
 
-            utiles.ClaseUtil.mensaje(" Tiene que digital una cantidad ");
+            utiles.ClaseUtil.mensaje(" Tiene que digitar una cantidad ");
             txtCantidadPedida.requestFocus();
             return;
         }
 
-        detalleAjusteInventario.setUnidad(cbUnidad.getSelectionModel().getSelectedItem().getUnidad());
+        detalleAjusteInventario.setUnidad(getArticulo().getUnidadEntrada());
 
-        ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
-                .getArticuloUnidadSslida(getArticulo().getCodigo(), detalleAjusteInventario.getUnidad().getCodigo());
+//        ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
+//                .getArticuloUnidadSslida(getArticulo().getCodigo(), detalleAjusteInventario.getUnidad().getCodigo());
 
-        Double cantidadUnidad = articuloUnidad.getFatorVenta();
+//        Double cantidadUnidad = articuloUnidad.getFatorVenta();
 
         Double cantidad = Double.parseDouble(txtCantidadPedida.getText());
         detalleAjusteInventario.setArticulo(getArticulo());
         detalleAjusteInventario.setCantidadAjustada(cantidad);
         detalleAjusteInventario.setDecripcionArticulo(getArticulo().getDescripcion());//   
-        detalleAjusteInventario.setAlmacen( cbAlmacen.getSelectionModel().getSelectedItem().getAlmacen());
+        detalleAjusteInventario.setAlmacen(cbAlmacen.getSelectionModel().getSelectedItem().getAlmacen());
 
         detalleAjusteInventario.setAjusteInventario(ajusteInventario);
         detalleAjusteInventario.setCosto(0.00);
 
         ExistenciaArticulo exisArt = ManejoExistenciaArticulo.getInstancia()
                 .getExistenciaArticulo(detalleAjusteInventario.getArticulo().getCodigo(),
-                      detalleAjusteInventario.getAlmacen().getCodigo() );
+                      detalleAjusteInventario.getAlmacen().getCodigo());
         
         int almacen= detalleAjusteInventario.getAlmacen().getCodigo();
         
@@ -557,18 +551,18 @@ public class RegistroAjusteDeInventarioController implements Initializable {
 
         detalleAjusteInventario.setExistencia(existencia);
         detalleAjusteInventario.setUnidadEntrada(getArticulo().getUnidadEntrada());
-        detalleAjusteInventario.setUnidadSalida(articuloUnidad.getUnidad());
-        detalleAjusteInventario.setUnidad(articuloUnidad.getUnidad());
+        detalleAjusteInventario.setUnidadSalida(getArticulo().getUnidadEntrada());
+        detalleAjusteInventario.setUnidad(getArticulo().getUnidadEntrada());
 
         if (rbAumento.isSelected()) {
 
-            detalleAjusteInventario.setNuevaExistencia(existencia+(cantidad * cantidadUnidad));
+            detalleAjusteInventario.setNuevaExistencia(existencia+(cantidad));
 
         }
 
         if (rbDisminucion.isSelected()) {
 
-            detalleAjusteInventario.setNuevaExistencia(existencia - (cantidad * cantidadUnidad));
+            detalleAjusteInventario.setNuevaExistencia(existencia - (cantidad));
 
         }
 

@@ -80,8 +80,10 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
     public List<ExistenciaArticulo> getAlmacenExistenciaArticulo(int articulo) {
 
-        String query = " SELECT * FROM existencia_articulo  where articulo=:articulo and unidad_de_negocio=:unidadNegocio ";
+        String query = " SELECT * FROM existencia_articulo  "
+                + " where articulo=:articulo and unidad_de_negocio=:unidadNegocio ";
 
+        System.out.println("Articulo " + articulo + "VariablesGlobales.USUARIO.getUnidadDeNegocio().getCodigo() " + VariablesGlobales.USUARIO.getUnidadDeNegocio().getCodigo());
         System.out.println("sql existen art " + query);
         return getSession().createSQLQuery(query)
                 .addEntity(ExistenciaArticulo.class)
@@ -435,24 +437,28 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
         try {
 
-            Integer codArt = 0, codUni = 0;
+            Double existencia = 0.00;
+//            Integer codArt = 0, codUni = 0;
             for (DetalleFactura det : listadetalleFactura) {
 
                 ExistenciaArticulo existenciaArticulo = ManejoArticulo.getInstancia()
                         .getExistenciaArticulo(det.getArticulo().getCodigo(), det.getAlmacen().getCodigo());
 
                 //Buscando el factor de conversion de una unidad a otra
-                ArticuloUnidad au = ManejoArticuloUnidad.getInstancia()
-                        .getArticuloUnidadSslida(det.getArticulo().getCodigo(), existenciaArticulo.getUnidad().getCodigo());
+//                ArticuloUnidad au = ManejoArticuloUnidad.getInstancia()
+//                        .getArticuloUnidadSslida(det.getArticulo().getCodigo(), existenciaArticulo.getUnidad().getCodigo());
 
                 if (existenciaArticulo != null) {
 
-                    codArt = det.getArticulo().getCodigo();
-                    codUni = det.getUnidad().getCodigo();
+                    existencia = ManejoExistenciaArticulo.getInstancia()
+                            .getExistenciaArticulosPorMovimiento(det.getArticulo().getCodigo(), det.getAlmacen().getCodigo());
+//                    
+//                    codArt = det.getArticulo().getCodigo();
+//                    codUni = det.getUnidad().getCodigo();
 
-                    ArticuloUnidad artUnidad = ManejoArticuloUnidad.getInstancia().getArticuloUnidadSslida(codArt, codUni);
+//                    ArticuloUnidad artUnidad = ManejoArticuloUnidad.getInstancia().getArticuloUnidadSslida(codArt, codUni);
 
-                    existenciaArticulo.setExistencia(existenciaArticulo.getExistencia() + (det.getCantidad() * artUnidad.getFatorVenta()));
+                    existenciaArticulo.setExistencia(existencia);
 //                    
 //                    if (Objects.equals(det.getUnidad().getCodigo(), existenciaArticulo.getUnidad().getCodigo())) {//undad minima de inventario
 //
@@ -498,6 +504,7 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
         try {
 
+            Double existencia = 0.00;
             for (DetalleFacturaSuplidor det : listadetalleFactura) {
 
                 ExistenciaArticulo existenciaArticulo = ManejoArticulo.getInstancia()
@@ -508,6 +515,8 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
                     System.out.println("Entro actualizar"
                             + " " + existenciaArticulo.getArticulo().getCodigo() + " " + existenciaArticulo.getAlmacen().getCodigo());
 
+//                        existencia = ManejoExistenciaArticulo.getInstancia()
+//                            .getExistenciaArticulosPorMovimiento(det.getArticulo().getCodigo(), det.get);
                     existenciaArticulo.setExistenciaAnterior(existenciaArticulo.getExistencia());
                     existenciaArticulo.setExistencia(existenciaArticulo.getExistencia() + det.getCantidad());
                     existenciaArticulo.setFecha(new Date());
@@ -536,6 +545,7 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
         try {
 
+            Double existencia = 0.00;
             ListaDePrecio listaDePrecio = ManejoListaDePrecio.getInstancia().getListaDePrecioGeneral(4);
 
             List<DetalleListaDePrecio> listaDetalleDePrecio = ManejoListaDePrecio.getInstancia()
@@ -550,43 +560,46 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
                 if (existenciaArticulo != null) {
 
+                    existencia = ManejoExistenciaArticulo.getInstancia()
+                            .getExistenciaArticulosPorMovimiento(det.getArticulo().getCodigo(), det.getAlmacen().getCodigo());
+
                     existenciaArticulo.setExistenciaAnterior(existenciaArticulo.getExistencia());
 
                     Articulo articulo = existenciaArticulo.getArticulo();
-
-                    ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
-                            .getArticuloUnidadEntrada(articulo.getCodigo(), det.getUnidad().getCodigo());
+//
+//                    ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
+//                            .getArticuloUnidadEntrada(articulo.getCodigo(), det.getUnidad().getCodigo());
 
                     articulo.setPrecioCompraAnterior(articulo.getPrecioCompraUnitario());
-                    Double costoUnitario = 0.00, costo = 0.00;
+//                    Double costoUnitario = 0.00, costo = 0.00;
 
-                    System.out.println(" articuloUnidad " + articuloUnidad);
+                    System.out.println(" det.getCantidadRecibida() " + det.getCantidadRecibida());
 
-                    existenciaArticulo.setExistencia(existenciaArticulo.getExistencia() + (det.getCantidadRecibida() * articuloUnidad.getFatorVenta()));
+                    existenciaArticulo.setExistencia(existencia);
+                    existenciaArticulo.setFecha(new Date());
 
                     //Actualizamos el costo a la unidad de entrada base
-                    articulo.setPrecioCompra(det.getCostoUnitario() * articuloUnidad.getCantidadUnidades());
+                    articulo.setPrecioCompra(det.getCostoUnitario());
 
                     articulo.setPrecioCompraAnterior(det.getPrecioAnterior());
 
                     articulo.setPrecioVenta1(det.getPrecioVenta());
                     articulo.setPrecioVenta2(det.getPrecioVenta());
                     articulo.setPrecioVenta3(det.getPrecioVenta());
-                    existenciaArticulo.setFecha(new Date());
 
-                    List<ArticuloUnidad> articuloUnidadCollection = ManejoArticuloUnidad.getInstancia().getListaUnidadSslida(articulo.getCodigo());
-
-                    //Actualizar costo unitario
-                    for (ArticuloUnidad au : articuloUnidadCollection) {
-
-                        au.setCostoUnitario(articulo.getPrecioCompra() / au.getCantidadUnidades());
-
-                        ManejoArticuloUnidad.getInstancia().actualizar(au);
-
-                        costoUnitario = utiles.ClaseUtil.roundDoubleSies(costoUnitario, 6);
-
-                    }
-
+//
+//                    List<ArticuloUnidad> articuloUnidadCollection = ManejoArticuloUnidad.getInstancia().getListaUnidadSslida(articulo.getCodigo());
+//
+//                    //Actualizar costo unitario
+//                    for (ArticuloUnidad au : articuloUnidadCollection) {
+//
+//                        au.setCostoUnitario(articulo.getPrecioCompra() / au.getCantidadUnidades());
+//
+//                        ManejoArticuloUnidad.getInstancia().actualizar(au);
+//
+//                        costoUnitario = utiles.ClaseUtil.roundDoubleSies(costoUnitario, 6);
+//
+//                    }
                     //Acualizamos la lista de precio general cos los articulos de la entrada
                     for (DetalleListaDePrecio detlp : listaDetalleDePrecio) {
 
@@ -599,7 +612,7 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
                     }
 
-                    articulo.setPrecioCompraUnitario(costoUnitario);
+                    articulo.setPrecioCompraUnitario(det.getCostoUnitario());
                     articulo.setExistencia(existenciaArticulo.getExistencia());
                     getInstancia().actualizar(existenciaArticulo);
 
@@ -623,20 +636,20 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
         try {
 
+            Double existencia = 0.00;
             //Recorremos el detalle de la entrada de inventario
             for (DetalleTransferenciaAlmacen det : lista) {
 
                 ExistenciaArticulo existenciaArticulo = getExistenciaArticulo(det.getArticulo().getCodigo(), det.getAlmacenDestino().getCodigo());
 
-                ArticuloUnidad au = ManejoArticuloUnidad.getInstancia()
-                        .getArticuloUnidadSslida(det.getArticulo().getCodigo(), existenciaArticulo.getUnidad().getCodigo());
-
+//                ArticuloUnidad au = ManejoArticuloUnidad.getInstancia()
+//                        .getArticuloUnidadSslida(det.getArticulo().getCodigo(), existenciaArticulo.getUnidad().getCodigo());
                 if (existenciaArticulo != null) {
 
-                    Double existencia = ManejoExistenciaArticulo.getInstancia()
+                    existencia = ManejoExistenciaArticulo.getInstancia()
                             .getExistenciaArticulosPorMovimiento(det.getArticulo().getCodigo(), det.getAlmacenDestino().getCodigo());
 //                    if (Objects.equals(det.getUnidad().getCodigo(), existenciaArticulo.getUnidad().getCodigo())) {//undad minima de inventario
-//
+                    System.out.println("existencia : " + existencia);
 //                         
                     existenciaArticulo.setExistenciaAnterior(existenciaArticulo.getExistencia());
 // 
@@ -667,17 +680,18 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
         try {
 
+            Double existencia = 0.00;
             //Recorremos el detalle de la entrada de inventario
             for (DetalleTransferenciaAlmacen det : lista) {
 
                 ExistenciaArticulo existenciaArticulo = getExistenciaArticulo(det.getArticulo().getCodigo(), det.getAlmacenOrigen().getCodigo());
-
-                ArticuloUnidad au = ManejoArticuloUnidad.getInstancia()
-                        .getArticuloUnidadSslida(det.getArticulo().getCodigo(), existenciaArticulo.getUnidad().getCodigo());
+//
+//                ArticuloUnidad au = ManejoArticuloUnidad.getInstancia()
+//                        .getArticuloUnidadSslida(det.getArticulo().getCodigo(), existenciaArticulo.getUnidad().getCodigo());
 
                 if (existenciaArticulo != null) {
 
-                    Double existencia = ManejoExistenciaArticulo.getInstancia()
+                    existencia = ManejoExistenciaArticulo.getInstancia()
                             .getExistenciaArticulosPorMovimiento(det.getArticulo().getCodigo(), det.getAlmacenOrigen().getCodigo());
 //                    if (Objects.equals(det.getUnidad().getCodigo(), existenciaArticulo.getUnidad().getCodigo())) {//undad minima de inventario
 //
@@ -719,34 +733,31 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
         try {
 
+            Double existencia = 0.00;
             for (DetalleAjusteInventario det : lista) {
 
                 ExistenciaArticulo exisArticulo = getExistenciaArticulo(det.getArticulo().getCodigo(), det.getAlmacen().getCodigo());
 
                 if (exisArticulo != null) {
 
+                    existencia = ManejoExistenciaArticulo.getInstancia()
+                            .getExistenciaArticulosPorMovimiento(det.getArticulo().getCodigo(), det.getAlmacen().getCodigo());
+
                     Articulo articulo = exisArticulo.getArticulo();
 
-                    ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
-                            .getArticuloUnidadSslida(articulo.getCodigo(), det.getUnidad().getCodigo());
-
+//                    ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
+//                            .getArticuloUnidadSslida(articulo.getCodigo(), det.getUnidad().getCodigo());
                     exisArticulo.setExistenciaAnterior(exisArticulo.getExistencia());
 
                     articulo.setPrecioCompraAnterior(articulo.getPrecioCompraUnitario());
 
-                    System.out.println("articuloUnidad.getFatorVenta() " + articuloUnidad.getFatorVenta());
-                    if (tipoAjuste == 1) {
+                    System.out.println(" det.getCantidadAjustada() " + det.getCantidadAjustada());
 
-                        exisArticulo.setExistencia(exisArticulo.getExistencia() + (det.getCantidadAjustada() * articuloUnidad.getFatorVenta()));
-
-                    } else if (tipoAjuste == 2) {
-
-                        exisArticulo.setExistencia(exisArticulo.getExistencia() - (det.getCantidadAjustada() * articuloUnidad.getFatorVenta()));
-                    }
+                    exisArticulo.setExistencia(existencia);
 
                     exisArticulo.setFecha(new Date());
 
-                    articulo.setExistencia(exisArticulo.getExistencia());
+                    articulo.setExistencia(existencia);
                     getInstancia().actualizar(exisArticulo);
                     ManejoArticulo.getInstancia().actualizar(articulo);
 
@@ -767,21 +778,20 @@ public class ManejoExistenciaArticulo extends ManejoEstandar<ExistenciaArticulo>
 
             for (DetalleDevolucionDeInventario det : lista) {
 
-                ExistenciaArticulo exisArticulo = getExistenciaArticulo(det.getArticulo().getCodigo(), det.getArticulo().getAlmacen());
+                ExistenciaArticulo exisArticulo = getExistenciaArticulo(det.getArticulo().getCodigo(), det.getAlmacen().getCodigo());
 
                 System.out.println("articuloUnidad.getFatorVenta() " + exisArticulo.getArticulo().getDescripcion());
                 if (exisArticulo != null) {
 
                     Articulo articulo = exisArticulo.getArticulo();
 
-                    ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
-                            .getArticuloUnidadEntrada(articulo.getCodigo(), det.getArticulo().getUnidadEntrada().getCodigo());
-
+//                    ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
+//                            .getArticuloUnidadEntrada(articulo.getCodigo(), det.getArticulo().getUnidadEntrada().getCodigo());
                     exisArticulo.setExistenciaAnterior(exisArticulo.getExistencia());
 
                     articulo.setPrecioCompraAnterior(articulo.getPrecioCompraUnitario());
 
-                    System.out.println("articuloUnidad.getFatorVenta() " + articuloUnidad.getFatorVenta());
+                    System.out.println(" det.getCantidad() " + det.getCantidad());
 //                    if (tipoAjuste == 1) {
                     exisArticulo.setExistencia(exisArticulo.getExistencia() - det.getCantidad());
 //                        exisArticulo.setExistencia(exisArticulo.getExistencia() - (det.getCantidad()* articuloUnidad.getFatorVenta()));

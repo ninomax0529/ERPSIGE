@@ -73,7 +73,7 @@ public class DetalleDevolucionDeInventario implements Serializable {
     private Almacen almacen;
     @JoinColumn(name = "unidad_entrada", referencedColumnName = "codigo")
     @ManyToOne
-    private ArticuloUnidad unidadEntrada;
+    private Unidad unidadEntrada;
 
     public DetalleDevolucionDeInventario() {
     }
@@ -178,11 +178,11 @@ public class DetalleDevolucionDeInventario implements Serializable {
         this.almacen = almacen;
     }
 
-    public ArticuloUnidad getUnidadEntrada() {
+    public Unidad getUnidadEntrada() {
         return unidadEntrada;
     }
 
-    public void setUnidadEntrada(ArticuloUnidad unidadEntrada) {
+    public void setUnidadEntrada(Unidad unidadEntrada) {
         this.unidadEntrada = unidadEntrada;
     }
 

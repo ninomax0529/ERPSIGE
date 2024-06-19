@@ -24,7 +24,7 @@
                <children>
                   <HBox spacing="10.0">
                      <children>
-                        <Label alignment="BOTTOM_LEFT" layoutX="540.0" layoutY="10.0" prefHeight="25.0" prefWidth="94.0" text="No.Devolucion" />
+                        <Label alignment="BOTTOM_LEFT" layoutX="540.0" layoutY="10.0" prefHeight="25.0" prefWidth="61.0" text="Numero " />
                         <JFXTextField fx:id="txtNumeroEntrada" alignment="CENTER" editable="false" layoutX="621.0" layoutY="10.0" prefHeight="25.0" prefWidth="70.0" />
                         <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="44.0" text="Fecha" />
                         <JFXDatePicker fx:id="dpFecha" prefHeight="25.0" prefWidth="114.0">
@@ -61,7 +61,7 @@
                   <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="40.0" spacing="5.0">
                      <children>
                         <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="63.0" text="Articulo" HBox.hgrow="ALWAYS" />
-                        <JFXTextField fx:id="txtArticulo" editable="false" prefHeight="25.0" prefWidth="323.0">
+                        <JFXTextField fx:id="txtArticulo" editable="false" prefHeight="25.0" prefWidth="312.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -71,9 +71,9 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <Label alignment="BOTTOM_RIGHT" prefHeight="25.0" prefWidth="55.0" text="Unidad" />
-                        <JFXComboBox fx:id="cbUnidad" onAction="#cbUnidadActionEvent" prefHeight="25.0" prefWidth="195.0" />
-                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="68.0" text="Cantidad">
+                        <Label alignment="BOTTOM_RIGHT" prefHeight="25.0" prefWidth="55.0" text="Almacen  " />
+                        <JFXComboBox fx:id="cbalmacen" onAction="#cbalmacenActionEvent" prefHeight="25.0" prefWidth="195.0" />
+                        <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="61.0" text="Cantidad">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>

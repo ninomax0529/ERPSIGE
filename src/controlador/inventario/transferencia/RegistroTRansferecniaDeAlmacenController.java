@@ -180,7 +180,8 @@ public class RegistroTRansferecniaDeAlmacenController implements Initializable {
 
     private void inicializarCombox() {
 
-        listaAlmacenOrigen.addAll(ManejoAlmacen.getInstancia().getLista());
+        listaAlmacenOrigen.addAll(ManejoAlmacen.getInstancia()
+                .getAlmacenPorUnidadDeNegocio(VariablesGlobales.USUARIO.getUnidadDeNegocio().getCodigo()));
 
         cbAlmacenDestino.setConverter(new StringConverter<Almacen>() {
 
@@ -556,12 +557,12 @@ public class RegistroTRansferecniaDeAlmacenController implements Initializable {
                 ClaseUtil.mensaje("Tiene que seleccionar el articulo del almacen destino ");
                 return;
             }
-
-            if (cbUnidadAlmOrigen.getSelectionModel().getSelectedIndex() == -1) {
-
-                ClaseUtil.mensaje("Tiene que seleccionar la unidad origen ");
-                return;
-            }
+//
+//            if (cbUnidadAlmOrigen.getSelectionModel().getSelectedIndex() == -1) {
+//
+//                ClaseUtil.mensaje("Tiene que seleccionar la unidad origen ");
+//                return;
+//            }
 
             if (txtCantidadPedida.getText().isEmpty()) {
 
@@ -826,7 +827,9 @@ public class RegistroTRansferecniaDeAlmacenController implements Initializable {
             listaExistenciaAlmDestino.clear();
 
             listaExistenciaAlmOrigen.addAll(ManejoExistenciaArticulo.getInstancia().getExistenciaAlmacen(codAlm));
-            listaAlmacenDestino.addAll(ManejoAlmacen.getInstancia().getLista(codAlm));
+//            listaAlmacenDestino.addAll(ManejoAlmacen.getInstancia().getLista(codAlm));
+             listaAlmacenDestino.addAll(ManejoAlmacen.getInstancia().getAlmacenPorUnidadDeNegocio(VariablesGlobales.USUARIO.getUnidadDeNegocio().getCodigo()));
+               
         } else {
 
             listaExistenciaAlmOrigen.clear();

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ERPSIGE.jar" size="15023269" download="eager" />
+    <jar href="ERPSIGE.jar" size="15077289" download="eager" />
     <jar href="lib\MaskFormatterFX.jar" size="9248" download="eager" />
     <jar href="lib\Util.jar" size="11957" download="eager" />
     <jar href="lib\antlr-2.7.7.jar" size="437548" download="eager" />

@@ -31,8 +31,8 @@ public class Conexion {
     //nota ,si no me permite conectarme   al servidor remoto es por el firewall del servidor
     private static Connection con = null;
     private String bd = "db_erp_sige";
-//    private String server = "localhost";
-    private String server = "10.0.0.80";
+    private String server = "localhost";
+//    private String server = "10.0.0.80";
     private String name = "root";
     private String password = "root123";
     private String url = "jdbc:mysql://" + server + ":3306/" + bd;

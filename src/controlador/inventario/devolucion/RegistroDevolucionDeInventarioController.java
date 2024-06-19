@@ -71,8 +71,6 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
     @FXML
     private JFXButton btBuscarArticulo;
     @FXML
-    private JFXComboBox<ArticuloUnidad> cbUnidad;
-    @FXML
     private JFXTextField txtCantidadPedida;
     @FXML
     private JFXButton btnAgregarArticulo;
@@ -93,10 +91,6 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
     private TableColumn<DetalleDevolucionDeInventario, String> tbcUnidadSalida;
     @FXML
     private TableColumn<DetalleDevolucionDeInventario, Double> tbcCantidad;
-//
-//    private TableColumn<DetalleDevolucionDeInventario, String> tbcUnidad;
-    @FXML
-    private Label lbColumnaUnidad;
     @FXML
     private TableColumn<?, ?> tbcValor11;
     @FXML
@@ -117,6 +111,8 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
     private JFXTextField txtNombreSuplidor;
     @FXML
     private JFXButton btBuscarASuplidor;
+    @FXML
+    private JFXComboBox<ExistenciaArticulo> cbalmacen;
 
     public Articulo getArticulo() {
         return articulo;
@@ -128,11 +124,11 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
 
     ObservableList<DetalleDevolucionDeInventario> listadetalle = FXCollections.observableArrayList();
 
-    ObservableList<ArticuloUnidad> listaUnidads = FXCollections.observableArrayList();
+    ObservableList<ExistenciaArticulo> listaExosteArt = FXCollections.observableArrayList();
     ObservableList<TipoDevolucion> listaTipoDev = FXCollections.observableArrayList();
 
     DevolucionDeInventario devolucionDeInventario;
-    DetalleDevolucionDeInventario detalleDevolucionDeInventario;
+    DetalleDevolucionDeInventario detalleDev;
     Suplidor suplidor;
 
     public Suplidor getSuplidor() {
@@ -175,15 +171,15 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
 
     private void inicializarCombox() {
 
-        cbUnidad.setConverter(new StringConverter<ArticuloUnidad>() {
+        cbalmacen.setConverter(new StringConverter<ExistenciaArticulo>() {
 
             @Override
-            public String toString(ArticuloUnidad unidad) {
-                return String.valueOf(unidad.getUnidad().getDescripcion());
+            public String toString(ExistenciaArticulo artAlm) {
+                return String.valueOf(artAlm.getNombreAlmacen());
             }
 
             @Override
-            public ArticuloUnidad fromString(String string) {
+            public ExistenciaArticulo fromString(String string) {
                 throw new UnsupportedOperationException("Not supported yet.");
             }
         });
@@ -202,7 +198,7 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
         });
 
         listaTipoDev.addAll(ManejoTipoDevolucion.getInstancia().getLista());
-        cbUnidad.setItems(listaUnidads);
+        cbalmacen.setItems(listaExosteArt);
         cbTipoDevolucion.setItems(listaTipoDev);
 
     }
@@ -230,10 +226,7 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
                     SimpleStringProperty property = new SimpleStringProperty();
                     if (cellData.getValue() != null) {
 
-                        property.setValue(ManejoArticuloUnidad.getInstancia()
-                                .getArticuloUnidadSslida(cellData.getValue()
-                                        .getArticulo().getCodigo()).getUnidad()
-                                .getDescripcion());
+                        property.setValue(cellData.getValue().getDescripcionUnidadEntrada());
                     }
                     return property;
                 });
@@ -350,22 +343,20 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
                 setArticulo(articuloController.getArticulo());
                 txtArticulo.setText(getArticulo().getDescripcion());
                 txtCantidadPedida.requestFocus();
-                listaUnidads.clear();
+                listaExosteArt.clear();
+                
+               
 //                String unidadES = getArticulo().getUnidadEntrada().getCodigo() + "," + getArticulo().getUnidadSalida().getCodigo();
 
-                listaUnidads.addAll(ManejoArticuloUnidad.getInstancia().getListaUnidadSslida(getArticulo().getCodigo()));
-                cbUnidad.setItems(listaUnidads);
+                listaExosteArt.addAll(ManejoExistenciaArticulo.getInstancia().getAlmacenExistenciaArticulo(getArticulo().getCodigo()));
+                
+//                cbalmacen.setItems(listaExosteArt);
 
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-
-    @FXML
-    private void cbUnidadActionEvent(ActionEvent event) {
 
     }
 
@@ -481,9 +472,9 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
             return;
         }
 
-        if (cbUnidad.getSelectionModel().getSelectedIndex() == -1) {
+        if (cbalmacen.getSelectionModel().getSelectedIndex() == -1) {
 
-            ClaseUtil.mensaje(" Tiene que seleccionar una unidad ");
+            ClaseUtil.mensaje(" Tiene que seleccionar un almacen ");
             return;
         }
 
@@ -494,48 +485,49 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
             return;
         }
 
-        detalleDevolucionDeInventario.setUnidadEntrada(cbUnidad.getSelectionModel().getSelectedItem());
+        detalleDev.setUnidadEntrada(getArticulo().getUnidadEntrada());
 
 //        ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
-//                .getArticuloUnidadEntrada(getArticulo().getCodigo(), detalleDevolucionDeInventario.getArticulo().getUnidadEntrada().getCodigo());
+//                .getArticuloUnidadEntrada(getArticulo().getCodigo(), detalleDev.getArticulo().getUnidadEntrada().getCodigo());
 //        Double cantidadUnidad = articuloUnidad.getFatorVenta();
         Double cantidad = Double.parseDouble(txtCantidadPedida.getText());
-        detalleDevolucionDeInventario.setArticulo(getArticulo());
-        detalleDevolucionDeInventario.setCantidad(cantidad);
-        detalleDevolucionDeInventario.setNuevaExistencia(cantidad);
-        detalleDevolucionDeInventario.setDescripcionArticulo(getArticulo().getDescripcion());//   
-        detalleDevolucionDeInventario.setDescripcionUnidadEntrada(cbUnidad.getSelectionModel().getSelectedItem().getUnidad().getDescripcion());
+        detalleDev.setArticulo(getArticulo());
+        detalleDev.setAlmacen(cbalmacen.getSelectionModel().getSelectedItem().getAlmacen());
+        detalleDev.setCantidad(cantidad);
+        detalleDev.setNuevaExistencia(cantidad);
+        detalleDev.setDescripcionArticulo(getArticulo().getDescripcion());//   
+        detalleDev.setDescripcionUnidadEntrada(getArticulo().getUnidadEntrada().getDescripcion());
 
-        detalleDevolucionDeInventario.setDevolucionDeInventario(devolucionDeInventario);
-        detalleDevolucionDeInventario.setCosto(0.00);
+        detalleDev.setDevolucionDeInventario(devolucionDeInventario);
+        detalleDev.setCosto(0.00);
 
         ExistenciaArticulo exisArt = ManejoExistenciaArticulo.getInstancia()
-                .getExistenciaArticulo(detalleDevolucionDeInventario.getArticulo().getCodigo(),
-                        detalleDevolucionDeInventario.getArticulo().getAlmacen());
+                .getExistenciaArticulo(detalleDev.getArticulo().getCodigo(),
+                        detalleDev.getAlmacen().getCodigo());
 
-        detalleDevolucionDeInventario.setExistenciaActual(exisArt.getExistencia());
-        detalleDevolucionDeInventario.setUnidadEntrada(cbUnidad.getValue());
-        detalleDevolucionDeInventario.setUnidadSalida(cbUnidad.getValue().getCodigo());
+        detalleDev.setExistenciaActual(exisArt.getExistencia());
+        detalleDev.setUnidadEntrada(getArticulo().getUnidadEntrada());
+        detalleDev.setUnidadSalida(getArticulo().getUnidadDeVenta());
 
         txtArticulo.clear();
         txtCantidadPedida.clear();
-        listaUnidads.clear();
-        if (existweDetalle(detalleDevolucionDeInventario)) {
+        listaExosteArt.clear();
+        if (existweDetalle(detalleDev)) {
 
             ClaseUtil.mensaje("Este articulo ya fue agregado");
             return;
         }
 
-        listadetalle.add(detalleDevolucionDeInventario);
+        listadetalle.add(detalleDev);
         txtCantidad.setText(Integer.toString(listadetalle.size()));
 
-        detalleDevolucionDeInventario = new DetalleDevolucionDeInventario();
+        detalleDev = new DetalleDevolucionDeInventario();
     }
 
     private void nuevo() {
 
         devolucionDeInventario = new DevolucionDeInventario();
-        detalleDevolucionDeInventario = new DetalleDevolucionDeInventario();
+        detalleDev = new DetalleDevolucionDeInventario();
         inicializarSecuencia();
     }
 
@@ -588,5 +580,9 @@ public class RegistroDevolucionDeInventarioController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void cbalmacenActionEvent(ActionEvent event) {
     }
 }

@@ -271,10 +271,7 @@ public class RegistroEntradaInventarioController implements Initializable {
                     SimpleStringProperty property = new SimpleStringProperty();
                     if (cellData.getValue() != null) {
 
-                        property.setValue(ManejoArticuloUnidad.getInstancia()
-                                .getArticuloUnidadSslida(cellData.getValue()
-                                        .getArticulo().getCodigo()).getUnidad()
-                                .getDescripcion());
+                        property.setValue(cellData.getValue().getUnidad().getDescripcion());
                     }
                     return property;
                 });
@@ -866,12 +863,11 @@ public class RegistroEntradaInventarioController implements Initializable {
                 return;
             }
 
-            if (cbUnidad.getSelectionModel().getSelectedIndex() == -1) {
-
-                ClaseUtil.mensaje(" Tiene que seleccionar una unidad ");
-                return;
-            }
-
+//            if (cbUnidad.getSelectionModel().getSelectedIndex() == -1) {
+//
+//                ClaseUtil.mensaje(" Tiene que seleccionar una unidad ");
+//                return;
+//            }
             if (txtCantidadPedida.getText().isEmpty()) {
 
                 utiles.ClaseUtil.mensaje(" Tiene que digital una cantidad ");
@@ -887,29 +883,32 @@ public class RegistroEntradaInventarioController implements Initializable {
             detalleEntradaInventario.setCantidadPedida(cantidad);
             detalleEntradaInventario.setCantidadRecibida(cantidad);
             detalleEntradaInventario.setDescripcionArticulo(getArticulo().getDescripcion());
-            detalleEntradaInventario.setUnidad(cbUnidad.getSelectionModel().getSelectedItem().getUnidad());
+            detalleEntradaInventario.setUnidad(getArticulo().getUnidadEntrada());
+//            detalleEntradaInventario.setUnidad(cbUnidad.getSelectionModel().getSelectedItem().getUnidad());
             detalleEntradaInventario.setAlmacen(cbAlmacen.getSelectionModel().getSelectedItem().getAlmacen());
 
             detalleEntradaInventario.setNumeroOrden(numOrden);
             detalleEntradaInventario.setOrdenCompra(null);
-
-            ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
-                    .getArticuloUnidadSslida(getArticulo().getCodigo(), detalleEntradaInventario.getUnidad().getCodigo());
-
-            Double cantidadUnidad = articuloUnidad.getFatorVenta();
+//
+//            ArticuloUnidad articuloUnidad = ManejoArticuloUnidad.getInstancia()
+//                    .getArticuloUnidadSslida(getArticulo().getCodigo(), detalleEntradaInventario.getUnidad().getCodigo());
+//
+//            Double cantidadUnidad = articuloUnidad.getFatorVenta();
 
 //            ExistenciaArticulo exisArt = ManejoExistenciaArticulo.getInstancia()
 //                    .getExistenciaArticulo(detalleEntradaInventario.getArticulo().getCodigo(),
 //                            detalleEntradaInventario.getAlmacen().getCodigo());
-
             int almacen = detalleEntradaInventario.getAlmacen().getCodigo();
 
             Double existencia = ManejoExistenciaArticulo.getInstancia().getExistenciaArticulosPorMovimiento(getArticulo().getCodigo(), almacen);
+            detalleEntradaInventario.setExistencia(existencia);
+           
 
-            detalleEntradaInventario.setExistencia(existencia + (detalleEntradaInventario.getCantidadRecibida() * cantidadUnidad));
-
-            detalleEntradaInventario.setCostoUnitario(articuloUnidad.getCostoUnitario());
-            detalleEntradaInventario.setPrecioAnterior(articuloUnidad.getCostoUnitario());
+//            detalleEntradaInventario.setExistencia(existencia + (detalleEntradaInventario.getCantidadRecibida() * cantidadUnidad));
+//            detalleEntradaInventario.setCostoUnitario(articuloUnidad.getCostoUnitario());
+//            detalleEntradaInventario.setPrecioAnterior(articuloUnidad.getCostoUnitario());
+            detalleEntradaInventario.setCostoUnitario(getArticulo().getPrecioCompra());
+            detalleEntradaInventario.setPrecioAnterior(0.00);
             precio = detalleEntradaInventario.getCostoUnitario();
 
             subTotal = ClaseUtil.roundDouble(precio * cantidad, 2);
@@ -927,11 +926,11 @@ public class RegistroEntradaInventarioController implements Initializable {
 
             detalleEntradaInventario.setEntradaInventario(entradaInventario);
             detalleEntradaInventario.setExistenciaAnterior(existencia);
+//
+//            Integer unidadInventario = ManejoArticuloUnidad
+//                    .getInstancia().getArticuloUnidadSslida(detalleEntradaInventario.getArticulo().getCodigo()).getUnidad().getCodigo();
 
-            Integer unidadInventario = ManejoArticuloUnidad
-                    .getInstancia().getArticuloUnidadSslida(detalleEntradaInventario.getArticulo().getCodigo()).getUnidad().getCodigo();
-
-            detalleEntradaInventario.setUnidadSalida(unidadInventario);
+            detalleEntradaInventario.setUnidadSalida(getArticulo().getUnidadDeVenta());
 
             listadetalle.add(detalleEntradaInventario);
 

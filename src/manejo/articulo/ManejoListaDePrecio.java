@@ -38,7 +38,7 @@ public class ManejoListaDePrecio extends ManejoEstandar<ListaDePrecio> {
 
     public List<ListaDePrecio> getListaDePrecio() {
 
-        String query = " SELECT * FROM lista_de_precio ";
+        String query = " SELECT * FROM lista_de_precio" ;
 
         return session.createSQLQuery(query).addEntity(ListaDePrecio.class).list();
 
@@ -109,15 +109,14 @@ public class ManejoListaDePrecio extends ManejoEstandar<ListaDePrecio> {
         return session.createSQLQuery(query)
                 .addEntity(DetalleListaDePrecio.class)
                 .setParameter("codigo", cdigoLista)
-                 .setParameter("ug", VariablesGlobales.USUARIO.getUnidadDeNegocio().getCodigo())
+                .setParameter("ug", VariablesGlobales.USUARIO.getUnidadDeNegocio().getCodigo())
                 .list();
 
     }
 
-    public List<DetalleListaDePrecio> getArticuloDetalleListaDePrecio(int tipoart, int categoria, int subCategoria, int unidad,int calidad) {
+    public List<DetalleListaDePrecio> getArticuloDetalleListaDePrecio(int tipoart, int categoria, int subCategoria, int unidad, int calidad) {
 
-        
-          String query = " SELECT * FROM  detalle_lista_de_precio \n"
+        String query = " SELECT * FROM  detalle_lista_de_precio \n"
                 + "\n"
                 + " where lista_de_precio=1\n"
                 + "\n"
@@ -128,15 +127,15 @@ public class ManejoListaDePrecio extends ManejoEstandar<ListaDePrecio> {
                 + "\n"
                 + "inner JOIN articulo_unidad au on  a.codigo=au.articulo\n"
                 + "\n"
-                + " where tipo_articulo="+tipoart               
+                + " where tipo_articulo=" + tipoart
                 + "\n"
-                + " and categoria="+categoria
-                + " and  sub_categoria="+subCategoria
-                + " and au.unidad="+unidad
-               + "  and calidad_pintura="+calidad
+                + " and categoria=" + categoria
+                + " and  sub_categoria=" + subCategoria
+                + " and au.unidad=" + unidad
+                + "  and calidad_pintura=" + calidad
                 + ")\n"
                 + "";
-        
+
 //        String query = " SELECT * FROM  detalle_lista_de_precio \n"
 //                + "\n"
 //                + " where lista_de_precio=1\n"
@@ -157,11 +156,11 @@ public class ManejoListaDePrecio extends ManejoEstandar<ListaDePrecio> {
 //                + "\n" 
 //                + ")\n"
 //                + "";
-        System.out.println("sQL "+query);
+        System.out.println("sQL " + query);
 
         return session.createSQLQuery(query)
                 .addEntity(DetalleListaDePrecio.class)
-             /*   .setParameter("tipo", tipoart)
+                /*   .setParameter("tipo", tipoart)
               .setParameter("categoria", subCategoria)
                 .setParameter("subCategoria", subCategoria)
                 .setParameter("unidad", unidad)*/
@@ -210,8 +209,8 @@ public class ManejoListaDePrecio extends ManejoEstandar<ListaDePrecio> {
         DetalleListaDePrecio detalleListaDePrecio = null;
 
         String query = " SELECT dlp.* from lista_de_precio lp,detalle_lista_de_precio dlp where lp.codigo=dlp.lista_de_precio "
-                + " and  lp.habilitada=true and  articulo=:articulo  and  unidad_salida=:unidad "
-                + "  and  :cantidad  between cantidad_minima and  cantidad_maxima limit 1 ";
+                + "  and lp.habilitada=true and  articulo=:articulo  and  unidad_salida=:unidad "
+                + "  and  :cantidad  between cantidad_minima and  cantidad_maxima  and dlp.unidad_de_negocio=:unidadNegocio  limit 1 ";
 
         System.out.println("SQL : " + query);
 
@@ -220,6 +219,7 @@ public class ManejoListaDePrecio extends ManejoEstandar<ListaDePrecio> {
                 .setParameter("articulo", articulo)
                 .setParameter("unidad", unidad)
                 .setParameter("cantidad", cantidad)
+                .setParameter("unidadNegocio", VariablesGlobales.USUARIO.getUnidadDeNegocio().getCodigo())
                 .uniqueResult();
 
         if (detalleListaDePrecio == null) {

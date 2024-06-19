@@ -96,7 +96,7 @@ public class ManejoArticulo extends ManejoEstandar<Articulo> {
     public List<Articulo> getListaArticuloPorUnidadDeNegocio() {
 
         String query = " SELECT * from\n"
-                + "articulo a,\n"
+                + " articulo a,\n"
                 + " existencia_articulo  ea ,almacen al\n"
                 + "\n"
                 + "  where a.codigo=ea.articulo  and al.codigo=ea.almacen  and a.unidad_de_negocio=:ug  and   al.despacho=true ";

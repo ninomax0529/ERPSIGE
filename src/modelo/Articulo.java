@@ -31,52 +31,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "articulo")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Articulo.findAll", query = "SELECT a FROM Articulo a")
-    , @NamedQuery(name = "Articulo.findByCodigo", query = "SELECT a FROM Articulo a WHERE a.codigo = :codigo")
-    , @NamedQuery(name = "Articulo.findByExistencia", query = "SELECT a FROM Articulo a WHERE a.existencia = :existencia")
-    , @NamedQuery(name = "Articulo.findByMaximo", query = "SELECT a FROM Articulo a WHERE a.maximo = :maximo")
-    , @NamedQuery(name = "Articulo.findByMinimo", query = "SELECT a FROM Articulo a WHERE a.minimo = :minimo")
-    , @NamedQuery(name = "Articulo.findByApedir", query = "SELECT a FROM Articulo a WHERE a.apedir = :apedir")
-    , @NamedQuery(name = "Articulo.findByPrecioCompra", query = "SELECT a FROM Articulo a WHERE a.precioCompra = :precioCompra")
-    , @NamedQuery(name = "Articulo.findByUltimoSuplidor", query = "SELECT a FROM Articulo a WHERE a.ultimoSuplidor = :ultimoSuplidor")
-    , @NamedQuery(name = "Articulo.findByUbicacion", query = "SELECT a FROM Articulo a WHERE a.ubicacion = :ubicacion")
-    , @NamedQuery(name = "Articulo.findByExentoItbis", query = "SELECT a FROM Articulo a WHERE a.exentoItbis = :exentoItbis")
-    , @NamedQuery(name = "Articulo.findByCodigoBarra", query = "SELECT a FROM Articulo a WHERE a.codigoBarra = :codigoBarra")
-    , @NamedQuery(name = "Articulo.findByActivo", query = "SELECT a FROM Articulo a WHERE a.activo = :activo")
-    , @NamedQuery(name = "Articulo.findByPrecioCompraAnterior", query = "SELECT a FROM Articulo a WHERE a.precioCompraAnterior = :precioCompraAnterior")
-    , @NamedQuery(name = "Articulo.findByPrecioVentaAnterior", query = "SELECT a FROM Articulo a WHERE a.precioVentaAnterior = :precioVentaAnterior")
-    , @NamedQuery(name = "Articulo.findByAlmacen", query = "SELECT a FROM Articulo a WHERE a.almacen = :almacen")
-    , @NamedQuery(name = "Articulo.findByInventariable", query = "SELECT a FROM Articulo a WHERE a.inventariable = :inventariable")
-    , @NamedQuery(name = "Articulo.findByPrecioVenta1", query = "SELECT a FROM Articulo a WHERE a.precioVenta1 = :precioVenta1")
-    , @NamedQuery(name = "Articulo.findByPrecioVenta2", query = "SELECT a FROM Articulo a WHERE a.precioVenta2 = :precioVenta2")
-    , @NamedQuery(name = "Articulo.findByPrecioVenta3", query = "SELECT a FROM Articulo a WHERE a.precioVenta3 = :precioVenta3")
-    , @NamedQuery(name = "Articulo.findByMargenBeneficio1", query = "SELECT a FROM Articulo a WHERE a.margenBeneficio1 = :margenBeneficio1")
-    , @NamedQuery(name = "Articulo.findByMargenBeneficio2", query = "SELECT a FROM Articulo a WHERE a.margenBeneficio2 = :margenBeneficio2")
-    , @NamedQuery(name = "Articulo.findByMargenBeneficio3", query = "SELECT a FROM Articulo a WHERE a.margenBeneficio3 = :margenBeneficio3")
-    , @NamedQuery(name = "Articulo.findByPorcientoUtilidad1", query = "SELECT a FROM Articulo a WHERE a.porcientoUtilidad1 = :porcientoUtilidad1")
-    , @NamedQuery(name = "Articulo.findByPorcientoUtilidad2", query = "SELECT a FROM Articulo a WHERE a.porcientoUtilidad2 = :porcientoUtilidad2")
-    , @NamedQuery(name = "Articulo.findByPorcientoUtilida3", query = "SELECT a FROM Articulo a WHERE a.porcientoUtilida3 = :porcientoUtilida3")
-    , @NamedQuery(name = "Articulo.findByLineaArticulo", query = "SELECT a FROM Articulo a WHERE a.lineaArticulo = :lineaArticulo")
-    , @NamedQuery(name = "Articulo.findByModelo", query = "SELECT a FROM Articulo a WHERE a.modelo = :modelo")
-    , @NamedQuery(name = "Articulo.findByMarca", query = "SELECT a FROM Articulo a WHERE a.marca = :marca")
-    , @NamedQuery(name = "Articulo.findByNombreLinea", query = "SELECT a FROM Articulo a WHERE a.nombreLinea = :nombreLinea")
-    , @NamedQuery(name = "Articulo.findByParaVenta", query = "SELECT a FROM Articulo a WHERE a.paraVenta = :paraVenta")
-    , @NamedQuery(name = "Articulo.findByParaConsumo", query = "SELECT a FROM Articulo a WHERE a.paraConsumo = :paraConsumo")
-    , @NamedQuery(name = "Articulo.findByCantidadUnidades", query = "SELECT a FROM Articulo a WHERE a.cantidadUnidades = :cantidadUnidades")
-    , @NamedQuery(name = "Articulo.findByPrecioCompraUnitario", query = "SELECT a FROM Articulo a WHERE a.precioCompraUnitario = :precioCompraUnitario")
-    , @NamedQuery(name = "Articulo.findByRutaImg", query = "SELECT a FROM Articulo a WHERE a.rutaImg = :rutaImg")
-    , @NamedQuery(name = "Articulo.findByPrecioventa1Itbis", query = "SELECT a FROM Articulo a WHERE a.precioventa1Itbis = :precioventa1Itbis")
-    , @NamedQuery(name = "Articulo.findByPrecioventa2Itbis", query = "SELECT a FROM Articulo a WHERE a.precioventa2Itbis = :precioventa2Itbis")
-    , @NamedQuery(name = "Articulo.findByPrecioventa3Itbis", query = "SELECT a FROM Articulo a WHERE a.precioventa3Itbis = :precioventa3Itbis")
-    , @NamedQuery(name = "Articulo.findByParaDetalle", query = "SELECT a FROM Articulo a WHERE a.paraDetalle = :paraDetalle")
-    , @NamedQuery(name = "Articulo.findByEmbase", query = "SELECT a FROM Articulo a WHERE a.embase = :embase")
-    , @NamedQuery(name = "Articulo.findByNombreEmbase", query = "SELECT a FROM Articulo a WHERE a.nombreEmbase = :nombreEmbase")
-    , @NamedQuery(name = "Articulo.findByCompuesto", query = "SELECT a FROM Articulo a WHERE a.compuesto = :compuesto")
-    , @NamedQuery(name = "Articulo.findByNumero", query = "SELECT a FROM Articulo a WHERE a.numero = :numero")
-    , @NamedQuery(name = "Articulo.findByNumeroImei", query = "SELECT a FROM Articulo a WHERE a.numeroImei = :numeroImei")
-    , @NamedQuery(name = "Articulo.findByNumeroSim", query = "SELECT a FROM Articulo a WHERE a.numeroSim = :numeroSim")
-    , @NamedQuery(name = "Articulo.findByTipoServicio", query = "SELECT a FROM Articulo a WHERE a.tipoServicio = :tipoServicio")})
 public class Articulo implements Serializable {
 
     @Lob
@@ -118,6 +72,8 @@ public class Articulo implements Serializable {
     private String codigoBarra;
     @Column(name = "activo")
     private Boolean activo;
+    @Column(name = "unidad_de_venta")
+    private Integer unidadDeVenta;
     @Lob
     @Column(name = "nombre")
     private String nombre;
@@ -377,7 +333,6 @@ public class Articulo implements Serializable {
     public void setCodigoBarra(String codigoBarra) {
         this.codigoBarra = codigoBarra;
     }
-
 
     public Boolean getActivo() {
         return activo;
@@ -974,6 +929,14 @@ public class Articulo implements Serializable {
         this.detalleOrdenCompraCollection = detalleOrdenCompraCollection;
     }
 
+    public Integer getUnidadDeVenta() {
+        return unidadDeVenta;
+    }
+
+    public void setUnidadDeVenta(Integer unidadDeVenta) {
+        this.unidadDeVenta = unidadDeVenta;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -999,7 +962,6 @@ public class Articulo implements Serializable {
         return "modelo.Articulo[ codigo=" + codigo + " ]";
     }
 
-
     public Double getItbisGravado() {
         return itbisGravado;
     }
@@ -1015,5 +977,5 @@ public class Articulo implements Serializable {
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
-    
+
 }

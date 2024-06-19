@@ -600,19 +600,21 @@ public class FacturacionTochHorizontalController implements Initializable {
 
                                     catidadArticulo = Double.parseDouble(tecladoDigitalController.getTxtCAtidad().getText());
 
-                                    if (tecladoDigitalController.getArticuloDTO() == null) {
-                                        ClaseUtil.mensaje("EL ARTICULO NO TIENE UNIDAD CONFIGURADA ");
-                                        return;
-                                    }
+//                                    if (tecladoDigitalController.getArticuloDTO() == null) {
+//                                        ClaseUtil.mensaje("EL ARTICULO NO TIENE UNIDAD CONFIGURADA ");
+//                                        return;
+//                                    }
 
-                                    int unidad = tecladoDigitalController.getArticuloDTO().getCodigoUnidad();
-                                    int listaPrecio = tecladoDigitalController.getArticuloDTO().getListaDePrecio();
-                                    int almacen = tecladoDigitalController.getArticuloDTO().getAlmacen();
-                                    String nombreUnidad = tecladoDigitalController.getArticuloDTO().getUnidad();
-                                    precioVenta = tecladoDigitalController.getArticuloDTO().getPrecioVenta();
+                                    int unidad =getArticulo().getUnidadEntrada().getCodigo();  //tecladoDigitalController.getArticuloDTO().getCodigoUnidad();
+                                    int listaPrecio=4; // tecladoDigitalController.getArticuloDTO().getListaDePrecio();
+                                    int almacen =6; //tecladoDigitalController.getArticuloDTO().getAlmacen();
+                                    String nombreUnidad = getArticulo().getUnidadEntrada().getDescripcion(); // tecladoDigitalController.getArticuloDTO().getUnidad();
+                                    precioVenta =getArticulo().getPrecioVenta1() ;// tecladoDigitalController.getArticuloDTO().getPrecioVenta();
 
                                     System.out.println("Precio de Venta  " + precioVenta + " lista precio  " + listaPrecio);
-                                    Double existencia = tecladoDigitalController.getArticuloDTO().getExistencia();
+                                    Double existencia =ManejoExistenciaArticulo.getInstancia()
+                                            .getExistenciaArticulosPorMovimiento(getArticulo().getCodigo(), 6);
+                                            //tecladoDigitalController.getArticuloDTO().getExistencia();
 
                                     existencia = FormatNum.FormatearDouble(existencia, 2);
 
@@ -1628,11 +1630,11 @@ public class FacturacionTochHorizontalController implements Initializable {
                 return;
             }
 
-            if (unidadDespacho == 2) {
-
+//            if (unidadDespacho == 2) {
+//
                 valorEnPeso = catidadArticulo;
-                catidadArticulo = FormatNum.FormatearDouble(catidadArticulo / precioVenta, 4);
-            }
+//                catidadArticulo = FormatNum.FormatearDouble(catidadArticulo / precioVenta, 4);
+//            }
 
             detalleFactura.setArticulo(getArticulo());
 
@@ -1652,29 +1654,28 @@ public class FacturacionTochHorizontalController implements Initializable {
             detalleFactura.setPrecioItbis(precioVentaItbis);
             detalleFactura.setUnidad(ManejoUnidad.getInstancia().getUnidad(unidadSalida));
 
-            Integer unidadInventario = ManejoArticuloUnidad.getInstancia()
-                    .getArticuloUnidadSslida(detalleFactura.getArticulo().getCodigo()).getUnidad().getCodigo();
+//            Integer unidadInventario = ManejoArticuloUnidad.getInstancia()
+//                    .getArticuloUnidadSslida(detalleFactura.getArticulo().getCodigo()).getUnidad().getCodigo();
 
-            ArticuloUnidad artUnidad = ManejoArticuloUnidad.getInstancia()
-                    .getArticuloUnidadSslida(detalleFactura.getArticulo().getCodigo(), detalleFactura.getUnidad().getCodigo());
+//            ArticuloUnidad artUnidad = ManejoArticuloUnidad.getInstancia()
+//                    .getArticuloUnidadSslida(detalleFactura.getArticulo().getCodigo(), detalleFactura.getUnidad().getCodigo());
 
-            detalleFactura.setUnidadInventario(unidadInventario);
-//            detalleFactura.setAlmacen(almacen);
-            detalleFactura.setCantidadInventario(catidadArticulo * artUnidad.getFatorVenta());
-            detalleFactura.setNuevaExistencia(exisArt.getExistencia() - detalleFactura.getCantidadInventario());
-            detalleFactura.setCostoUnitario(artUnidad.getCostoUnitario());
+            detalleFactura.setUnidadInventario(unidadSalida);          
+            detalleFactura.setCantidadInventario(catidadArticulo);
+            detalleFactura.setNuevaExistencia(exisArt.getExistencia()-detalleFactura.getCantidadInventario());
+            detalleFactura.setCostoUnitario(getArticulo().getPrecioCompraUnitario());
 
-            detalleFactura.setFactorUnidadSalida(artUnidad.getFatorVenta());
+            detalleFactura.setFactorUnidadSalida(1.0);
             detalleFactura.setListaDePrecio(listaPrecio);
 
-            if (unidadDespacho == 2) {
-
-                subTotal = valorEnPeso;
-
-            } else {
-
+//            if (unidadDespacho == 2) {
+//
+//                subTotal = valorEnPeso;
+//
+//            } else {
+//
                 subTotal = ClaseUtil.roundDouble(detalleFactura.getCantidad() * detalleFactura.getPrecio(), 2);
-            }
+//            }
 
 //            subTotal=ClaseUtil.roundDouble(detalleFactura.getCantidad() * detalleFactura.getPrecio(),2);
             if (getArticulo().getExentoItbis()) {
