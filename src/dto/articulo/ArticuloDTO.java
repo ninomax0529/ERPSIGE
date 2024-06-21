@@ -14,20 +14,6 @@ import javafx.scene.control.Button;
  */
 public class ArticuloDTO {
 
-    /**
-     * @return the nombreAlmacen
-     */
-    public String getNombreAlmacen() {
-        return nombreAlmacen;
-    }
-
-    /**
-     * @param nombreAlmacen the nombreAlmacen to set
-     */
-    public void setNombreAlmacen(String nombreAlmacen) {
-        this.nombreAlmacen = nombreAlmacen;
-    }
-
     private Integer codigo;
     private String nombre;
     private String unidad;
@@ -44,8 +30,9 @@ public class ArticuloDTO {
     private String categoria;
     private Integer listaDePrecio;
     private Integer almacen;
-      private String nombreAlmacen;
-     private Integer CodigoUnidad; 
+    private String nombreAlmacen;
+    private Integer CodigoUnidad;
+    private Boolean habilitado;
 
     public Integer getListaDePrecio() {
         return listaDePrecio;
@@ -86,7 +73,6 @@ public class ArticuloDTO {
     public void setExistencia(Double existencia) {
         this.existencia = existencia;
     }
-  
 
     /**
      * @return the precioVentaLpg
@@ -280,6 +266,34 @@ public class ArticuloDTO {
      */
     public void setAnulada(String anulada) {
         this.anulada = anulada;
+    }
+
+    /**
+     * @return the habilitado
+     */
+    public Boolean getHabilitado() {
+        return habilitado;
+    }
+
+    /**
+     * @param habilitado the habilitado to set
+     */
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
+    }
+
+    /**
+     * @return the nombreAlmacen
+     */
+    public String getNombreAlmacen() {
+        return nombreAlmacen;
+    }
+
+    /**
+     * @param nombreAlmacen the nombreAlmacen to set
+     */
+    public void setNombreAlmacen(String nombreAlmacen) {
+        this.nombreAlmacen = nombreAlmacen;
     }
 
 }

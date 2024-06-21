@@ -42,6 +42,7 @@ import javafx.scene.text.Font;
 import manejo.articulo.ManejoArticulo;
 import manejo.articulo.ManejoExistenciaArticulo;
 import modelo.Articulo;
+import modelo.DetalleListaDePrecio;
 import modelo.ExistenciaArticulo;
 import modelo.RegistroLote;
 import reporte.inventario.RptImprimirEtiqueta;
@@ -134,6 +135,8 @@ public class ArticulosController implements Initializable {
     RegistroLote registroLote;
     @FXML
     private TableColumn<ExistenciaArticulo, String> tbcFechaActualizacion;
+    @FXML
+    private TableColumn<ArticuloDTO, String> tbcHabilitado;
 
     public RegistroLote getRegistroLote() {
         return registroLote;
@@ -282,6 +285,23 @@ public class ArticulosController implements Initializable {
         tbcUnidadVenta.setCellValueFactory(new PropertyValueFactory<>("unidad"));
         tbcPrecioVenta.setCellValueFactory(new PropertyValueFactory<>("precioVenta"));
         tbcExistencia.setCellValueFactory(new PropertyValueFactory<>("existencia"));
+        tbcHabilitado.setCellValueFactory(new PropertyValueFactory<>("habilitado"));
+
+        tbcHabilitado.setCellValueFactory(
+                cellData -> {
+
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    if (cellData.getValue() != null) {
+
+                        if (cellData.getValue().getHabilitado()) {
+                            property.setValue("Si");
+                        } else {
+                            property.setValue("No");
+                        }
+
+                    }
+                    return property;
+                });
 
     }
 
@@ -296,14 +316,14 @@ public class ArticulosController implements Initializable {
         tbcExistencia.setCellValueFactory(new PropertyValueFactory<>("existencia"));
         tbcFechaActualizacion.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 
-           tbcFechaActualizacion.setCellValueFactory(
-                    cellData -> {
-                        SimpleStringProperty property = new SimpleStringProperty();
-                        if (cellData.getValue().getFecha() != null) {
-                            property.setValue(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().getFecha()));
-                        }
-                        return property;
-                    });
+        tbcFechaActualizacion.setCellValueFactory(
+                cellData -> {
+                    SimpleStringProperty property = new SimpleStringProperty();
+                    if (cellData.getValue().getFecha() != null) {
+                        property.setValue(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().getFecha()));
+                    }
+                    return property;
+                });
     }
 
     @FXML

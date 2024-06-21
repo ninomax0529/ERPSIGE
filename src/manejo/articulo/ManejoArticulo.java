@@ -626,7 +626,7 @@ public class ManejoArticulo extends ManejoEstandar<Articulo> {
                 articuloDTO = new ArticuloDTO();
 //
                 articuloDTO.setUnidad(rs.getString("unidad"));
-               
+
                 Double existencia = ManejoExistenciaArticulo.getInstancia().getExistenciaArticulosPorMovimiento(articuloDTO.getCodigo(), articuloDTO.getAlmacen());
 
                 articuloDTO.setExistencia(existencia);
@@ -652,13 +652,13 @@ public class ManejoArticulo extends ManejoEstandar<Articulo> {
         try {
 
             String sql = "  SELECT  lp.nombre as nombre_lista,\n"
-                    + "                     dlp.costo_unitario,dlp.precio,u.descripcion as unidad \n"
+                    + "                     dlp.costo_unitario,dlp.precio,u.descripcion as unidad,"
+                    + "  habilitado "
                     + "                     from  lista_de_precio lp,detalle_lista_de_precio dlp,\n"
                     + "                      unidad u \n"
                     + "                     where lp.codigo=dlp.lista_de_precio \n"
-                    + "                     and   dlp.habilitado=true \n"
-                    + "                     and  u.codigo=dlp.unidad_salida \n"
-                    + "                     and  lp.habilitada=true "
+                //    + "                     and  dlp.habilitado=true \n"
+                    + "                     and  u.codigo=dlp.unidad_salida \n"               
                     + "                     and  dlp.articulo=" + articulo.getCodigo();
 
             PreparedStatement ps = Conexion.getInsatancia().getConnectionDB().prepareStatement(sql);
@@ -678,6 +678,7 @@ public class ManejoArticulo extends ManejoEstandar<Articulo> {
                 articuloDTO.setNombre(rs.getString("nombre_lista"));
                 articuloDTO.setUnidad(rs.getString("unidad"));
                 articuloDTO.setPrecioVenta(rs.getDouble("precio"));
+                articuloDTO.setHabilitado(rs.getBoolean("habilitado"));
 
                 listaDTO.add(articuloDTO);
 

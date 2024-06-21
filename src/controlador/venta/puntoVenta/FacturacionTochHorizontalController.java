@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
@@ -48,6 +49,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -570,9 +572,15 @@ public class FacturacionTochHorizontalController implements Initializable {
 
                     if (item != null) {
 
-                        HBox hbox = visualizarArticulo(item);
+                        VBox hbox = visualizarArticulo(item);
 
-                        hbox.setOnMouseClicked((event) -> {
+                        HBox bmas = (HBox) hbox.getChildren().get(2);
+                        JFXButton btnSumar = (JFXButton) bmas.getChildren().get(0);
+                        JFXButton btnRestar = (JFXButton) bmas.getChildren().get(1);
+                        JFXButton btnTeclado = (JFXButton) bmas.getChildren().get(2);
+//
+//                        System.out.println("btnTeclado " + btnTeclado.getId());
+                        btnTeclado.setOnMouseClicked((event) -> {
 
                             setArticulo(item);
 
@@ -600,29 +608,19 @@ public class FacturacionTochHorizontalController implements Initializable {
 
                                     catidadArticulo = Double.parseDouble(tecladoDigitalController.getTxtCAtidad().getText());
 
-//                                    if (tecladoDigitalController.getArticuloDTO() == null) {
-//                                        ClaseUtil.mensaje("EL ARTICULO NO TIENE UNIDAD CONFIGURADA ");
-//                                        return;
-//                                    }
-
-                                    int unidad =getArticulo().getUnidadEntrada().getCodigo();  //tecladoDigitalController.getArticuloDTO().getCodigoUnidad();
-                                    int listaPrecio=4; // tecladoDigitalController.getArticuloDTO().getListaDePrecio();
-                                    int almacen =6; //tecladoDigitalController.getArticuloDTO().getAlmacen();
+                                    int unidad = getArticulo().getUnidadEntrada().getCodigo();  //tecladoDigitalController.getArticuloDTO().getCodigoUnidad();
+                                    int listaPrecio = 4; // tecladoDigitalController.getArticuloDTO().getListaDePrecio();
+                                    int almacen = 6; //tecladoDigitalController.getArticuloDTO().getAlmacen();
                                     String nombreUnidad = getArticulo().getUnidadEntrada().getDescripcion(); // tecladoDigitalController.getArticuloDTO().getUnidad();
-                                    precioVenta =getArticulo().getPrecioVenta1() ;// tecladoDigitalController.getArticuloDTO().getPrecioVenta();
+                                    precioVenta = getArticulo().getPrecioVenta1();// tecladoDigitalController.getArticuloDTO().getPrecioVenta();
 
                                     System.out.println("Precio de Venta  " + precioVenta + " lista precio  " + listaPrecio);
-                                    Double existencia =ManejoExistenciaArticulo.getInstancia()
+                                    Double existencia = ManejoExistenciaArticulo.getInstancia()
                                             .getExistenciaArticulosPorMovimiento(getArticulo().getCodigo(), 6);
-                                            //tecladoDigitalController.getArticuloDTO().getExistencia();
+                                    //tecladoDigitalController.getArticuloDTO().getExistencia();
 
                                     existencia = FormatNum.FormatearDouble(existencia, 2);
 
-//                                    Double existencia = ManejoExistenciaArticulo
-//                                            .getInstancia()
-//                                            .getExistenciaArticulo(getArticulo().getCodigo(), almacen, unidad, listaPrecio);
-//
-//                                    existencia = FormatNum.FormatearDouble(existencia, 2);
                                     System.out.println("existencia < existenciaEnPeso " + existencia + " " + existenciaEnPeso);
 
                                     if (unidadDespacho == 2) {
@@ -645,16 +643,6 @@ public class FacturacionTochHorizontalController implements Initializable {
                                         return;
                                     }
 
-//                        catidadArticulo = Double.parseDouble(tecladoDigitalController.getTxtCAtidad().getText());
-//
-//                        if (getArticulo().getExistencia() < catidadArticulo) {
-//
-//                            ClaseUtil.mensaje("La cantidad a Despachar " + catidadArticulo
-//                                    + "  no puede ser mayor que la existencia ,Existencia igual a " + getArticulo().getExistencia());
-//
-//                            return;
-//                        }
-//                                    agregarArticulo();
                                     if (!(getContiDeVenta() == null)) {
                                         ClaseUtil.mensaje("Esta factura esta con una cotizacion");
                                         return;
@@ -668,6 +656,129 @@ public class FacturacionTochHorizontalController implements Initializable {
                                 e.printStackTrace();
                             }
 
+                        });
+
+                        btnSumar.setOnMouseClicked((event) -> {
+
+                            setArticulo(item);
+
+                            try {
+
+                                unidadDespacho = 1; //tecladoDigitalController.getUnidadDespacho();
+
+                                System.out.println("Unidad despacho " + unidadDespacho);
+
+//                                if (!(getArticulo() == null) && !tecladoDigitalController.getTxtCAtidad().getText().isEmpty()) {
+                                catidadArticulo = 1.0;// Double.parseDouble(tecladoDigitalController.getTxtCAtidad().getText());
+
+                                int unidad = getArticulo().getUnidadEntrada().getCodigo();  //tecladoDigitalController.getArticuloDTO().getCodigoUnidad();
+                                int listaPrecio = 4; // tecladoDigitalController.getArticuloDTO().getListaDePrecio();
+                                int almacen = 6; //tecladoDigitalController.getArticuloDTO().getAlmacen();
+                                String nombreUnidad = getArticulo().getUnidadEntrada().getDescripcion(); // tecladoDigitalController.getArticuloDTO().getUnidad();
+                                precioVenta = getArticulo().getPrecioVenta1();// tecladoDigitalController.getArticuloDTO().getPrecioVenta();
+
+                                System.out.println("Precio de Venta  " + precioVenta + " lista precio  " + listaPrecio);
+                                Double existencia = ManejoExistenciaArticulo.getInstancia()
+                                        .getExistenciaArticulosPorMovimiento(getArticulo().getCodigo(), 6);
+                                //tecladoDigitalController.getArticuloDTO().getExistencia();
+
+                                existencia = FormatNum.FormatearDouble(existencia, 2);
+
+                                System.out.println("existencia < existenciaEnPeso " + existencia + " " + existenciaEnPeso);
+
+                                if (unidadDespacho == 2) {
+
+                                    existenciaEnPeso = FormatNum
+                                            .FormatearDouble(catidadArticulo / getArticulo()
+                                                    .getPrecioVenta1(), 4);
+                                    System.out.println("Cantidad en peso " + catidadArticulo);
+
+                                } else {
+                                    existenciaEnPeso = catidadArticulo;
+                                }
+
+                                if (existencia < existenciaEnPeso && !(getArticulo().getTipoArticulo().getCodigo() == 3)) {
+
+                                    ClaseUtil.mensaje(" La cantidad a Despachar " + catidadArticulo
+                                            + "  no puede ser mayor que la existencia ,"
+                                            + " Existencia igual a  " + existencia + "   " + nombreUnidad);
+
+                                    return;
+                                }
+
+                                if (!(getContiDeVenta() == null)) {
+                                    ClaseUtil.mensaje("Esta factura esta con una cotizacion");
+                                    return;
+                                }
+
+                                agregarArticuloConPrecioDeLista(unidad, almacen, listaPrecio);
+
+//                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        });
+
+                        btnRestar.setOnMouseClicked((event) -> {
+
+                            setArticulo(item);
+
+                            try {
+
+                                unidadDespacho = 1; //tecladoDigitalController.getUnidadDespacho();
+
+                                System.out.println("Unidad despacho " + unidadDespacho);
+
+//                                if (!(getArticulo() == null) && !tecladoDigitalController.getTxtCAtidad().getText().isEmpty()) {
+                                catidadArticulo = -1.0;// Double.parseDouble(tecladoDigitalController.getTxtCAtidad().getText());
+
+                                int unidad = getArticulo().getUnidadEntrada().getCodigo();  //tecladoDigitalController.getArticuloDTO().getCodigoUnidad();
+                                int listaPrecio = 4; // tecladoDigitalController.getArticuloDTO().getListaDePrecio();
+                                int almacen = 6; //tecladoDigitalController.getArticuloDTO().getAlmacen();
+                                String nombreUnidad = getArticulo().getUnidadEntrada().getDescripcion(); // tecladoDigitalController.getArticuloDTO().getUnidad();
+                                precioVenta = getArticulo().getPrecioVenta1();// tecladoDigitalController.getArticuloDTO().getPrecioVenta();
+
+                                System.out.println("Precio de Venta  " + precioVenta + " lista precio  " + listaPrecio);
+                                Double existencia = ManejoExistenciaArticulo.getInstancia()
+                                        .getExistenciaArticulosPorMovimiento(getArticulo().getCodigo(), 6);
+                                //tecladoDigitalController.getArticuloDTO().getExistencia();
+
+                                existencia = FormatNum.FormatearDouble(existencia, 2);
+
+                                System.out.println("existencia < existenciaEnPeso " + existencia + " " + existenciaEnPeso);
+
+                                if (unidadDespacho == 2) {
+
+                                    existenciaEnPeso = FormatNum
+                                            .FormatearDouble(catidadArticulo / getArticulo()
+                                                    .getPrecioVenta1(), 4);
+                                    System.out.println("Cantidad en peso " + catidadArticulo);
+
+                                } else {
+                                    existenciaEnPeso = catidadArticulo;
+                                }
+
+                                if (existencia < existenciaEnPeso && !(getArticulo().getTipoArticulo().getCodigo() == 3)) {
+
+                                    ClaseUtil.mensaje(" La cantidad a Despachar " + catidadArticulo
+                                            + "  no puede ser mayor que la existencia ,"
+                                            + " Existencia igual a  " + existencia + "   " + nombreUnidad);
+
+                                    return;
+                                }
+
+                                if (!(getContiDeVenta() == null)) {
+                                    ClaseUtil.mensaje("Esta factura esta con una cotizacion");
+                                    return;
+                                }
+
+                                agregarArticuloConPrecioDeLista(unidad, almacen, listaPrecio);
+
+//                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         });
 
                         setGraphic(hbox);
@@ -800,9 +911,9 @@ public class FacturacionTochHorizontalController implements Initializable {
 
                 DetalleFactura p = data.getRowValue();
                 Double subTotal = 0.00, total = 0.00, cantidad = 0.00, precioCompraUnitario = 0.00,
-                        descuento = 0.00, impuesto = 0.00, precio = p.getPrecio(),                        
-                        existencia= ManejoExistenciaArticulo.getInstancia()
-                                .getExistenciaArticulosPorMovimiento(p.getArticulo().getCodigo(),p.getAlmacen().getCodigo());
+                        descuento = 0.00, impuesto = 0.00, precio = p.getPrecio(),
+                        existencia = ManejoExistenciaArticulo.getInstancia()
+                                .getExistenciaArticulosPorMovimiento(p.getArticulo().getCodigo(), p.getAlmacen().getCodigo());
 
                 if (data.getNewValue() > 0) {
 
@@ -1632,7 +1743,7 @@ public class FacturacionTochHorizontalController implements Initializable {
 
 //            if (unidadDespacho == 2) {
 //
-                valorEnPeso = catidadArticulo;
+            valorEnPeso = catidadArticulo;
 //                catidadArticulo = FormatNum.FormatearDouble(catidadArticulo / precioVenta, 4);
 //            }
 
@@ -1647,6 +1758,19 @@ public class FacturacionTochHorizontalController implements Initializable {
                     .getExistenciaArticulo(detalleFactura.getArticulo().getCodigo(),
                             almacen);
 
+            if (exisArt == null) {
+
+                ClaseUtil.confirmarMensaje(" ESTE ARTICULO  "
+                        + " " + detalleFactura.getArticulo().getNombre() + " NO TIENE ALMACEN ");
+                return;
+            }
+
+//            Optional<ButtonType> op = ClaseUtil.confirmarMensaje(" ESTE ARTICULO "
+//                    + " " + detalleFactura.getArticulo().getNombre() + " NO TIENE ALMACEN ");
+//            
+//            if (op.get()==ButtonType.OK || op.get() == ButtonType.YES) {
+//
+//            }
             System.out.println("exisArt " + exisArt);
             detalleFactura.setExistencia(exisArt.getExistencia());
 
@@ -1656,13 +1780,11 @@ public class FacturacionTochHorizontalController implements Initializable {
 
 //            Integer unidadInventario = ManejoArticuloUnidad.getInstancia()
 //                    .getArticuloUnidadSslida(detalleFactura.getArticulo().getCodigo()).getUnidad().getCodigo();
-
 //            ArticuloUnidad artUnidad = ManejoArticuloUnidad.getInstancia()
 //                    .getArticuloUnidadSslida(detalleFactura.getArticulo().getCodigo(), detalleFactura.getUnidad().getCodigo());
-
-            detalleFactura.setUnidadInventario(unidadSalida);          
+            detalleFactura.setUnidadInventario(unidadSalida);
             detalleFactura.setCantidadInventario(catidadArticulo);
-            detalleFactura.setNuevaExistencia(exisArt.getExistencia()-detalleFactura.getCantidadInventario());
+            detalleFactura.setNuevaExistencia(exisArt.getExistencia() - detalleFactura.getCantidadInventario());
             detalleFactura.setCostoUnitario(getArticulo().getPrecioCompraUnitario());
 
             detalleFactura.setFactorUnidadSalida(1.0);
@@ -1674,7 +1796,7 @@ public class FacturacionTochHorizontalController implements Initializable {
 //
 //            } else {
 //
-                subTotal = ClaseUtil.roundDouble(detalleFactura.getCantidad() * detalleFactura.getPrecio(), 2);
+            subTotal = ClaseUtil.roundDouble(detalleFactura.getCantidad() * detalleFactura.getPrecio(), 2);
 //            }
 
 //            subTotal=ClaseUtil.roundDouble(detalleFactura.getCantidad() * detalleFactura.getPrecio(),2);
@@ -2445,7 +2567,7 @@ public class FacturacionTochHorizontalController implements Initializable {
             factura.setMontoExcento(getMontoExcento());
             factura.setMontoGravado(getMontoGravado());
             factura.setConcepto(txtConcepto.getText().isEmpty() ? "VENTAS DE MERCANCIA " : txtConcepto.getText());
-            factura.setFormato(tieneMontoExcento ? 2 : 1 );
+            factura.setFormato(tieneMontoExcento ? 2 : 1);
 
             factura.setIsrPercibido(0.00);
             factura.setIsrRetenido(getTotalIsrRetenido());
@@ -3251,8 +3373,7 @@ public class FacturacionTochHorizontalController implements Initializable {
 
     @FXML
     private void btnReciboIngresoActionEvent(ActionEvent event) {
-        
-        
+
         try {
 
             System.out.println("factDb recibo: " + facturaDb);
@@ -3308,7 +3429,7 @@ public class FacturacionTochHorizontalController implements Initializable {
 
     }
 
-    private HBox visualizarArticulo(Articulo articulo) {
+    private VBox visualizarArticulo(Articulo articulo) {
 
         ImageView img = null;
         File imageFile;
@@ -3327,19 +3448,35 @@ public class FacturacionTochHorizontalController implements Initializable {
         img.setFitHeight(70);
 
         VBox vb = new VBox();
-        vb.setAlignment(Pos.CENTER_LEFT);
+        VBox vbBtn = new VBox();
+//        vbBtn.setAlignment(Pos.CENTER_LEFT);
+        vbBtn.setSpacing(5);
+        vbBtn.setPadding(new Insets(5, 5, 5, 5));
+
+        // TextField txtCantidad = new TextField("1");
+        JFXButton btnAumental = new JFXButton("+");
+        JFXButton btnRestar = new JFXButton("-");
+        JFXButton btnTeclado = new JFXButton("Teclado");
+
+        // Button btnDisminur = new Button("-");
+        vbBtn.getChildren().add(btnAumental);
+//        vbBtn.getChildren().add(txtCantidad);
+//        vbBtn.getChildren().add(btnDisminur);
+
+        vbBtn.setAlignment(Pos.TOP_RIGHT);
 
         HBox hb = new HBox();
 
-        hb.setAlignment(Pos.CENTER_LEFT);
+        hb.setAlignment(Pos.BOTTOM_CENTER);
 //                    hb.setMaxWidth(Double.MAX_VALUE);
 //                    vb.setMaxWidth(Double.MAX_VALUE);
-//                    hb.setSpacing(5);
+        hb.setSpacing(15);
+        hb.setPadding(new Insets(5, 5, 5, 5));
 
         vb.setSpacing(5);
         vb.setPadding(new Insets(5, 5, 5, 5));
 
-        hb.setStyle("   -fx-text-fill:000000;\n"
+        vb.setStyle("   -fx-text-fill:000000;\n"
                 + " -fx-background-color: #FFFFFF;"
                 + "    -fx-border-color:  #00bb2d;\n"
                 + "    -fx-border-radius: 5px;\n"
@@ -3356,17 +3493,41 @@ public class FacturacionTochHorizontalController implements Initializable {
                 + " -fx-font-size: 15pt;");
         lbNombre.setStyle(" -fx-text-fill: #000000;"
                 + " -fx-font-size: 12pt;");
+        vbBtn.setStyle(" -fx-text-fill: #000000;"
+                + " -fx-font-size: 12pt;");
+        btnAumental.setStyle("   -fx-background-color: #FFFFFF;"
+                + "    -fx-border-color:  #00bb2d;\n"
+                + "    -fx-background-radius: 10px;\n");
+        btnRestar.setStyle("   -fx-background-color: #FFFFFF;"
+                + "    -fx-border-color:  #00bb2d;\n"
+                + "    -fx-background-radius: 10px;\n");
+        btnTeclado.setStyle("   -fx-background-color: #FFFFFF;"
+                + "    -fx-border-color:  #00bb2d;\n"
+                + "    -fx-background-radius: 10px;\n");
+
+//        btnAumental.setStyle("   -fx-text-fill:000000;\n"
+//                + " -fx-background-color: #FFFFFF;"
+//                + "    -fx-border-color:  #00bb2d;\n"
+//                + "    -fx-border-radius: 5px;\n"
+//                + "    -fx-background-radius: 10px;\n"
+//                + "    -fx-font-size: 12pt ;");
+//      
+        hb.getChildren().add(btnAumental);
+        hb.getChildren().add(btnRestar);
+        hb.getChildren().add(btnTeclado);
 
         vb.getChildren().add(lbCodio);
 
         vb.getChildren().add(lbNombre);
+//        Separator separador = new Separator();
+//        vb.getChildren().add(separador);
 
-//        vb.getChildren().add(lbPrecio);
-
+        vb.getChildren().add(hb);
 //        hb.getChildren().add(img);
-        hb.getChildren().add(vb);
-        hb.setCursor(Cursor.HAND);
-        return hb;
+//        hb.getChildren().add(vb);
+//        hb.getChildren().add(vbBtn);
+        vb.setCursor(Cursor.HAND);
+        return vb;
 
     }
 
